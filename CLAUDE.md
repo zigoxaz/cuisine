@@ -23,10 +23,13 @@ Application web de recettes hébergée sur un NAS Synology, synchronisée depuis
 Viandes → légumes/féculents → herbes fraîches → épices → condiments → produits laitiers → huile → sel/poivre
 
 ### 3. Image
-- Chercher une image JPG ou WebP via WebSearch + WebFetch
-- Télécharger avec curl dans `pwa/images/`
-- Nom de fichier : `nom-de-la-recette.jpg` (minuscules, tirets)
-- Vérifier que c'est bien un JPEG ou PNG (commande `file`)
+- Demander d'abord à l'utilisateur s'il est sur **téléphone** ou **PC**.
+- Chercher une image JPG ou WebP via WebSearch + WebFetch.
+- Télécharger avec curl dans `pwa/images/`.
+- Nom de fichier : `nom-de-la-recette.jpg` (minuscules, tirets).
+- Vérifier que c'est bien un JPEG ou PNG (commande `file`).
+- **Si sur téléphone et image introuvable** : sauter l'image, ajouter la recette sans champ `image`. L'utilisateur pourra l'ajouter plus tard depuis son PC.
+- **Si sur PC et image introuvable** : demander à l'utilisateur de fournir une photo.
 
 ### 4. JSON
 Ajouter la recette à la fin du tableau `recettes` dans `pwa/recettes.json` avec le prochain id disponible :
