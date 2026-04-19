@@ -449,6 +449,32 @@
                 "Incorporer la menthe fraîche, l'aneth et le jus de citron. Servir."
             ],
             "tags": ["courgette", "ail", "menthe", "aneth", "thym", "citron", "ottolenghi"]
+        },
+        {
+            "id": 17,
+            "titre": "Shakshuka",
+            "categorie": "Végétarien",
+            "ingredients": [
+                "2 gros poivrons rouges en dés de 0,5 cm (300 g)",
+                "4 gousses d'ail émincées finement",
+                "5 grosses tomates très mûres ou en conserve (800 g), en morceaux",
+                "4 œufs fermiers moyens",
+                "4 jaunes d'œufs",
+                "1 c. à café de cumin en poudre",
+                "2 c. à soupe de pilpelchuma ou harissa",
+                "2 c. à café de concentré de tomate",
+                "120 g de labneh ou yaourt épais",
+                "2 c. à soupe d'huile d'olive",
+                "Sel"
+            ],
+            "etapes": [
+                "Chauffer l'huile à feu moyen dans une grande poêle. Ajouter le pilpelchuma ou la harissa, le concentré de tomate, les poivrons, l'ail, le cumin et 1 c. à café de sel. Faire ramollir les poivrons 8 min en remuant.",
+                "Incorporer les tomates, porter à frémissement et cuire 10 min jusqu'à obtenir une sauce épaisse. Goûter et rectifier l'assaisonnement.",
+                "Former 8 petits creux dans la sauce. Casser les 4 œufs entiers, un par creux. Faire de même avec les 4 jaunes. Incorporer délicatement les blancs à la fourchette sans casser les jaunes.",
+                "Cuire à petit feu 8 à 10 min jusqu'à ce que les blancs soient pris (les jaunes restent coulants). Couvrir pour accélérer si besoin.",
+                "Retirer du feu, laisser reposer 1 à 2 min. Servir avec le labneh ou le yaourt."
+            ],
+            "tags": ["shakshuka", "œuf", "poivron", "tomate", "harissa", "cumin", "labneh", "yaourt", "ottolenghi"]
         }
     ]
 }
