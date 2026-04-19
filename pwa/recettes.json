@@ -477,6 +477,31 @@
                 "Retirer du feu, laisser reposer 1 à 2 min. Servir avec le labneh ou le yaourt."
             ],
             "tags": ["shakshuka", "œuf", "poivron", "tomate", "harissa", "cumin", "labneh", "yaourt", "ottolenghi"]
+        },
+        {
+            "id": 18,
+            "titre": "Soupe aux choux",
+            "categorie": "Porc",
+            "image": "images/soupe-aux-choux.jpg",
+            "ingredients": [
+                "Poitrine demi-sel",
+                "Saucisse fumée",
+                "Saucisson à l'ail",
+                "Le cœur d'un ½ chou émincé",
+                "1 oignon émincé",
+                "Quelques patates en petits dés",
+                "Quelques carottes en rondelles",
+                "Quelques navets en petits dés",
+                "Bouillon de légumes et volaille",
+                "Gros sel, poivre"
+            ],
+            "etapes": [
+                "Faire revenir l'oignon, puis les carottes.",
+                "Ajouter le chou, la poitrine et la saucisse. Cuire 5 min.",
+                "Ajouter les patates et les navets. Couvrir.",
+                "Mouiller avec le bouillon, ajuster en gros sel. Laisser cuire à feu doux longtemps."
+            ],
+            "tags": ["soupe", "chou", "saucisse fumée", "poitrine", "saucisson", "patate", "navet", "carotte", "hiver"]
         }
     ]
 }
