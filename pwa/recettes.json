@@ -430,6 +430,7 @@
             "id": 16,
             "titre": "Écrasé de courgettes à l'ail et aux herbes",
             "categorie": "Végétarien",
+            "image": "images/ecrase-courgettes.jpg",
             "ingredients": [
                 "850 g de courgettes en tronçons de 6 cm (coupées en deux dans la longueur)",
                 "Les gousses d'une tête d'ail en chemise",
@@ -454,6 +455,7 @@
             "id": 17,
             "titre": "Shakshuka",
             "categorie": "Végétarien",
+            "image": "images/shakshuka.jpg",
             "ingredients": [
                 "2 gros poivrons rouges en dés de 0,5 cm (300 g)",
                 "4 gousses d'ail émincées finement",
