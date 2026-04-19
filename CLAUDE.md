@@ -6,8 +6,22 @@ Application web de recettes hébergée sur un NAS Synology, synchronisée depuis
 - Images : `pwa/images/`
 - Config (thème, nav) : `pwa/config.json`
 - Admin : `pwa/admin.html` (mot de passe : clgo)
-- Après chaque modification, committer et pusher sur GitHub — le NAS se met à jour automatiquement en moins d'une minute.
+- Le NAS se met à jour automatiquement depuis `master` en moins d'une minute.
 - URL de l'appli : zigoxaz.ddns.net:8080/pwa/
+
+## Git — Process obligatoire
+L'environnement Claude Code web crée automatiquement une branche de session (ex: `claude/pwa-website-review-XXXX`).
+Après chaque modification, toujours merger sur `master` :
+```bash
+git add ...
+git commit -m "..."
+git push origin <branche-session>
+git checkout master
+git pull origin master
+git merge <branche-session>
+git push origin master
+```
+La branche de session peut être supprimée manuellement sur GitHub en fin de session.
 
 ## Ajouter une recette
 
@@ -46,8 +60,4 @@ Ajouter la recette à la fin du tableau `recettes` dans `pwa/recettes.json` avec
 ```
 
 ### 5. Commit et push
-```bash
-git add pwa/recettes.json pwa/images/nom.jpg
-git commit -m "Ajout : Titre de la recette"
-git push origin master
-```
+Suivre le process Git ci-dessus pour que les modifications soient visibles sur le site.
