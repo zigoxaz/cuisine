@@ -3,26 +3,52 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Admin — Recettes CLGO</title>
+  <title>Admin — Recettes de cuisine</title>
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
 
+    body.theme-sombre {
+      --bg: #1a1a1a; --bg2: #222; --bg3: #2a2a2a;
+      --text: #f0e6d3; --text2: #ddd; --text3: #aaa;
+      --accent: #c8a96e; --accent2: #1a1a1a;
+      --border: #333; --border2: #222;
+    }
+    body.theme-creme {
+      --bg: #faf6f0; --bg2: #f0ebe0; --bg3: #e8e0d0;
+      --text: #2c1f0e; --text2: #4a3728; --text3: #8a7060;
+      --accent: #b5541c; --accent2: #fff;
+      --border: #d9cfc0; --border2: #e8e0d0;
+    }
+    body.theme-mediterraneen {
+      --bg: #fdf8f2; --bg2: #fff4e6; --bg3: #ffe8cc;
+      --text: #2d1b00; --text2: #5a3a1a; --text3: #9a7050;
+      --accent: #e07020; --accent2: #fff;
+      --border: #f0d0a0; --border2: #ffe0b0;
+    }
+    body.theme-naturel {
+      --bg: #f4f7f2; --bg2: #e8f0e4; --bg3: #d8e8d0;
+      --text: #1a2e14; --text2: #3a5030; --text3: #7a9870;
+      --accent: #4a7a38; --accent2: #fff;
+      --border: #c8dcc0; --border2: #d8e8d0;
+    }
+
     body {
       font-family: 'Georgia', serif;
-      background: #faf6f0;
-      color: #2c1f0e;
+      background: var(--bg);
+      color: var(--text);
       min-height: 100vh;
       padding: 20px;
+      transition: background 0.3s, color 0.3s;
     }
 
     h1 {
       font-size: 18px;
       letter-spacing: 2px;
       text-transform: uppercase;
-      color: #b5541c;
+      color: var(--accent);
       margin-bottom: 24px;
       padding-bottom: 12px;
-      border-bottom: 1px solid #d9cfc0;
+      border-bottom: 1px solid var(--border);
     }
 
     .actions {
@@ -34,8 +60,8 @@
 
     button {
       background: transparent;
-      border: 1px solid #b5541c;
-      color: #b5541c;
+      border: 1px solid var(--accent);
+      color: var(--accent);
       padding: 8px 16px;
       cursor: pointer;
       font-size: 12px;
@@ -45,46 +71,31 @@
       font-family: inherit;
     }
 
-    button:hover { background: #b5541c; color: #fff; }
+    button:hover { background: var(--accent); color: var(--accent2); }
     button.danger { border-color: #c0392b; color: #c0392b; }
     button.danger:hover { background: #c0392b; color: white; }
-    button.primary { background: #b5541c; color: #fff; }
+    button.primary { background: var(--accent); color: var(--accent2); }
 
-    /* THÈME */
-    .theme-bloc {
+    .bloc {
       margin-bottom: 24px;
       padding: 16px;
-      background: #f0ebe0;
-      border: 1px solid #d9cfc0;
+      background: var(--bg2);
+      border: 1px solid var(--border);
     }
 
-    .theme-label {
+    .bloc-label {
       font-size: 10px;
       letter-spacing: 2px;
       text-transform: uppercase;
-      color: #8a7060;
+      color: var(--text3);
       margin-bottom: 10px;
     }
 
-    .theme-btns { display: flex; gap: 8px; flex-wrap: wrap; }
+    .bloc-btns { display: flex; gap: 8px; flex-wrap: wrap; }
+    .bloc-btns button { border-color: var(--border); color: var(--text3); }
+    .bloc-btns button:hover { border-color: var(--accent); color: var(--accent); background: transparent; }
+    .bloc-btns button.actif { background: var(--accent); color: var(--accent2); border-color: var(--accent); }
 
-    .theme-btns button { border-color: #d9cfc0; color: #8a7060; }
-    .theme-btns button:hover { border-color: #b5541c; color: #b5541c; background: transparent; }
-    .theme-btns button.actif { background: #b5541c; color: #fff; border-color: #b5541c; }
-
-    /* NAV */
-    .nav-bloc {
-      margin-bottom: 24px;
-      padding: 16px;
-      background: #f0ebe0;
-      border: 1px solid #d9cfc0;
-    }
-    .nav-btns { display: flex; gap: 8px; flex-wrap: wrap; }
-    .nav-btns button { border-color: #d9cfc0; color: #8a7060; }
-    .nav-btns button:hover { border-color: #b5541c; color: #b5541c; background: transparent; }
-    .nav-btns button.actif { background: #b5541c; color: #fff; border-color: #b5541c; }
-
-    /* LISTE */
     #liste-recettes { margin-bottom: 30px; }
 
     .recette-item {
@@ -92,18 +103,17 @@
       align-items: center;
       gap: 12px;
       padding: 12px 0;
-      border-bottom: 1px solid #e8e0d0;
+      border-bottom: 1px solid var(--border2);
     }
 
-    .recette-item-titre { flex: 1; font-size: 16px; }
-    .recette-item-cat { font-size: 11px; color: #b5541c; letter-spacing: 1px; text-transform: uppercase; }
+    .recette-item-titre { flex: 1; font-size: 16px; color: var(--text); }
+    .recette-item-cat { font-size: 11px; color: var(--accent); letter-spacing: 1px; text-transform: uppercase; }
 
-    /* FORMULAIRE */
     #formulaire {
       display: none;
-      background: #f0ebe0;
+      background: var(--bg2);
       padding: 24px;
-      border: 1px solid #d9cfc0;
+      border: 1px solid var(--border);
       margin-top: 20px;
     }
 
@@ -111,7 +121,7 @@
       font-size: 14px;
       letter-spacing: 2px;
       text-transform: uppercase;
-      color: #b5541c;
+      color: var(--accent);
       margin-bottom: 20px;
     }
 
@@ -122,15 +132,15 @@
       font-size: 10px;
       letter-spacing: 2px;
       text-transform: uppercase;
-      color: #8a7060;
+      color: var(--text3);
       margin-bottom: 6px;
     }
 
     input, select, textarea {
       width: 100%;
-      background: #faf6f0;
-      border: 1px solid #d9cfc0;
-      color: #2c1f0e;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      color: var(--text);
       padding: 10px;
       font-size: 15px;
       font-family: inherit;
@@ -138,12 +148,12 @@
 
     input:focus, select:focus, textarea:focus {
       outline: none;
-      border-color: #b5541c;
+      border-color: var(--accent);
     }
 
     textarea { min-height: 100px; resize: vertical; }
 
-    .aide { font-size: 11px; color: #b0a090; margin-top: 4px; }
+    .aide { font-size: 11px; color: var(--text3); margin-top: 4px; }
 
     .form-actions { display: flex; gap: 10px; margin-top: 20px; }
 
@@ -158,9 +168,9 @@
     #message.err { background: #fde8e8; border: 1px solid #c0392b; color: #c0392b; }
   </style>
 </head>
-<body>
+<body class="theme-creme">
 
-<h1>Administration — Recettes CLGO</h1>
+<h1>Administration — Recettes de cuisine</h1>
 
 <div id="message"></div>
 
@@ -169,9 +179,9 @@
   <a href="index.html"><button>← Voir l'appli</button></a>
 </div>
 
-<div class="theme-bloc">
-  <div class="theme-label">Thème de l'application</div>
-  <div class="theme-btns">
+<div class="bloc">
+  <div class="bloc-label">Thème de l'application</div>
+  <div class="bloc-btns">
     <button id="theme-sombre" onclick="changerTheme('sombre')">Sombre</button>
     <button id="theme-creme" onclick="changerTheme('creme')">Crème</button>
     <button id="theme-mediterraneen" onclick="changerTheme('mediterraneen')">Méditerranéen</button>
@@ -179,9 +189,9 @@
   </div>
 </div>
 
-<div class="nav-bloc">
-  <div class="theme-label">Style de navigation</div>
-  <div class="nav-btns">
+<div class="bloc">
+  <div class="bloc-label">Style de navigation</div>
+  <div class="bloc-btns">
     <button id="nav-classique" onclick="changerNav('classique')">Classique</button>
     <button id="nav-minimaliste" onclick="changerNav('minimaliste')">Minimaliste</button>
     <button id="nav-epure" onclick="changerNav('epure')">Épuré</button>
@@ -240,11 +250,12 @@ let themeActif = 'creme';
 let navActif = 'classique';
 
 Promise.all([
-  fetch('config.json').then(r => r.json()),
-  fetch('recettes.json').then(r => r.json())
+  fetch('config.json?v=' + Date.now()).then(r => r.json()),
+  fetch('recettes.json?v=' + Date.now()).then(r => r.json())
 ]).then(([config, d]) => {
   themeActif = config.theme || 'creme';
   navActif = config.nav || 'classique';
+  document.body.className = 'theme-' + themeActif;
   majBoutonsTheme();
   majBoutonsNav();
   data = d;
@@ -256,12 +267,13 @@ function changerTheme(theme) {
   fetch('save_config.php', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ theme })
+    body: JSON.stringify({ theme, nav: navActif })
   })
   .then(r => r.json())
   .then(res => {
     if (res.ok) {
       themeActif = theme;
+      document.body.className = 'theme-' + theme;
       majBoutonsTheme();
       afficherMessage('Thème "' + theme + '" appliqué.', 'ok');
     } else {
@@ -314,7 +326,7 @@ function construireSelectCategorie() {
 function construireListe() {
   const div = document.getElementById('liste-recettes');
   if (data.recettes.length === 0) {
-    div.innerHTML = '<div style="color:#b0a090;font-size:14px;padding:20px 0">Aucune recette.</div>';
+    div.innerHTML = '<div style="color:var(--text3);font-size:14px;padding:20px 0">Aucune recette.</div>';
     return;
   }
   div.innerHTML = data.recettes.map(r => `
