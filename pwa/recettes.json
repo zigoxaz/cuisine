@@ -425,6 +425,30 @@
                 "Dresser : riz au fond, thon tranché, avocat, mangue, concombre, pickles radis, nori. Napper de sauce, filet d'huile de sésame."
             ],
             "tags": ["thon", "sésame", "bowl", "poke", "riz sushi", "avocat", "mangue", "pickles", "wasabi", "sriracha", "citron vert", "gingembre"]
+        },
+        {
+            "id": 16,
+            "titre": "Écrasé de courgettes à l'ail et aux herbes",
+            "categorie": "Végétarien",
+            "ingredients": [
+                "850 g de courgettes en tronçons de 6 cm (coupées en deux dans la longueur)",
+                "Les gousses d'une tête d'ail en chemise",
+                "2 c. à soupe de feuilles de menthe hachées",
+                "1,5 c. à soupe d'aneth haché",
+                "1 c. à café de menthe séchée",
+                "5 g de thym",
+                "1 c. à soupe de jus de citron",
+                "70 ml d'huile d'olive",
+                "¾ c. à café de sel, poivre noir"
+            ],
+            "etapes": [
+                "Four à 200°C (chaleur tournante).",
+                "Mélanger les tronçons de courgettes avec la menthe séchée, le thym, l'huile d'olive, ¾ c. à café de sel et du poivre. Disposer face coupée vers le haut, bien serrés en une seule couche dans un plat à gratin. Enfourner 15 min, ajouter les gousses d'ail, poursuivre 15 min jusqu'à ce que les courgettes soient fondantes et légèrement dorées.",
+                "Verser dans une passoire au-dessus de l'évier, presser pour extraire le maximum de liquide. Laisser s'égoutter au moins 30 min, jeter le liquide.",
+                "Vider dans un saladier, ôter la chemise de l'ail. Écraser le tout à la fourchette.",
+                "Incorporer la menthe fraîche, l'aneth et le jus de citron. Servir."
+            ],
+            "tags": ["courgette", "ail", "menthe", "aneth", "thym", "citron", "ottolenghi"]
         }
     ]
 }
