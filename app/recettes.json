@@ -1,0 +1,430 @@
+{
+    "categories": [
+        "Poisson",
+        "Porc",
+        "Poulet",
+        "Bœuf",
+        "Végétarien",
+        "Pâtes",
+        "Dessert",
+        "Entrée",
+        "Accompagnement"
+    ],
+    "recettes": [
+        {
+            "id": 1,
+            "titre": "Boulgour à la tomate, aubergines et yaourt citronné",
+            "categorie": "Végétarien",
+            "image": "images/boulgour-aubergine.jpg",
+            "ingredients": [
+                "2 aubergines en cubes de 3 cm (500 g)",
+                "2 oignons émincés",
+                "3 gousses d'ail hachées",
+                "400 g de tomates cerise",
+                "250 g de boulgour",
+                "10 g de menthe ciselée",
+                "1 c. à café de quatre-épices",
+                "1 citron confit haché finement (25 g)",
+                "1 c. à soupe de concentré de tomate",
+                "200 g de yaourt à la grecque",
+                "105 ml d'huile d'olive",
+                "Sel, poivre"
+            ],
+            "etapes": [
+                "Four à 200°C. Enrober les aubergines avec 4 c. à soupe d'huile, ½ c. à café de sel, poivre. Enfourner 35-40 min en retournant à mi-cuisson. Réserver.",
+                "Faire revenir les oignons 8 min dans le reste d'huile. Ajouter l'ail et le quatre-épices, cuire 1 min.",
+                "Ajouter les tomates cerise, écraser. Incorporer le concentré, 400 ml d'eau et 1 c. à café de sel. Mijoter 12 min à couvert.",
+                "Ajouter le boulgour, mélanger, couvrir et laisser gonfler 20 min hors du feu.",
+                "Mélanger le yaourt avec le citron confit, la moitié de la menthe et une pincée de sel.",
+                "Dresser le boulgour, déposer les aubergines, une cuillère de yaourt et parsemer du reste de menthe."
+            ],
+            "tags": ["boulgour", "aubergine", "tomate", "yaourt", "citron confit", "menthe", "quatre-épices", "ottolenghi"]
+        },
+        {
+            "id": 2,
+            "titre": "Chaud-froid de tomates cerise au yaourt citronné",
+            "categorie": "Entrée",
+            "image": "images/chaud-froid-tomates.jpg",
+            "ingredients": [
+                "350 g de tomates cerise",
+                "3 gousses d'ail en lamelles",
+                "3 branches de thym",
+                "5 g d'origan frais",
+                "¾ c. à café de graines de cumin",
+                "½ c. à café de sucre de canne",
+                "1 c. à café de piment d'Urfa en flocons",
+                "1 citron : écorce en morceaux + 1 c. à café de zeste",
+                "350 g de yaourt à la grecque épais, froid",
+                "3 c. à soupe d'huile d'olive",
+                "Fleur de sel, poivre noir"
+            ],
+            "etapes": [
+                "Four à 200°C. Mélanger les tomates avec l'huile, le cumin, le sucre, l'ail, le thym, l'origan, les écorces de citron, ½ c. à café de fleur de sel et du poivre. Étaler groupées sur une plaque. Enfourner 20 min.",
+                "Passer en mode gril et poursuivre 6-8 min pour noircir la peau.",
+                "Mélanger le yaourt avec le zeste de citron et ¼ c. à café de fleur de sel. Réserver au frais.",
+                "Dresser le yaourt en cratère dans une assiette creuse. Déposer les tomates chaudes au centre avec leur jus, l'ail, les herbes et les écorces. Parsemer de piment et servir aussitôt avec du pain au levain."
+            ],
+            "tags": ["tomate", "yaourt", "citron", "cumin", "origan", "thym", "ail", "ottolenghi"]
+        },
+        {
+            "id": 3,
+            "titre": "Purée de haricots blancs au muhammara",
+            "categorie": "Végétarien",
+            "image": "images/puree-haricots-muhammara.jpg",
+            "ingredients": [
+                "— MUHAMMARA —",
+                "5 poivrons rouges coupés en quatre (850 g)",
+                "8 gousses d'ail pelées",
+                "60 g de cerneaux de noix torréfiés et hachés",
+                "2 boites de haricots blancs égouttés (470 g)",
+                "1 c. à soupe de thym",
+                "¾ c. à café de paprika fumé doux",
+                "¼ c. à café de piment en flocons",
+                "2 c. à café de vinaigre balsamique",
+                "— PURÉE —",
+                "1 gousse d'ail en chemise écrasée",
+                "3 branches de thym",
+                "100 ml d'huile d'olive",
+                "Sel"
+            ],
+            "etapes": [
+                "Four à 220°C. Enrober les poivrons d'huile, étaler sur une plaque. Enfourner 15 min, ajouter l'ail, poursuivre 15 min. Les poivrons doivent être tendres et légèrement noircis.",
+                "Mixer les poivrons avec l'ail, le thym, le paprika, le piment, le vinaigre, les noix et ½ c. à café de sel. Sauce épaisse avec quelques morceaux. Réserver.",
+                "Chauffer l'huile à feu moyen avec l'ail et le thym 2-3 min. Retirer l'ail, réserver le thym avec 2 c. à café d'huile aromatisée.",
+                "Mixer le reste de l'huile avec les haricots, 1 c. à soupe d'eau et ½ c. à café de sel. Purée lisse.",
+                "Dresser la purée en cratère, verser le muhammara au centre. Déposer le thym frit et arroser d'huile aromatisée."
+            ],
+            "tags": ["haricots blancs", "poivron", "noix", "ail", "thym", "paprika", "ottolenghi", "muhammara"]
+        },
+        {
+            "id": 4,
+            "titre": "Châtaignes et champignons au zaatar",
+            "categorie": "Végétarien",
+            "image": "images/chataignes-champignons-zaatar.jpg",
+            "ingredients": [
+                "650 g de champignons de Paris blonds en morceaux de 3 cm",
+                "200 g de petites échalotes entières pelées",
+                "150 g de châtaignes pelées au feu, coupées en deux",
+                "2 gousses d'ail écrasées",
+                "5 g de sauge hachée",
+                "5 g d'estragon haché",
+                "1 c. à soupe de zaatar",
+                "2 c. à café de jus de citron",
+                "60 ml d'huile d'olive + 2 c. à café pour le dressage",
+                "Sel, poivre"
+            ],
+            "etapes": [
+                "Four à 220°C. Mélanger les champignons, échalotes, châtaignes, sauge, huile et ail avec ¾ c. à café de sel et du poivre. Étaler sur une plaque et enfourner 25 min jusqu'à ce que tout soit tendre et coloré. Laisser tiédir 5 min.",
+                "Verser dans un saladier, assaisonner avec l'estragon, le zaatar, le jus de citron et 2 c. à café d'huile. Mélanger et dresser."
+            ],
+            "tags": ["champignon", "châtaigne", "zaatar", "échalote", "estragon", "sauge", "ail", "ottolenghi"]
+        },
+        {
+            "id": 5,
+            "titre": "Rougail saucisses",
+            "categorie": "Porc",
+            "image": "images/rougail-saucisses.jpg",
+            "voirAussi": [6, 7],
+            "ingredients": [
+                "1 saucisse de Morteau tranchée",
+                "2 saucisses fumées tranchées",
+                "2 tranches de poitrine fumée en lardons",
+                "2 oignons émincés",
+                "2 gousses d'ail écrasées",
+                "Quelques feuilles de combava",
+                "1 piment thaï coupé en 2",
+                "Quelques branches de thym",
+                "1 c. à café de curcuma",
+                "1 c. à café de massalé",
+                "1 c. à café de gingembre frais râpé",
+                "1 boite de tomates pelées",
+                "Riz basmati et lentilles pour accompagner"
+            ],
+            "etapes": [
+                "Faire revenir les oignons jusqu'à coloration.",
+                "Ajouter l'ail, le gingembre et les viandes. Bien faire colorer.",
+                "Ajouter les épices, mélanger 1 min.",
+                "Incorporer les tomates, le combava, le piment et le thym. Mijoter 20-25 min à feu doux.",
+                "Servir avec du riz, des lentilles et un rougail."
+            ],
+            "tags": ["saucisse", "morteau", "poitrine fumée", "tomate", "combava", "piment", "curcuma", "massalé", "gingembre", "réunion"]
+        },
+        {
+            "id": 6,
+            "titre": "Rougail oignons",
+            "categorie": "Accompagnement",
+            "image": "images/rougail-oignons.jpg",
+            "ingredients": [
+                "3 oignons émincés très finement",
+                "2 gousses d'ail écrasées",
+                "2 piments thaï émincés",
+                "Jus d'1 citron",
+                "2 c. à soupe de vinaigre blanc",
+                "Sel"
+            ],
+            "etapes": [
+                "Mélanger tous les ingrédients.",
+                "Laisser mariner 30 min minimum. Se conserve 3 jours au frigo."
+            ],
+            "tags": ["rougail", "oignon", "piment", "citron", "condiment", "réunion"]
+        },
+        {
+            "id": 7,
+            "titre": "Rougail tomates",
+            "categorie": "Accompagnement",
+            "image": "images/rougail-tomates.jpg",
+            "ingredients": [
+                "4 tomates épépinées en petits dés",
+                "2 oignons émincés finement",
+                "2 gousses d'ail écrasées",
+                "2 piments thaï émincés",
+                "Zestes de combava ou citron vert",
+                "Jus d'½ citron",
+                "1 c. à soupe de vinaigre blanc",
+                "Sel"
+            ],
+            "etapes": [
+                "Mélanger tous les ingrédients.",
+                "Laisser reposer 20 min. Servir frais."
+            ],
+            "tags": ["rougail", "tomate", "piment", "citron", "combava", "condiment", "réunion"]
+        },
+        {
+            "id": 8,
+            "titre": "Émincé de bœuf au basilic",
+            "categorie": "Bœuf",
+            "image": "images/emince-boeuf-basilic.jpg",
+            "ingredients": [
+                "600 g d'émincés de bœuf (bavette)",
+                "2 échalotes ciselées",
+                "2 gousses d'ail hachées",
+                "250 g de tomates cerise",
+                "100 g d'olives noires égouttées",
+                "Basilic ciselé",
+                "3 c. à soupe de sauce soja",
+                "Huile, sel, poivre"
+            ],
+            "etapes": [
+                "Faire colorer l'ail et les échalotes dans un filet d'huile.",
+                "Ajouter les tomates et les olives, cuire à feu modéré jusqu'à légère confiture des tomates.",
+                "Dans une autre poêle, saisir les émincés à feu vif, 30 sec de chaque côté.",
+                "Déglacer avec la sauce soja, poivrer. Ajouter le confit de tomates et le basilic. Chauffer 1-2 min en remuant délicatement."
+            ],
+            "tags": ["bœuf", "bavette", "tomate", "olive", "basilic", "échalote", "ail", "sauce soja"]
+        },
+        {
+            "id": 9,
+            "titre": "Merlus au four",
+            "categorie": "Poisson",
+            "image": "images/merlu-four.jpg",
+            "ingredients": [
+                "800 g de dos de merlu",
+                "4 gousses d'ail écrasées",
+                "1 citron (jus + zeste)",
+                "4 brins de thym frais",
+                "2 c. à soupe de persil frais haché",
+                "20 g de beurre en morceaux",
+                "4 c. à soupe d'huile d'olive",
+                "1 c. à café de sel",
+                "½ c. à café de poivre noir"
+            ],
+            "etapes": [
+                "Sortir le poisson 15 min avant. Four à 200°C.",
+                "Mélanger l'huile, le jus et zeste de citron, l'ail, le sel et le poivre.",
+                "Déposer les dos côté peau vers le bas dans un plat huilé. Napper de marinade, déposer le thym et répartir le beurre.",
+                "Enfourner 12-15 min selon l'épaisseur (10 min par cm). La chair doit s'effeuiller à la fourchette.",
+                "Parsemer de persil et servir avec les jus de cuisson."
+            ],
+            "tags": ["merlu", "poisson", "citron", "ail", "thym", "persil", "beurre"]
+        },
+        {
+            "id": 10,
+            "titre": "Palourdes au chorizo",
+            "categorie": "Poisson",
+            "image": "images/palourdes-chorizo.jpg",
+            "ingredients": [
+                "1 kg de palourdes ou coques",
+                "200 g de chorizo",
+                "100 g de jambon de Bayonne",
+                "3 oignons moyens émincés",
+                "2 gousses d'ail émincées",
+                "2 tomates",
+                "Persil haché",
+                "1 feuille de laurier",
+                "1 c. à café de paprika",
+                "1 verre de vin blanc sec",
+                "Huile d'olive, sel, poivre"
+            ],
+            "etapes": [
+                "Retirer la chair du chorizo, hacher, plonger 1 min dans l'eau bouillante pour dégraisser. Égoutter.",
+                "Émincer les oignons, l'ail, hacher le persil, découper le jambon.",
+                "Faire chauffer une cocotte avec de l'huile, cuire les oignons.",
+                "Ajouter le paprika, le chorizo, le jambon, les tomates, le persil, l'ail et le laurier.",
+                "Mouiller avec le vin, porter à ébullition, réduire en remuant.",
+                "Baisser le feu, placer les palourdes charnière vers le bas, couvrir 10 min jusqu'à ouverture."
+            ],
+            "tags": ["palourde", "coque", "chorizo", "jambon", "tomate", "oignon", "ail", "persil", "vin blanc"]
+        },
+        {
+            "id": 11,
+            "titre": "Tajine de lotte au citron et olives",
+            "categorie": "Poisson",
+            "image": "images/tajine-lotte.jpg",
+            "ingredients": [
+                "800 g de lotte sans peau ni arêtes",
+                "2 oignons émincés",
+                "2 gousses d'ail émincées",
+                "1 boite de tomates (400 g)",
+                "1 bocal d'olives vertes dénoyautées",
+                "1,5 citron confit en tranches",
+                "2 piments thaï sans pépins (en gros morceaux)",
+                "Coriandre fraîche",
+                "1 c. à café bombée de cumin en grains",
+                "1 c. à café bombée de gingembre moulu",
+                "1 bâton de cannelle",
+                "1 capsule de safran",
+                "300 ml de bouillon de volaille",
+                "Huile d'olive, sel, poivre"
+            ],
+            "etapes": [
+                "Faire chauffer l'huile dans une cocotte, dorer les oignons et l'ail.",
+                "Ajouter les épices (sauf le safran), les olives et le citron confit. Cuire 2 min.",
+                "Verser le bouillon avec le safran et les piments, faire frémir.",
+                "Baisser le feu, ajouter les tomates et la lotte, couvrir et cuire 20 min.",
+                "Parsemer de coriandre et servir avec de la semoule."
+            ],
+            "tags": ["lotte", "poisson", "tajine", "citron confit", "olive", "safran", "cumin", "cannelle", "gingembre", "tomate"]
+        },
+        {
+            "id": 12,
+            "titre": "Curry de lentilles et épinards",
+            "categorie": "Végétarien",
+            "image": "images/curry-lentilles-epinards.jpg",
+            "ingredients": [
+                "1 oignon émincé",
+                "130 g d'épinards",
+                "1 verre de lentilles corail",
+                "250 ml d'eau + 1 cube de volaille",
+                "25 ml de lait de coco",
+                "Noix de cajou ou amandes",
+                "1 gousse d'ail écrasée",
+                "1 bout de gingembre râpé",
+                "2 c. à café de curry",
+                "1 c. à café de curcuma"
+            ],
+            "etapes": [
+                "Faire revenir l'oignon, l'ail et le gingembre.",
+                "Ajouter les épices, cuire 1 min.",
+                "Ajouter les lentilles, faire revenir 1 min.",
+                "Verser l'eau et le cube. Cuire à feu moyen jusqu'à absorption complète.",
+                "Verser le lait de coco, ajouter les épinards. Mijoter 10-15 min.",
+                "Parsemer de noix de cajou et servir."
+            ],
+            "tags": ["lentilles corail", "épinards", "curry", "curcuma", "lait de coco", "noix de cajou", "gingembre", "végétarien"]
+        },
+        {
+            "id": 13,
+            "titre": "Pâtes aux fruits de mer",
+            "categorie": "Pâtes",
+            "image": "images/pates-fruits-de-mer.jpg",
+            "ingredients": [
+                "1 kg de moules",
+                "400 g de thon ou saumon haché grossièrement",
+                "400 g de spaghetti épais, linguines ou tagliatelles",
+                "1 oignon émincé",
+                "2 branches de céleri en tranches",
+                "800 g de tomates en boîte",
+                "1 bouquet de basilic",
+                "2 gousses d'ail en tranches",
+                "2 c. à soupe de câpres",
+                "20 cl de vin blanc",
+                "Huile d'olive"
+            ],
+            "etapes": [
+                "Cuire les moules dans le vin à couvert jusqu'à ouverture. Filtrer et réserver le jus. Décortiquer les moules une fois refroidies.",
+                "Faire revenir l'oignon, l'ail et le céleri dans l'huile 5-10 min.",
+                "Ajouter les tomates, le jus des moules, les câpres et le basilic (garder quelques feuilles pour le dressage).",
+                "Ajouter le poisson. Mijoter 20-25 min.",
+                "Ajouter les moules, mélanger.",
+                "Cuire les pâtes al dente, égoutter et incorporer à la sauce. Dresser avec les feuilles de basilic réservées."
+            ],
+            "tags": ["pâtes", "moules", "thon", "saumon", "tomate", "céleri", "câpres", "basilic", "fruits de mer", "vin blanc"]
+        },
+        {
+            "id": 14,
+            "titre": "Gumbo aux fruits de mer",
+            "categorie": "Poisson",
+            "image": "images/gumbo-fruits-de-mer.jpg",
+            "ingredients": [
+                "400 g de crevettes décortiquées",
+                "300 g de palourdes",
+                "200 g de chorizo en tranches",
+                "4 grosses tomates hachées",
+                "1 oignon haché",
+                "1 branche de céleri hachée",
+                "1 poivron vert haché",
+                "1 litre de bouillon de volaille",
+                "30 g de beurre",
+                "30 g de farine",
+                "1 c. à soupe d'épices cajun",
+                "1 feuille de laurier",
+                "2 c. à soupe d'huile",
+                "Riz pour accompagner"
+            ],
+            "etapes": [
+                "Faire fondre le beurre avec l'huile dans une cocotte. Ajouter la farine et faire brunir en remuant.",
+                "Ajouter l'oignon, le céleri, le poivron et le chorizo. Cuire 5 min.",
+                "Ajouter les épices cajun et le laurier. Cuire 1 min à feu moyen puis baisser le feu.",
+                "Ajouter les tomates et le bouillon. Mijoter 20 min en remuant.",
+                "Ajouter les palourdes et les crevettes. Cuire 5 min.",
+                "Servir avec du riz."
+            ],
+            "tags": ["gumbo", "crevettes", "palourdes", "chorizo", "cajun", "poivron", "tomate", "bouillon", "louisiane"]
+        },
+        {
+            "id": 15,
+            "titre": "Bowl de thon snacké au sésame",
+            "categorie": "Poisson",
+            "image": "images/bowl-thon-sesame.jpg",
+            "ingredients": [
+                "400 g de longe de thon coupée en gros morceaux",
+                "1 avocat en tranches",
+                "1 mangue en dés",
+                "½ concombre en julienne",
+                "4 radis en fines rondelles",
+                "300 g de riz à sushi",
+                "Graines de sésame (enrober le thon)",
+                "Chapelure (enrober le thon)",
+                "Algues nori en lanières",
+                "— MARINADE —",
+                "1 c. à soupe de sauce soja",
+                "1 c. à soupe d'huile de sésame",
+                "½ citron vert (jus)",
+                "1 c. à café de gingembre frais râpé",
+                "— PICKLES RADIS —",
+                "4 c. à soupe de vinaigre de riz",
+                "1 c. à café de sucre",
+                "1 c. à café de sel",
+                "— SAUCE —",
+                "3 c. à soupe de mayonnaise",
+                "1 c. à café de wasabi",
+                "1 c. à café de sriracha",
+                "1 c. à café de sauce soja",
+                "Quelques gouttes de jus de citron vert",
+                "— FINITION —",
+                "Huile de sésame grillé",
+                "Huile neutre pour cuisson"
+            ],
+            "etapes": [
+                "Pickles : mélanger vinaigre de riz, sucre et sel. Verser sur les radis, laisser mariner 30 min minimum.",
+                "Riz sushi : cuire le riz. Mélanger 4 c. à soupe de vinaigre de riz + 1 c. à café de sucre + 1 c. à café de sel. Incorporer au riz chaud, laisser tiédir.",
+                "Marinade : mélanger sauce soja, huile de sésame, jus de citron vert et gingembre. Passer les morceaux de thon dedans.",
+                "Dans une assiette, mélanger chapelure et graines de sésame à parts égales. Paner les morceaux de thon.",
+                "Sauce : mélanger mayo, wasabi, sriracha, sauce soja et citron vert.",
+                "Cuire le thon à feu vif dans un filet d'huile — 30 sec à 1 min par face maximum. Le cœur doit rester rosé.",
+                "Dresser : riz au fond, thon tranché, avocat, mangue, concombre, pickles radis, nori. Napper de sauce, filet d'huile de sésame."
+            ],
+            "tags": ["thon", "sésame", "bowl", "poke", "riz sushi", "avocat", "mangue", "pickles", "wasabi", "sriracha", "citron vert", "gingembre"]
+        }
+    ]
+}

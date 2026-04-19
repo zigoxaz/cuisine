@@ -1,0 +1,992 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Recettes de cuisine</title>
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#4a7a38">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="Recettes">
+  <link rel="apple-touch-icon" href="icons/icon-192.png">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    /* ===== THÈMES ===== */
+
+    body.theme-sombre {
+      --bg: #1a1a1a;
+      --bg2: #222;
+      --bg3: #2a2a2a;
+      --text: #f0e6d3;
+      --text2: #ddd;
+      --text3: #aaa;
+      --accent: #c8a96e;
+      --accent2: #1a1a1a;
+      --border: #333;
+      --border2: #222;
+      --nav-bg: rgba(20,20,20,0.95);
+      --btn-bg: transparent;
+      --placeholder-bg: #2a2a2a;
+      --placeholder-text: #555;
+    }
+
+    body.theme-creme {
+      --bg: #faf6f0;
+      --bg2: #f0ebe0;
+      --bg3: #e8e0d0;
+      --text: #2c1f0e;
+      --text2: #4a3728;
+      --text3: #8a7060;
+      --accent: #b5541c;
+      --accent2: #fff;
+      --border: #d9cfc0;
+      --border2: #e8e0d0;
+      --nav-bg: rgba(250,246,240,0.97);
+      --btn-bg: transparent;
+      --placeholder-bg: #e8e0d0;
+      --placeholder-text: #b0a090;
+    }
+
+    body.theme-mediterraneen {
+      --bg: #fdf8f2;
+      --bg2: #fff4e6;
+      --bg3: #ffe8cc;
+      --text: #2d1b00;
+      --text2: #5a3a1a;
+      --text3: #9a7050;
+      --accent: #e07020;
+      --accent2: #fff;
+      --border: #f0d0a0;
+      --border2: #ffe0b0;
+      --nav-bg: rgba(253,248,242,0.97);
+      --btn-bg: transparent;
+      --placeholder-bg: #ffe8cc;
+      --placeholder-text: #c0a080;
+    }
+
+    body.theme-naturel {
+      --bg: #f4f7f2;
+      --bg2: #e8f0e4;
+      --bg3: #d8e8d0;
+      --text: #1a2e14;
+      --text2: #3a5030;
+      --text3: #7a9870;
+      --accent: #4a7a38;
+      --accent2: #fff;
+      --border: #c8dcc0;
+      --border2: #d8e8d0;
+      --nav-bg: rgba(244,247,242,0.97);
+      --btn-bg: transparent;
+      --placeholder-bg: #d8e8d0;
+      --placeholder-text: #90b080;
+    }
+
+    /* ===== BASE ===== */
+
+    body {
+      font-family: 'Georgia', serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      transition: background 0.3s, color 0.3s;
+    }
+
+    /* ===== NAV CLASSIQUE ===== */
+
+    nav.nav-classique {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      background: var(--nav-bg);
+      backdrop-filter: blur(8px);
+      padding: 12px 16px;
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      flex-wrap: wrap;
+      border-bottom: 1px solid var(--border);
+    }
+
+    nav.nav-classique a {
+      color: var(--accent);
+      text-decoration: none;
+      font-size: 13px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      padding: 6px 12px;
+      border: 1px solid var(--accent);
+      border-radius: 2px;
+      transition: all 0.2s;
+    }
+
+    nav.nav-classique a:hover, nav.nav-classique a.active {
+      background: var(--accent);
+      color: var(--accent2);
+    }
+
+    nav.nav-classique .nav-sep { color: var(--border); font-size: 18px; }
+
+    nav.nav-classique #filtres {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    /* ===== NAV MINIMALISTE ===== */
+
+    nav.nav-minimaliste {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      background: var(--nav-bg);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-min-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 16px;
+    }
+
+    .nav-min-titre {
+      font-size: 16px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--accent);
+      font-weight: normal;
+    }
+
+    .nav-min-actions { display: flex; align-items: center; gap: 16px; }
+
+    .nav-min-btn {
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: var(--text3);
+      font-size: 11px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      padding: 4px 0;
+      font-family: inherit;
+      transition: color 0.2s;
+    }
+
+    .nav-min-btn:hover, .nav-min-btn.active { color: var(--accent); }
+
+    .nav-min-hamburger {
+      background: none;
+      border: none;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      padding: 4px;
+    }
+
+    .nav-min-hamburger span {
+      display: block;
+      width: 22px;
+      height: 2px;
+      background: var(--text3);
+      transition: all 0.25s;
+    }
+
+    .nav-min-hamburger.ouvert span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .nav-min-hamburger.ouvert span:nth-child(2) { opacity: 0; }
+    .nav-min-hamburger.ouvert span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    .nav-min-menu {
+      display: none;
+      padding: 0 16px 14px;
+      border-top: 1px solid var(--border2);
+    }
+
+    .nav-min-menu.visible { display: block; }
+
+    .nav-min-menu-liens {
+      display: flex;
+      gap: 16px;
+      padding: 12px 0 10px;
+      border-bottom: 1px solid var(--border2);
+      margin-bottom: 10px;
+    }
+
+    .nav-min-menu-liens button {
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: var(--text3);
+      font-size: 11px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      font-family: inherit;
+      transition: color 0.2s;
+      padding: 0;
+    }
+
+    .nav-min-menu-liens button:hover, .nav-min-menu-liens button.active { color: var(--accent); }
+
+    nav.nav-minimaliste #filtres {
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      padding-bottom: 2px;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+    }
+
+    nav.nav-minimaliste #filtres::-webkit-scrollbar { display: none; }
+
+    /* ===== NAV ÉPURÉ ===== */
+
+    nav.nav-epure {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      background: var(--nav-bg);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-ep-top {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 12px 16px;
+    }
+
+    .nav-ep-titre {
+      font-size: 15px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--accent);
+      font-weight: normal;
+      flex: 1;
+    }
+
+    .nav-ep-icone {
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: var(--text3);
+      font-size: 18px;
+      padding: 4px 6px;
+      line-height: 1;
+      transition: color 0.2s;
+      font-family: inherit;
+    }
+
+    .nav-ep-icone:hover, .nav-ep-icone.active { color: var(--accent); }
+
+    .nav-ep-icone-label {
+      font-size: 9px;
+      letter-spacing: 1px;
+      display: block;
+      text-transform: uppercase;
+      text-align: center;
+    }
+
+    .nav-ep-filtres-wrap {
+      padding: 0 16px 10px;
+      overflow-x: auto;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+    }
+
+    .nav-ep-filtres-wrap::-webkit-scrollbar { display: none; }
+
+    nav.nav-epure #filtres {
+      display: flex;
+      gap: 8px;
+      width: max-content;
+    }
+
+    /* ===== NAV HIÉRARCHIE ===== */
+
+    nav.nav-hierarchie {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      background: var(--nav-bg);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-hier-top {
+      display: flex;
+      align-items: center;
+      gap: 0;
+      padding: 0 16px;
+      border-bottom: 1px solid var(--border2);
+    }
+
+    .nav-hier-lien {
+      background: none;
+      border: none;
+      border-bottom: 2px solid transparent;
+      cursor: pointer;
+      color: var(--text3);
+      font-size: 12px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      padding: 12px 14px 10px;
+      font-family: inherit;
+      transition: all 0.2s;
+    }
+
+    .nav-hier-lien:hover { color: var(--text); }
+    .nav-hier-lien.active { color: var(--accent); border-bottom-color: var(--accent); }
+
+    .nav-hier-filtres {
+      padding: 8px 16px;
+      overflow-x: auto;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+    }
+
+    .nav-hier-filtres::-webkit-scrollbar { display: none; }
+
+    nav.nav-hierarchie #filtres {
+      display: flex;
+      gap: 6px;
+      width: max-content;
+    }
+
+    /* ===== FILTRES (commun) ===== */
+
+    .filtre-btn {
+      background: transparent;
+      border: 1px solid var(--border);
+      color: var(--text3);
+      padding: 5px 12px;
+      border-radius: 20px;
+      cursor: pointer;
+      font-size: 12px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      transition: all 0.2s;
+      white-space: nowrap;
+    }
+
+    .filtre-btn:hover { border-color: var(--accent); color: var(--accent); }
+    .filtre-btn.actif { background: var(--accent); border-color: var(--accent); color: var(--accent2); }
+
+    /* Pour nav classique : filtres carrés */
+    nav.nav-classique .filtre-btn { border-radius: 2px; }
+
+    /* ===== RECETTES ===== */
+
+    #vue-recettes { padding-top: 70px; }
+
+    .recette-bloc { border-bottom: 1px solid var(--border2); }
+
+    .recette-image {
+      width: 100%;
+      height: 55vw;
+      max-height: 380px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .recette-image-placeholder {
+      width: 100%;
+      height: 55vw;
+      max-height: 380px;
+      background: var(--placeholder-bg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--placeholder-text);
+      font-size: 14px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    .recette-contenu { padding: 24px 20px 32px; }
+
+    .recette-titre {
+      font-size: 22px;
+      font-weight: normal;
+      letter-spacing: 1px;
+      margin-bottom: 6px;
+      color: var(--text);
+    }
+
+    .recette-categorie {
+      font-size: 11px;
+      color: var(--accent);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+
+    .section-label {
+      font-size: 10px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--text3);
+      margin-bottom: 10px;
+      padding-bottom: 6px;
+      border-bottom: 1px solid var(--border2);
+    }
+
+    .ingredients-liste { list-style: none; margin-bottom: 24px; }
+
+    .ingredients-liste li {
+      padding: 6px 0;
+      border-bottom: 1px solid var(--border2);
+      font-size: 15px;
+      color: var(--text2);
+    }
+
+    .ingredients-liste li:last-child { border-bottom: none; }
+
+    .etapes-liste { list-style: none; counter-reset: etape; }
+
+    .etapes-liste li {
+      counter-increment: etape;
+      display: flex;
+      gap: 14px;
+      padding: 10px 0;
+      border-bottom: 1px solid var(--border2);
+      font-size: 15px;
+      line-height: 1.6;
+      color: var(--text2);
+    }
+
+    .etapes-liste li:last-child { border-bottom: none; }
+
+    .etapes-liste li::before {
+      content: counter(etape);
+      min-width: 24px;
+      height: 24px;
+      background: var(--accent);
+      color: var(--accent2);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      font-weight: bold;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    /* ===== SOMMAIRE ===== */
+
+    #vue-sommaire { display: none; padding: 80px 20px 40px; }
+
+    .sommaire-titre {
+      font-size: 11px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--text3);
+      margin: 24px 0 10px;
+      padding-bottom: 6px;
+      border-bottom: 1px solid var(--border2);
+    }
+
+    .sommaire-titre:first-child { margin-top: 0; }
+    .sommaire-liste { list-style: none; }
+
+    .sommaire-liste li a {
+      display: block;
+      padding: 10px 0;
+      border-bottom: 1px solid var(--border2);
+      color: var(--text2);
+      text-decoration: none;
+      font-size: 16px;
+      transition: color 0.2s;
+    }
+
+    .sommaire-liste li a:hover { color: var(--accent); }
+
+    /* ===== INDEX ===== */
+
+    #vue-index { display: none; padding: 80px 20px 40px; }
+
+    .index-lettre {
+      font-size: 11px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--text3);
+      margin: 24px 0 10px;
+      padding-bottom: 6px;
+      border-bottom: 1px solid var(--border2);
+    }
+
+    .index-ingredient { padding: 10px 0; border-bottom: 1px solid var(--border2); }
+    .index-ingredient-nom { font-size: 15px; color: var(--text); margin-bottom: 4px; }
+
+    .index-recettes { display: flex; flex-wrap: wrap; gap: 6px; }
+
+    .index-recettes a {
+      font-size: 12px;
+      color: var(--accent);
+      text-decoration: none;
+      background: var(--bg2);
+      padding: 2px 8px;
+      border-radius: 2px;
+    }
+
+    .section-titre {
+      font-size: 15px;
+      font-weight: bold;
+      color: var(--accent);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin: 28px 0 14px;
+      padding: 10px 14px;
+      background: var(--bg2);
+      border-left: 3px solid var(--accent);
+    }
+
+    .section-titre:first-child { margin-top: 0; }
+
+    .voir-aussi {
+      margin-top: 20px;
+      padding-top: 14px;
+      border-top: 1px solid var(--border2);
+    }
+
+    .voir-aussi-label {
+      font-size: 10px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--text3);
+      margin-bottom: 8px;
+    }
+
+    .voir-aussi a {
+      display: inline-block;
+      color: var(--accent);
+      font-size: 14px;
+      text-decoration: none;
+      border-bottom: 1px solid var(--accent);
+    }
+
+    .aucun-resultat {
+      text-align: center;
+      color: var(--text3);
+      font-size: 14px;
+      padding: 60px 20px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    /* ===== BOUTON ADMIN ===== */
+
+    .btn-admin {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: var(--btn-bg);
+      border: 1px solid var(--border);
+      color: var(--text3);
+      padding: 8px 14px;
+      font-size: 11px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      cursor: pointer;
+      z-index: 100;
+      transition: all 0.2s;
+      font-family: inherit;
+    }
+
+    .btn-admin:hover { border-color: var(--accent); color: var(--accent); }
+
+    /* ===== MODALE ===== */
+
+    .modale-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.6);
+      z-index: 200;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .modale-overlay.visible { display: flex; }
+
+    .modale {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      padding: 30px 24px;
+      width: 280px;
+    }
+
+    .modale h3 {
+      font-size: 12px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 16px;
+    }
+
+    .modale input {
+      width: 100%;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      color: var(--text);
+      padding: 10px;
+      font-size: 15px;
+      margin-bottom: 12px;
+      font-family: inherit;
+    }
+
+    .modale input:focus { outline: none; border-color: var(--accent); }
+
+    .modale-actions { display: flex; gap: 8px; }
+
+    .modale-actions button {
+      flex: 1;
+      padding: 8px;
+      font-size: 12px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      cursor: pointer;
+      border: 1px solid var(--accent);
+      background: transparent;
+      color: var(--accent);
+      transition: all 0.2s;
+      font-family: inherit;
+    }
+
+    .modale-actions button.primary { background: var(--accent); color: var(--accent2); }
+    .modale-actions button:hover { opacity: 0.8; }
+
+    .modale-erreur {
+      font-size: 12px;
+      color: #c0392b;
+      margin-bottom: 8px;
+      display: none;
+    }
+  </style>
+</head>
+<body class="theme-creme">
+
+<!-- NAV CLASSIQUE -->
+<nav id="nav-classique" class="nav-classique" style="display:none">
+  <a href="#" id="btn-recettes-cl" class="active" onclick="return afficherVue('recettes')">Recettes</a>
+  <span class="nav-sep">|</span>
+  <a href="#" id="btn-sommaire-cl" onclick="return afficherVue('sommaire')">Sommaire</a>
+  <span class="nav-sep">|</span>
+  <a href="#" id="btn-index-cl" onclick="return afficherVue('index')">Index</a>
+  <span class="nav-sep">|</span>
+  <div id="filtres-cl"></div>
+</nav>
+
+<!-- NAV MINIMALISTE -->
+<nav id="nav-minimaliste" class="nav-minimaliste" style="display:none">
+  <div class="nav-min-top">
+    <span class="nav-min-titre">Recettes de cuisine</span>
+    <div class="nav-min-actions">
+      <button class="nav-min-hamburger" id="hamburger" onclick="toggleMenu()">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+  <div class="nav-min-menu" id="nav-min-menu">
+    <div class="nav-min-menu-liens">
+      <button id="btn-recettes-mi" class="active" onclick="afficherVue('recettes');toggleMenu(true)">Recettes</button>
+      <button id="btn-sommaire-mi" onclick="afficherVue('sommaire');toggleMenu(true)">Sommaire</button>
+      <button id="btn-index-mi" onclick="afficherVue('index');toggleMenu(true)">Index</button>
+    </div>
+    <div id="filtres-mi"></div>
+  </div>
+</nav>
+
+<!-- NAV ÉPURÉ -->
+<nav id="nav-epure" class="nav-epure" style="display:none">
+  <div class="nav-ep-top">
+    <span class="nav-ep-titre">Recettes de cuisine</span>
+    <button class="nav-ep-icone" id="btn-sommaire-ep" onclick="return afficherVue('sommaire')" title="Sommaire">
+      ☰ <span class="nav-ep-icone-label">Sommaire</span>
+    </button>
+    <button class="nav-ep-icone" id="btn-index-ep" onclick="return afficherVue('index')" title="Index">
+      ⊞ <span class="nav-ep-icone-label">Index</span>
+    </button>
+    <button class="nav-ep-icone" id="btn-recettes-ep" onclick="return afficherVue('recettes')" title="Recettes" style="display:none">
+      ← <span class="nav-ep-icone-label">Retour</span>
+    </button>
+  </div>
+  <div class="nav-ep-filtres-wrap">
+    <div id="filtres-ep"></div>
+  </div>
+</nav>
+
+<!-- NAV HIÉRARCHIE -->
+<nav id="nav-hierarchie" class="nav-hierarchie" style="display:none">
+  <div class="nav-hier-top">
+    <button class="nav-hier-lien active" id="btn-recettes-hi" onclick="return afficherVue('recettes')">Recettes</button>
+    <button class="nav-hier-lien" id="btn-sommaire-hi" onclick="return afficherVue('sommaire')">Sommaire</button>
+    <button class="nav-hier-lien" id="btn-index-hi" onclick="return afficherVue('index')">Index</button>
+  </div>
+  <div class="nav-hier-filtres">
+    <div id="filtres-hi"></div>
+  </div>
+</nav>
+
+<div id="vue-recettes"></div>
+<div id="vue-sommaire"></div>
+<div id="vue-index"></div>
+
+<button class="btn-admin" onclick="ouvrirAdmin()">Admin</button>
+
+<div class="modale-overlay" id="modale-admin">
+  <div class="modale">
+    <h3>Accès administration</h3>
+    <div class="modale-erreur" id="modale-erreur">Mot de passe incorrect.</div>
+    <input type="password" id="mdp-input" placeholder="Mot de passe" onkeydown="if(event.key==='Enter')validerAdmin()">
+    <div class="modale-actions">
+      <button onclick="fermerAdmin()">Annuler</button>
+      <button class="primary" onclick="validerAdmin()">Entrer</button>
+    </div>
+  </div>
+</div>
+
+<script>
+let toutesRecettes = [];
+let categories = [];
+let filtreActif = null;
+let navActif = 'classique';
+let menuOuvert = false;
+
+Promise.all([
+  fetch('config.json?v=' + Date.now()).then(r => r.json()),
+  fetch('recettes.json?v=' + Date.now()).then(r => r.json())
+]).then(([config, data]) => {
+  appliquerTheme(config.theme || 'creme');
+  navActif = config.nav || 'classique';
+  toutesRecettes = data.recettes;
+  categories = data.categories;
+  construireFiltres();
+  afficherNav(navActif);
+  afficherRecettes();
+  construireSommaire();
+  construireIndex();
+});
+
+function appliquerTheme(theme) {
+  document.body.className = 'theme-' + theme;
+}
+
+function afficherNav(style) {
+  ['classique','minimaliste','epure','hierarchie'].forEach(s => {
+    document.getElementById('nav-' + s).style.display = s === style ? 'block' : 'none';
+  });
+  ajusterPaddingTop(style);
+}
+
+function ajusterPaddingTop(style) {
+  const vue = document.getElementById('vue-recettes');
+  const hauteurs = { classique: 'auto', minimaliste: '70px', epure: '95px', hierarchie: '90px' };
+  vue.style.paddingTop = hauteurs[style] || '70px';
+  if (style === 'classique') vue.style.paddingTop = '70px';
+}
+
+function construireFiltres() {
+  const ids = ['filtres-cl','filtres-mi','filtres-ep','filtres-hi'];
+  ids.forEach(id => {
+    const div = document.getElementById(id);
+    categories.forEach(cat => {
+      const btn = document.createElement('button');
+      btn.className = 'filtre-btn';
+      btn.textContent = cat;
+      btn.onclick = () => toggleFiltre(cat);
+      div.appendChild(btn);
+    });
+  });
+}
+
+function toggleFiltre(cat) {
+  if (navActif === 'minimaliste') toggleMenu(true);
+  if (filtreActif === cat) {
+    filtreActif = null;
+  } else {
+    filtreActif = cat;
+  }
+  document.querySelectorAll('.filtre-btn').forEach(b => {
+    b.classList.toggle('actif', b.textContent === cat && filtreActif === cat);
+  });
+  afficherRecettes();
+  window.scrollTo(0, 0);
+}
+
+function toggleMenu(forceClose) {
+  if (forceClose === true) menuOuvert = false;
+  else menuOuvert = !menuOuvert;
+  document.getElementById('nav-min-menu').classList.toggle('visible', menuOuvert);
+  document.getElementById('hamburger').classList.toggle('ouvert', menuOuvert);
+}
+
+function afficherRecettes() {
+  const vue = document.getElementById('vue-recettes');
+  const recettes = filtreActif
+    ? toutesRecettes.filter(r => r.categorie === filtreActif)
+    : toutesRecettes;
+
+  if (recettes.length === 0) {
+    vue.innerHTML = '<div class="aucun-resultat">Aucune recette dans cette catégorie</div>';
+    return;
+  }
+
+  vue.innerHTML = recettes.map(r => `
+    <div class="recette-bloc" id="recette-${r.id}">
+      ${r.image
+        ? `<img class="recette-image" src="${r.image}?v=1" alt="${r.titre}" loading="lazy">`
+        : `<div class="recette-image-placeholder">${r.titre}</div>`}
+      <div class="recette-contenu">
+        <h2 class="recette-titre">${r.titre}</h2>
+        <div class="recette-categorie">${r.categorie}</div>
+        ${r.sections ? r.sections.map(s => `
+          <div class="section-titre">${s.nom}</div>
+          <div class="section-label">Ingrédients</div>
+          <ul class="ingredients-liste">
+            ${s.ingredients.map(i => `<li>${i}</li>`).join('')}
+          </ul>
+          <div class="section-label">Préparation</div>
+          <ol class="etapes-liste">
+            ${s.etapes.map(e => `<li>${e}</li>`).join('')}
+          </ol>
+        `).join('') : `
+        <div class="section-label">Ingrédients</div>
+        <ul class="ingredients-liste">
+          ${r.ingredients.map(i => `<li>${i}</li>`).join('')}
+        </ul>
+        <div class="section-label">Préparation</div>
+        <ol class="etapes-liste">
+          ${r.etapes.map(e => `<li>${e}</li>`).join('')}
+        </ol>`}
+        ${r.voirAussi && r.voirAussi.length > 0 ? `
+        <div class="voir-aussi">
+          <div class="voir-aussi-label">Voir aussi</div>
+          ${r.voirAussi.map(id => {
+            const cible = toutesRecettes.find(x => x.id === id);
+            return cible ? `<a href="#" onclick="allerRecette(${id})">${cible.titre}</a>` : '';
+          }).join('<br>')}
+        </div>` : ''}
+      </div>
+    </div>
+  `).join('');
+}
+
+function construireSommaire() {
+  const vue = document.getElementById('vue-sommaire');
+  const parCat = {};
+  toutesRecettes.forEach(r => {
+    if (!parCat[r.categorie]) parCat[r.categorie] = [];
+    parCat[r.categorie].push(r);
+  });
+
+  vue.innerHTML = Object.entries(parCat).map(([cat, recettes]) => `
+    <div class="sommaire-titre">${cat}</div>
+    <ul class="sommaire-liste">
+      ${recettes.map(r => `<li><a href="#" onclick="allerRecette(${r.id})">${r.titre}</a></li>`).join('')}
+    </ul>
+  `).join('');
+}
+
+function construireIndex() {
+  const vue = document.getElementById('vue-index');
+  const index = {};
+
+  toutesRecettes.forEach(r => {
+    (r.tags || []).forEach(tag => {
+      if (!index[tag]) index[tag] = [];
+      index[tag].push(r);
+    });
+  });
+
+  const trie = Object.keys(index).sort((a, b) => a.localeCompare(b, 'fr'));
+  const parLettre = {};
+  trie.forEach(tag => {
+    const lettre = tag[0].toUpperCase();
+    if (!parLettre[lettre]) parLettre[lettre] = [];
+    parLettre[lettre].push(tag);
+  });
+
+  vue.innerHTML = Object.entries(parLettre).map(([lettre, tags]) => `
+    <div class="index-lettre">${lettre}</div>
+    ${tags.map(tag => `
+      <div class="index-ingredient">
+        <div class="index-ingredient-nom">${tag}</div>
+        <div class="index-recettes">
+          ${index[tag].map(r => `<a href="#" onclick="allerRecette(${r.id})">${r.titre}</a>`).join('')}
+        </div>
+      </div>
+    `).join('')}
+  `).join('');
+}
+
+function allerRecette(id) {
+  afficherVue('recettes');
+  filtreActif = null;
+  document.querySelectorAll('.filtre-btn').forEach(b => b.classList.remove('actif'));
+  afficherRecettes();
+  setTimeout(() => {
+    const el = document.getElementById('recette-' + id);
+    if (el) el.scrollIntoView({ behavior: 'smooth' });
+  }, 50);
+  return false;
+}
+
+function afficherVue(vue) {
+  document.getElementById('vue-recettes').style.display = vue === 'recettes' ? 'block' : 'none';
+  document.getElementById('vue-sommaire').style.display = vue === 'sommaire' ? 'block' : 'none';
+  document.getElementById('vue-index').style.display = vue === 'index' ? 'block' : 'none';
+
+  // Boutons actifs selon style nav
+  if (navActif === 'classique') {
+    document.getElementById('btn-recettes-cl').classList.toggle('active', vue === 'recettes');
+    document.getElementById('btn-sommaire-cl').classList.toggle('active', vue === 'sommaire');
+    document.getElementById('btn-index-cl').classList.toggle('active', vue === 'index');
+  } else if (navActif === 'minimaliste') {
+    document.getElementById('btn-recettes-mi').classList.toggle('active', vue === 'recettes');
+    document.getElementById('btn-sommaire-mi').classList.toggle('active', vue === 'sommaire');
+    document.getElementById('btn-index-mi').classList.toggle('active', vue === 'index');
+  } else if (navActif === 'epure') {
+    document.getElementById('btn-sommaire-ep').classList.toggle('active', vue === 'sommaire');
+    document.getElementById('btn-index-ep').classList.toggle('active', vue === 'index');
+    document.getElementById('btn-recettes-ep').style.display = vue !== 'recettes' ? 'block' : 'none';
+  } else if (navActif === 'hierarchie') {
+    document.getElementById('btn-recettes-hi').classList.toggle('active', vue === 'recettes');
+    document.getElementById('btn-sommaire-hi').classList.toggle('active', vue === 'sommaire');
+    document.getElementById('btn-index-hi').classList.toggle('active', vue === 'index');
+  }
+  return false;
+}
+
+function ouvrirAdmin() {
+  document.getElementById('mdp-input').value = '';
+  document.getElementById('modale-erreur').style.display = 'none';
+  document.getElementById('modale-admin').classList.add('visible');
+  setTimeout(() => document.getElementById('mdp-input').focus(), 100);
+}
+
+function fermerAdmin() {
+  document.getElementById('modale-admin').classList.remove('visible');
+}
+
+function validerAdmin() {
+  if (document.getElementById('mdp-input').value === 'clgo') {
+    window.location.href = 'admin.html';
+  } else {
+    document.getElementById('modale-erreur').style.display = 'block';
+    document.getElementById('mdp-input').value = '';
+    document.getElementById('mdp-input').focus();
+  }
+}
+
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('sw.js').catch(() => {});
+}
+</script>
+</body>
+</html>

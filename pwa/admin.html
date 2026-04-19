@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin — Recettes CLGO</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Georgia', serif;
+      background: #faf6f0;
+      color: #2c1f0e;
+      min-height: 100vh;
+      padding: 20px;
+    }
+
+    h1 {
+      font-size: 18px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #b5541c;
+      margin-bottom: 24px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid #d9cfc0;
+    }
+
+    .actions {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 24px;
+      flex-wrap: wrap;
+    }
+
+    button {
+      background: transparent;
+      border: 1px solid #b5541c;
+      color: #b5541c;
+      padding: 8px 16px;
+      cursor: pointer;
+      font-size: 12px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      transition: all 0.2s;
+      font-family: inherit;
+    }
+
+    button:hover { background: #b5541c; color: #fff; }
+    button.danger { border-color: #c0392b; color: #c0392b; }
+    button.danger:hover { background: #c0392b; color: white; }
+    button.primary { background: #b5541c; color: #fff; }
+
+    /* THÈME */
+    .theme-bloc {
+      margin-bottom: 24px;
+      padding: 16px;
+      background: #f0ebe0;
+      border: 1px solid #d9cfc0;
+    }
+
+    .theme-label {
+      font-size: 10px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #8a7060;
+      margin-bottom: 10px;
+    }
+
+    .theme-btns { display: flex; gap: 8px; flex-wrap: wrap; }
+
+    .theme-btns button { border-color: #d9cfc0; color: #8a7060; }
+    .theme-btns button:hover { border-color: #b5541c; color: #b5541c; background: transparent; }
+    .theme-btns button.actif { background: #b5541c; color: #fff; border-color: #b5541c; }
+
+    /* NAV */
+    .nav-bloc {
+      margin-bottom: 24px;
+      padding: 16px;
+      background: #f0ebe0;
+      border: 1px solid #d9cfc0;
+    }
+    .nav-btns { display: flex; gap: 8px; flex-wrap: wrap; }
+    .nav-btns button { border-color: #d9cfc0; color: #8a7060; }
+    .nav-btns button:hover { border-color: #b5541c; color: #b5541c; background: transparent; }
+    .nav-btns button.actif { background: #b5541c; color: #fff; border-color: #b5541c; }
+
+    /* LISTE */
+    #liste-recettes { margin-bottom: 30px; }
+
+    .recette-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 12px 0;
+      border-bottom: 1px solid #e8e0d0;
+    }
+
+    .recette-item-titre { flex: 1; font-size: 16px; }
+    .recette-item-cat { font-size: 11px; color: #b5541c; letter-spacing: 1px; text-transform: uppercase; }
+
+    /* FORMULAIRE */
+    #formulaire {
+      display: none;
+      background: #f0ebe0;
+      padding: 24px;
+      border: 1px solid #d9cfc0;
+      margin-top: 20px;
+    }
+
+    #formulaire h2 {
+      font-size: 14px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #b5541c;
+      margin-bottom: 20px;
+    }
+
+    .champ { margin-bottom: 16px; }
+
+    label {
+      display: block;
+      font-size: 10px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #8a7060;
+      margin-bottom: 6px;
+    }
+
+    input, select, textarea {
+      width: 100%;
+      background: #faf6f0;
+      border: 1px solid #d9cfc0;
+      color: #2c1f0e;
+      padding: 10px;
+      font-size: 15px;
+      font-family: inherit;
+    }
+
+    input:focus, select:focus, textarea:focus {
+      outline: none;
+      border-color: #b5541c;
+    }
+
+    textarea { min-height: 100px; resize: vertical; }
+
+    .aide { font-size: 11px; color: #b0a090; margin-top: 4px; }
+
+    .form-actions { display: flex; gap: 10px; margin-top: 20px; }
+
+    #message {
+      padding: 10px 14px;
+      margin-bottom: 16px;
+      display: none;
+      font-size: 13px;
+    }
+
+    #message.ok { background: #e8f5e0; border: 1px solid #4a7a38; color: #4a7a38; }
+    #message.err { background: #fde8e8; border: 1px solid #c0392b; color: #c0392b; }
+  </style>
+</head>
+<body>
+
+<h1>Administration — Recettes CLGO</h1>
+
+<div id="message"></div>
+
+<div class="actions">
+  <button class="primary" onclick="nouvelleRecette()">+ Nouvelle recette</button>
+  <a href="index.html"><button>← Voir l'appli</button></a>
+</div>
+
+<div class="theme-bloc">
+  <div class="theme-label">Thème de l'application</div>
+  <div class="theme-btns">
+    <button id="theme-sombre" onclick="changerTheme('sombre')">Sombre</button>
+    <button id="theme-creme" onclick="changerTheme('creme')">Crème</button>
+    <button id="theme-mediterraneen" onclick="changerTheme('mediterraneen')">Méditerranéen</button>
+    <button id="theme-naturel" onclick="changerTheme('naturel')">Naturel</button>
+  </div>
+</div>
+
+<div class="nav-bloc">
+  <div class="theme-label">Style de navigation</div>
+  <div class="nav-btns">
+    <button id="nav-classique" onclick="changerNav('classique')">Classique</button>
+    <button id="nav-minimaliste" onclick="changerNav('minimaliste')">Minimaliste</button>
+    <button id="nav-epure" onclick="changerNav('epure')">Épuré</button>
+    <button id="nav-hierarchie" onclick="changerNav('hierarchie')">Hiérarchie</button>
+  </div>
+</div>
+
+<div id="liste-recettes"></div>
+
+<div id="formulaire">
+  <h2 id="form-titre">Nouvelle recette</h2>
+  <input type="hidden" id="f-id">
+
+  <div class="champ">
+    <label>Titre</label>
+    <input type="text" id="f-titre" placeholder="Nom de la recette">
+  </div>
+
+  <div class="champ">
+    <label>Catégorie</label>
+    <select id="f-categorie"></select>
+  </div>
+
+  <div class="champ">
+    <label>Image</label>
+    <input type="text" id="f-image" placeholder="images/nom-du-fichier.jpg">
+    <div class="aide">Dépose l'image dans le dossier images/ puis indique son nom ici.</div>
+  </div>
+
+  <div class="champ">
+    <label>Ingrédients</label>
+    <textarea id="f-ingredients" placeholder="Un ingrédient par ligne&#10;500g de poulet&#10;2 gousses d'ail"></textarea>
+  </div>
+
+  <div class="champ">
+    <label>Étapes de préparation</label>
+    <textarea id="f-etapes" placeholder="Une étape par ligne&#10;Couper le poulet.&#10;Faire revenir l'ail."></textarea>
+  </div>
+
+  <div class="champ">
+    <label>Tags ingrédients (pour l'index)</label>
+    <input type="text" id="f-tags" placeholder="poulet, ail, citron">
+    <div class="aide">Séparés par des virgules. Utilisés pour l'index par ingrédient.</div>
+  </div>
+
+  <div class="form-actions">
+    <button class="primary" onclick="sauvegarder()">Sauvegarder</button>
+    <button onclick="annuler()">Annuler</button>
+  </div>
+</div>
+
+<script>
+let data = { categories: [], recettes: [] };
+let modeEdition = false;
+let themeActif = 'creme';
+let navActif = 'classique';
+
+Promise.all([
+  fetch('config.json').then(r => r.json()),
+  fetch('recettes.json').then(r => r.json())
+]).then(([config, d]) => {
+  themeActif = config.theme || 'creme';
+  navActif = config.nav || 'classique';
+  majBoutonsTheme();
+  majBoutonsNav();
+  data = d;
+  construireListe();
+  construireSelectCategorie();
+});
+
+function changerTheme(theme) {
+  fetch('save_config.php', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ theme })
+  })
+  .then(r => r.json())
+  .then(res => {
+    if (res.ok) {
+      themeActif = theme;
+      majBoutonsTheme();
+      afficherMessage('Thème "' + theme + '" appliqué.', 'ok');
+    } else {
+      afficherMessage('Erreur : ' + res.erreur, 'err');
+    }
+  })
+  .catch(() => afficherMessage('Erreur de connexion.', 'err'));
+}
+
+function majBoutonsTheme() {
+  ['sombre','creme','mediterraneen','naturel'].forEach(t => {
+    const btn = document.getElementById('theme-' + t);
+    if (!btn) return;
+    btn.classList.toggle('actif', t === themeActif);
+  });
+}
+
+function majBoutonsNav() {
+  ['classique','minimaliste','epure','hierarchie'].forEach(n => {
+    const btn = document.getElementById('nav-' + n);
+    if (!btn) return;
+    btn.classList.toggle('actif', n === navActif);
+  });
+}
+
+function changerNav(nav) {
+  fetch('save_config.php', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ theme: themeActif, nav })
+  })
+  .then(r => r.json())
+  .then(res => {
+    if (res.ok) {
+      navActif = nav;
+      majBoutonsNav();
+      afficherMessage('Navigation "' + nav + '" appliquée.', 'ok');
+    } else {
+      afficherMessage('Erreur : ' + res.erreur, 'err');
+    }
+  })
+  .catch(() => afficherMessage('Erreur de connexion.', 'err'));
+}
+
+function construireSelectCategorie() {
+  const sel = document.getElementById('f-categorie');
+  sel.innerHTML = data.categories.map(c => `<option value="${c}">${c}</option>`).join('');
+}
+
+function construireListe() {
+  const div = document.getElementById('liste-recettes');
+  if (data.recettes.length === 0) {
+    div.innerHTML = '<div style="color:#b0a090;font-size:14px;padding:20px 0">Aucune recette.</div>';
+    return;
+  }
+  div.innerHTML = data.recettes.map(r => `
+    <div class="recette-item">
+      <div>
+        <div class="recette-item-titre">${r.titre}</div>
+        <div class="recette-item-cat">${r.categorie}</div>
+      </div>
+      <button onclick="editer(${r.id})">Modifier</button>
+      <button class="danger" onclick="supprimer(${r.id})">Supprimer</button>
+    </div>
+  `).join('');
+}
+
+function nouvelleRecette() {
+  modeEdition = false;
+  document.getElementById('form-titre').textContent = 'Nouvelle recette';
+  document.getElementById('f-id').value = '';
+  document.getElementById('f-titre').value = '';
+  document.getElementById('f-image').value = '';
+  document.getElementById('f-ingredients').value = '';
+  document.getElementById('f-etapes').value = '';
+  document.getElementById('f-tags').value = '';
+  document.getElementById('f-categorie').selectedIndex = 0;
+  document.getElementById('formulaire').style.display = 'block';
+  document.getElementById('formulaire').scrollIntoView({ behavior: 'smooth' });
+}
+
+function editer(id) {
+  const r = data.recettes.find(x => x.id === id);
+  if (!r) return;
+  modeEdition = true;
+  document.getElementById('form-titre').textContent = 'Modifier : ' + r.titre;
+  document.getElementById('f-id').value = r.id;
+  document.getElementById('f-titre').value = r.titre;
+  document.getElementById('f-image').value = r.image || '';
+  document.getElementById('f-ingredients').value = r.ingredients.join('\n');
+  document.getElementById('f-etapes').value = r.etapes.join('\n');
+  document.getElementById('f-tags').value = (r.tags || []).join(', ');
+  document.getElementById('f-categorie').value = r.categorie;
+  document.getElementById('formulaire').style.display = 'block';
+  document.getElementById('formulaire').scrollIntoView({ behavior: 'smooth' });
+}
+
+function sauvegarder() {
+  const titre = document.getElementById('f-titre').value.trim();
+  if (!titre) { afficherMessage('Le titre est obligatoire.', 'err'); return; }
+
+  const recette = {
+    id: modeEdition ? parseInt(document.getElementById('f-id').value) : Date.now(),
+    titre,
+    categorie: document.getElementById('f-categorie').value,
+    image: document.getElementById('f-image').value.trim(),
+    ingredients: document.getElementById('f-ingredients').value.split('\n').map(s => s.trim()).filter(Boolean),
+    etapes: document.getElementById('f-etapes').value.split('\n').map(s => s.trim()).filter(Boolean),
+    tags: document.getElementById('f-tags').value.split(',').map(s => s.trim().toLowerCase()).filter(Boolean)
+  };
+
+  if (modeEdition) {
+    const idx = data.recettes.findIndex(x => x.id === recette.id);
+    data.recettes[idx] = recette;
+  } else {
+    data.recettes.push(recette);
+  }
+
+  fetch('save.php', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(data)
+  })
+  .then(r => r.json())
+  .then(res => {
+    if (res.ok) {
+      construireListe();
+      annuler();
+      afficherMessage('Recette sauvegardée.', 'ok');
+    } else {
+      afficherMessage('Erreur : ' + res.erreur, 'err');
+    }
+  })
+  .catch(() => afficherMessage('Erreur de connexion au serveur.', 'err'));
+}
+
+function supprimer(id) {
+  if (!confirm('Supprimer cette recette ?')) return;
+  data.recettes = data.recettes.filter(r => r.id !== id);
+  fetch('save.php', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(data)
+  })
+  .then(r => r.json())
+  .then(res => {
+    if (res.ok) {
+      construireListe();
+      afficherMessage('Recette supprimée.', 'ok');
+    } else {
+      afficherMessage('Erreur : ' + res.erreur, 'err');
+    }
+  })
+  .catch(() => afficherMessage('Erreur de connexion au serveur.', 'err'));
+}
+
+function annuler() {
+  document.getElementById('formulaire').style.display = 'none';
+}
+
+function afficherMessage(txt, type) {
+  const el = document.getElementById('message');
+  el.textContent = txt;
+  el.className = type;
+  el.style.display = 'block';
+  setTimeout(() => el.style.display = 'none', 5000);
+}
+</script>
+</body>
+</html>
