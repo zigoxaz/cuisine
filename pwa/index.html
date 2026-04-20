@@ -600,6 +600,86 @@
 
     .btn-admin:hover { border-color: var(--accent); color: var(--accent); }
 
+    /* ===== GRILLE DE CARDS ===== */
+
+    .recettes-grille {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1px;
+      background: var(--border2);
+    }
+
+    @media (min-width: 600px) {
+      .recettes-grille { grid-template-columns: repeat(3, 1fr); }
+    }
+
+    .recette-card {
+      cursor: pointer;
+      background: var(--bg);
+      transition: opacity 0.2s;
+    }
+
+    .recette-card:hover { opacity: 0.85; }
+
+    .recette-card-img {
+      width: 100%;
+      aspect-ratio: 4/3;
+      object-fit: cover;
+      display: block;
+    }
+
+    .recette-card-placeholder {
+      width: 100%;
+      aspect-ratio: 4/3;
+      background: var(--placeholder-bg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--placeholder-text);
+      font-size: 10px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      text-align: center;
+      padding: 8px;
+    }
+
+    .recette-card-body { padding: 10px 12px 14px; }
+
+    .recette-card-titre {
+      font-size: 14px;
+      font-weight: normal;
+      color: var(--text);
+      margin-bottom: 4px;
+      line-height: 1.3;
+    }
+
+    .recette-card-cat {
+      font-size: 9px;
+      color: var(--accent);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    /* ===== BOUTON RETOUR ===== */
+
+    .btn-retour {
+      display: block;
+      width: 100%;
+      padding: 12px 16px;
+      background: var(--bg2);
+      border: none;
+      border-bottom: 1px solid var(--border);
+      color: var(--accent);
+      font-size: 12px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      text-align: left;
+      cursor: pointer;
+      font-family: inherit;
+    }
+
+    .btn-retour:hover { background: var(--bg3); }
+
     /* ===== MODALE ===== */
 
     .modale-overlay {
@@ -826,8 +906,20 @@ function toggleMenu(forceClose) {
   document.getElementById('hamburger').classList.toggle('ouvert', menuOuvert);
 }
 
-function afficherRecettes() {
+function afficherRecettes(idDetail) {
   const vue = document.getElementById('vue-recettes');
+
+  if (idDetail !== undefined) {
+    const r = toutesRecettes.find(x => x.id === idDetail);
+    if (!r) return;
+    vue.innerHTML = `
+      <button class="btn-retour" onclick="retourGrille()">← Retour</button>
+      ${renderRecetteComplete(r)}
+    `;
+    window.scrollTo(0, 0);
+    return;
+  }
+
   const recettes = filtreActif
     ? toutesRecettes.filter(r => r.categorie === filtreActif)
     : toutesRecettes;
@@ -837,7 +929,21 @@ function afficherRecettes() {
     return;
   }
 
-  vue.innerHTML = recettes.map(r => `
+  vue.innerHTML = `<div class="recettes-grille">${recettes.map(r => `
+    <div class="recette-card" onclick="afficherRecettes(${r.id})">
+      ${r.image
+        ? `<img class="recette-card-img" src="${r.image}?v=1" alt="${r.titre}" loading="lazy">`
+        : `<div class="recette-card-placeholder">${r.titre}</div>`}
+      <div class="recette-card-body">
+        <div class="recette-card-titre">${r.titre}</div>
+        <div class="recette-card-cat">${r.categorie}</div>
+      </div>
+    </div>
+  `).join('')}</div>`;
+}
+
+function renderRecetteComplete(r) {
+  return `
     <div class="recette-bloc" id="recette-${r.id}">
       ${r.image
         ? `<img class="recette-image" src="${r.image}?v=1" alt="${r.titre}" loading="lazy">`
@@ -869,12 +975,17 @@ function afficherRecettes() {
           <div class="voir-aussi-label">Voir aussi</div>
           ${r.voirAussi.map(id => {
             const cible = toutesRecettes.find(x => x.id === id);
-            return cible ? `<a href="#" onclick="allerRecette(${id})">${cible.titre}</a>` : '';
+            return cible ? `<a href="#" onclick="afficherRecettes(${id})">${cible.titre}</a>` : '';
           }).join('<br>')}
         </div>` : ''}
       </div>
     </div>
-  `).join('');
+  `;
+}
+
+function retourGrille() {
+  afficherRecettes();
+  window.scrollTo(0, 0);
 }
 
 function construireSommaire() {
@@ -929,11 +1040,7 @@ function allerRecette(id) {
   afficherVue('recettes');
   filtreActif = null;
   document.querySelectorAll('.filtre-btn').forEach(b => b.classList.remove('actif'));
-  afficherRecettes();
-  setTimeout(() => {
-    const el = document.getElementById('recette-' + id);
-    if (el) el.scrollIntoView({ behavior: 'smooth' });
-  }, 50);
+  afficherRecettes(id);
   return false;
 }
 
