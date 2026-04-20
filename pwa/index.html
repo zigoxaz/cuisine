@@ -605,21 +605,31 @@
     .recettes-grille {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
-      gap: 1px;
-      background: var(--border2);
+      gap: 14px;
+      padding: 14px;
     }
 
     @media (min-width: 600px) {
       .recettes-grille { grid-template-columns: repeat(3, 1fr); }
     }
 
-    .recette-card {
-      cursor: pointer;
-      background: var(--bg);
-      transition: opacity 0.2s;
+    @media (min-width: 900px) {
+      .recettes-grille { grid-template-columns: repeat(4, 1fr); }
     }
 
-    .recette-card:hover { opacity: 0.85; }
+    .recette-card {
+      cursor: pointer;
+      background: var(--bg2);
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+      transition: transform 0.15s, box-shadow 0.15s;
+    }
+
+    .recette-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 18px rgba(0,0,0,0.18);
+    }
 
     .recette-card-img {
       width: 100%;
@@ -645,19 +655,30 @@
 
     .recette-card-body { padding: 10px 12px 14px; }
 
+    .recette-card-cat {
+      display: inline-block;
+      font-size: 9px;
+      color: var(--accent);
+      background: var(--bg3);
+      border-radius: 20px;
+      padding: 2px 8px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+
     .recette-card-titre {
       font-size: 14px;
-      font-weight: normal;
+      font-weight: 600;
       color: var(--text);
-      margin-bottom: 4px;
+      margin-bottom: 5px;
       line-height: 1.3;
     }
 
-    .recette-card-cat {
-      font-size: 9px;
-      color: var(--accent);
-      letter-spacing: 2px;
-      text-transform: uppercase;
+    .recette-card-resume {
+      font-size: 11px;
+      color: var(--text3);
+      line-height: 1.4;
     }
 
     /* ===== BOUTON RETOUR ===== */
@@ -929,17 +950,21 @@ function afficherRecettes(idDetail) {
     return;
   }
 
-  vue.innerHTML = `<div class="recettes-grille">${recettes.map(r => `
+  vue.innerHTML = `<div class="recettes-grille">${recettes.map(r => {
+    const ingredients = (r.ingredients || []).filter(i => !i.startsWith('—')).slice(0, 3);
+    const resume = ingredients.join(' · ');
+    return `
     <div class="recette-card" onclick="afficherRecettes(${r.id})">
       ${r.image
         ? `<img class="recette-card-img" src="${r.image}?v=1" alt="${r.titre}" loading="lazy">`
         : `<div class="recette-card-placeholder">${r.titre}</div>`}
       <div class="recette-card-body">
-        <div class="recette-card-titre">${r.titre}</div>
         <div class="recette-card-cat">${r.categorie}</div>
+        <div class="recette-card-titre">${r.titre}</div>
+        ${resume ? `<div class="recette-card-resume">${resume}</div>` : ''}
       </div>
-    </div>
-  `).join('')}</div>`;
+    </div>`;
+  }).join('')}</div>`;
 }
 
 function renderRecetteComplete(r) {
