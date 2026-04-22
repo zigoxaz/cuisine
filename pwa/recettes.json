@@ -38,7 +38,16 @@
                 "Mélanger le yaourt avec le citron confit, la moitié de la menthe et une pincée de sel.",
                 "Dresser le boulgour, déposer les aubergines, une cuillère de yaourt et parsemer du reste de menthe."
             ],
-            "tags": ["boulgour", "aubergine", "tomate", "yaourt", "citron confit", "menthe", "quatre-épices", "ottolenghi"]
+            "tags": [
+                "boulgour",
+                "aubergine",
+                "tomate",
+                "yaourt",
+                "citron confit",
+                "menthe",
+                "quatre-épices",
+                "ottolenghi"
+            ]
         },
         {
             "id": 2,
@@ -64,7 +73,16 @@
                 "Mélanger le yaourt avec le zeste de citron et ¼ c. à café de fleur de sel. Réserver au frais.",
                 "Dresser le yaourt en cratère dans une assiette creuse. Déposer les tomates chaudes au centre avec leur jus, l'ail, les herbes et les écorces. Parsemer de piment et servir aussitôt avec du pain au levain."
             ],
-            "tags": ["tomate", "yaourt", "citron", "cumin", "origan", "thym", "ail", "ottolenghi"]
+            "tags": [
+                "tomate",
+                "yaourt",
+                "citron",
+                "cumin",
+                "origan",
+                "thym",
+                "ail",
+                "ottolenghi"
+            ]
         },
         {
             "id": 3,
@@ -94,7 +112,16 @@
                 "Mixer le reste de l'huile avec les haricots, 1 c. à soupe d'eau et ½ c. à café de sel. Purée lisse.",
                 "Dresser la purée en cratère, verser le muhammara au centre. Déposer le thym frit et arroser d'huile aromatisée."
             ],
-            "tags": ["haricots blancs", "poivron", "noix", "ail", "thym", "paprika", "ottolenghi", "muhammara"]
+            "tags": [
+                "haricots blancs",
+                "poivron",
+                "noix",
+                "ail",
+                "thym",
+                "paprika",
+                "ottolenghi",
+                "muhammara"
+            ]
         },
         {
             "id": 4,
@@ -117,14 +144,26 @@
                 "Four à 220°C. Mélanger les champignons, échalotes, châtaignes, sauge, huile et ail avec ¾ c. à café de sel et du poivre. Étaler sur une plaque et enfourner 25 min jusqu'à ce que tout soit tendre et coloré. Laisser tiédir 5 min.",
                 "Verser dans un saladier, assaisonner avec l'estragon, le zaatar, le jus de citron et 2 c. à café d'huile. Mélanger et dresser."
             ],
-            "tags": ["champignon", "châtaigne", "zaatar", "échalote", "estragon", "sauge", "ail", "ottolenghi"]
+            "tags": [
+                "champignon",
+                "châtaigne",
+                "zaatar",
+                "échalote",
+                "estragon",
+                "sauge",
+                "ail",
+                "ottolenghi"
+            ]
         },
         {
             "id": 5,
             "titre": "Rougail saucisses",
             "categorie": "Porc",
             "image": "images/rougail-saucisses.jpg",
-            "voirAussi": [6, 7],
+            "voirAussi": [
+                6,
+                7
+            ],
             "ingredients": [
                 "1 saucisse de Morteau tranchée",
                 "2 saucisses fumées tranchées",
@@ -147,7 +186,18 @@
                 "Incorporer les tomates, le combava, le piment et le thym. Mijoter 20-25 min à feu doux.",
                 "Servir avec du riz, des lentilles et un rougail."
             ],
-            "tags": ["saucisse", "morteau", "poitrine fumée", "tomate", "combava", "piment", "curcuma", "massalé", "gingembre", "réunion"]
+            "tags": [
+                "saucisse",
+                "morteau",
+                "poitrine fumée",
+                "tomate",
+                "combava",
+                "piment",
+                "curcuma",
+                "massalé",
+                "gingembre",
+                "réunion"
+            ]
         },
         {
             "id": 6,
@@ -166,7 +216,14 @@
                 "Mélanger tous les ingrédients.",
                 "Laisser mariner 30 min minimum. Se conserve 3 jours au frigo."
             ],
-            "tags": ["rougail", "oignon", "piment", "citron", "condiment", "réunion"]
+            "tags": [
+                "rougail",
+                "oignon",
+                "piment",
+                "citron",
+                "condiment",
+                "réunion"
+            ]
         },
         {
             "id": 7,
@@ -187,7 +244,15 @@
                 "Mélanger tous les ingrédients.",
                 "Laisser reposer 20 min. Servir frais."
             ],
-            "tags": ["rougail", "tomate", "piment", "citron", "combava", "condiment", "réunion"]
+            "tags": [
+                "rougail",
+                "tomate",
+                "piment",
+                "citron",
+                "combava",
+                "condiment",
+                "réunion"
+            ]
         },
         {
             "id": 8,
@@ -210,7 +275,16 @@
                 "Dans une autre poêle, saisir les émincés à feu vif, 30 sec de chaque côté.",
                 "Déglacer avec la sauce soja, poivrer. Ajouter le confit de tomates et le basilic. Chauffer 1-2 min en remuant délicatement."
             ],
-            "tags": ["bœuf", "bavette", "tomate", "olive", "basilic", "échalote", "ail", "sauce soja"]
+            "tags": [
+                "bœuf",
+                "bavette",
+                "tomate",
+                "olive",
+                "basilic",
+                "échalote",
+                "ail",
+                "sauce soja"
+            ]
         },
         {
             "id": 9,
@@ -235,7 +309,15 @@
                 "Enfourner 12-15 min selon l'épaisseur (10 min par cm). La chair doit s'effeuiller à la fourchette.",
                 "Parsemer de persil et servir avec les jus de cuisson."
             ],
-            "tags": ["merlu", "poisson", "citron", "ail", "thym", "persil", "beurre"]
+            "tags": [
+                "merlu",
+                "poisson",
+                "citron",
+                "ail",
+                "thym",
+                "persil",
+                "beurre"
+            ]
         },
         {
             "id": 10,
@@ -263,7 +345,17 @@
                 "Mouiller avec le vin, porter à ébullition, réduire en remuant.",
                 "Baisser le feu, placer les palourdes charnière vers le bas, couvrir 10 min jusqu'à ouverture."
             ],
-            "tags": ["palourde", "coque", "chorizo", "jambon", "tomate", "oignon", "ail", "persil", "vin blanc"]
+            "tags": [
+                "palourde",
+                "coque",
+                "chorizo",
+                "jambon",
+                "tomate",
+                "oignon",
+                "ail",
+                "persil",
+                "vin blanc"
+            ]
         },
         {
             "id": 11,
@@ -293,7 +385,18 @@
                 "Baisser le feu, ajouter les tomates et la lotte, couvrir et cuire 20 min.",
                 "Parsemer de coriandre et servir avec de la semoule."
             ],
-            "tags": ["lotte", "poisson", "tajine", "citron confit", "olive", "safran", "cumin", "cannelle", "gingembre", "tomate"]
+            "tags": [
+                "lotte",
+                "poisson",
+                "tajine",
+                "citron confit",
+                "olive",
+                "safran",
+                "cumin",
+                "cannelle",
+                "gingembre",
+                "tomate"
+            ]
         },
         {
             "id": 12,
@@ -320,7 +423,16 @@
                 "Verser le lait de coco, ajouter les épinards. Mijoter 10-15 min.",
                 "Parsemer de noix de cajou et servir."
             ],
-            "tags": ["lentilles corail", "épinards", "curry", "curcuma", "lait de coco", "noix de cajou", "gingembre", "végétarien"]
+            "tags": [
+                "lentilles corail",
+                "épinards",
+                "curry",
+                "curcuma",
+                "lait de coco",
+                "noix de cajou",
+                "gingembre",
+                "végétarien"
+            ]
         },
         {
             "id": 13,
@@ -348,7 +460,18 @@
                 "Ajouter les moules, mélanger.",
                 "Cuire les pâtes al dente, égoutter et incorporer à la sauce. Dresser avec les feuilles de basilic réservées."
             ],
-            "tags": ["pâtes", "moules", "thon", "saumon", "tomate", "céleri", "câpres", "basilic", "fruits de mer", "vin blanc"]
+            "tags": [
+                "pâtes",
+                "moules",
+                "thon",
+                "saumon",
+                "tomate",
+                "céleri",
+                "câpres",
+                "basilic",
+                "fruits de mer",
+                "vin blanc"
+            ]
         },
         {
             "id": 14,
@@ -379,7 +502,17 @@
                 "Ajouter les palourdes et les crevettes. Cuire 5 min.",
                 "Servir avec du riz."
             ],
-            "tags": ["gumbo", "crevettes", "palourdes", "chorizo", "cajun", "poivron", "tomate", "bouillon", "louisiane"]
+            "tags": [
+                "gumbo",
+                "crevettes",
+                "palourdes",
+                "chorizo",
+                "cajun",
+                "poivron",
+                "tomate",
+                "bouillon",
+                "louisiane"
+            ]
         },
         {
             "id": 15,
@@ -424,7 +557,20 @@
                 "Cuire le thon à feu vif dans un filet d'huile — 30 sec à 1 min par face maximum. Le cœur doit rester rosé.",
                 "Dresser : riz au fond, thon tranché, avocat, mangue, concombre, pickles radis, nori. Napper de sauce, filet d'huile de sésame."
             ],
-            "tags": ["thon", "sésame", "bowl", "poke", "riz sushi", "avocat", "mangue", "pickles", "wasabi", "sriracha", "citron vert", "gingembre"]
+            "tags": [
+                "thon",
+                "sésame",
+                "bowl",
+                "poke",
+                "riz sushi",
+                "avocat",
+                "mangue",
+                "pickles",
+                "wasabi",
+                "sriracha",
+                "citron vert",
+                "gingembre"
+            ]
         },
         {
             "id": 16,
@@ -449,7 +595,15 @@
                 "Vider dans un saladier, ôter la chemise de l'ail. Écraser le tout à la fourchette.",
                 "Incorporer la menthe fraîche, l'aneth et le jus de citron. Servir."
             ],
-            "tags": ["courgette", "ail", "menthe", "aneth", "thym", "citron", "ottolenghi"]
+            "tags": [
+                "courgette",
+                "ail",
+                "menthe",
+                "aneth",
+                "thym",
+                "citron",
+                "ottolenghi"
+            ]
         },
         {
             "id": 17,
@@ -476,7 +630,17 @@
                 "Cuire à petit feu 8 à 10 min jusqu'à ce que les blancs soient pris (les jaunes restent coulants). Couvrir pour accélérer si besoin.",
                 "Retirer du feu, laisser reposer 1 à 2 min. Servir avec le labneh ou le yaourt."
             ],
-            "tags": ["shakshuka", "œuf", "poivron", "tomate", "harissa", "cumin", "labneh", "yaourt", "ottolenghi"]
+            "tags": [
+                "shakshuka",
+                "œuf",
+                "poivron",
+                "tomate",
+                "harissa",
+                "cumin",
+                "labneh",
+                "yaourt",
+                "ottolenghi"
+            ]
         },
         {
             "id": 18,
@@ -501,7 +665,54 @@
                 "Ajouter les patates et les navets. Couvrir.",
                 "Mouiller avec le bouillon, ajuster en gros sel. Laisser cuire à feu doux longtemps."
             ],
-            "tags": ["soupe", "chou", "saucisse fumée", "poitrine", "saucisson", "patate", "navet", "carotte", "hiver"]
+            "tags": [
+                "soupe",
+                "chou",
+                "saucisse fumée",
+                "poitrine",
+                "saucisson",
+                "patate",
+                "navet",
+                "carotte",
+                "hiver"
+            ]
+        },
+        {
+            "id": 19,
+            "titre": "Dahl curry de lentilles et épinards",
+            "categorie": "Végétarien",
+            "image": "images/dahl-curry-lentilles-epinards.jpg",
+            "ingredients": [
+                "1 oignon émincé",
+                "1 gousse d'ail écrasée",
+                "1 morceau de gingembre râpé",
+                "1 verre de lentilles corail",
+                "3 verres d'eau + 1 cube de volaille",
+                "25 ml de lait de coco",
+                "130 g d'épinards",
+                "noix de cajou ou amandes",
+                "2 c. à café de curry",
+                "1 c. à café de curcuma"
+            ],
+            "etapes": [
+                "Faire revenir l'oignon, l'ail et le gingembre.",
+                "Ajouter les épices et laisser cuire 1 min.",
+                "Ajouter les lentilles et faire revenir 1 min.",
+                "Verser l'eau et le cube de bouillon.",
+                "Laisser cuire à feu moyen jusqu'à absorption complète.",
+                "Verser le lait de coco et ajouter les épinards.",
+                "Laisser mijoter 10 à 15 min.",
+                "Servir avec des noix de cajou."
+            ],
+            "tags": [
+                "lentilles",
+                "épinards",
+                "curry",
+                "curcuma",
+                "lait de coco",
+                "gingembre",
+                "végétarien"
+            ]
         }
     ]
 }
