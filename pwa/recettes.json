@@ -713,6 +713,31 @@
                 "gingembre",
                 "végétarien"
             ]
+        },
+        {
+            "id": 20,
+            "titre": "Pickles de chou rouge aux épices et raisins",
+            "categorie": "Accompagnement",
+            "ingredients": [
+                "600 g de chou rouge très finement émincé",
+                "50 g de raisins secs",
+                "1 morceau de gingembre frais râpé",
+                "2 clous de girofle",
+                "½ c. à café de cannelle",
+                "1 c. à café de poivre noir",
+                "300 ml de vinaigre de cidre",
+                "200 ml d'eau",
+                "2 c. à soupe de sucre",
+                "2 c. à café de sel"
+            ],
+            "etapes": [
+                "Émincer très finement le chou. Masser avec le sel 1-2 min jusqu'à ce qu'il soit souple.",
+                "Chauffer le vinaigre, l'eau, le sucre, le gingembre et les épices. Porter à frémissement 2-3 min.",
+                "Hors du feu, verser un peu de marinade chaude sur les raisins secs. Laisser gonfler 5 min.",
+                "Remplir 2 pots avec le chou et les raisins. Tasser légèrement. Verser la marinade chaude pour tout immerger, laisser 1 cm en haut.",
+                "Laisser refroidir puis conserver au frigo. Prêt en 12h, optimal après 2-3 jours. Se conserve 3-4 semaines."
+            ],
+            "tags": ["pickles", "chou rouge", "vinaigre", "raisins secs", "gingembre", "cannelle", "girofle", "condiment"]
         }
     ]
 }
