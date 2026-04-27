@@ -3,3 +3,6 @@
 
 # Corbeille NAS Synology
 #recycle/
+
+# Script NAS (ne pas écraser)
+git-pull.sh
