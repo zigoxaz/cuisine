@@ -737,7 +737,49 @@
                 "Remplir 2 pots avec le chou et les raisins. Tasser légèrement. Verser la marinade chaude pour tout immerger, laisser 1 cm en haut.",
                 "Laisser refroidir puis conserver au frigo. Prêt en 12h, optimal après 2-3 jours. Se conserve 3-4 semaines."
             ],
-            "tags": ["pickles", "chou rouge", "vinaigre", "raisins secs", "gingembre", "cannelle", "girofle", "condiment"]
+            "tags": [
+                "pickles",
+                "chou rouge",
+                "vinaigre",
+                "raisins secs",
+                "gingembre",
+                "cannelle",
+                "girofle",
+                "condiment"
+            ]
+        },
+        {
+            "id": 21,
+            "titre": "Bok choi sauté épicé",
+            "categorie": "Accompagnement",
+            "image": "images/bok-choi-saute-epice.jpg",
+            "ingredients": [
+                "4 bok choi coupés en deux dans la longueur",
+                "4 gousses d'ail émincées",
+                "1 piment rouge frais (ou flocons de piment)",
+                "1 c. à soupe de gingembre frais râpé",
+                "2 c. à soupe d'huile de sésame",
+                "2 c. à soupe de sauce soja",
+                "1 c. à soupe de sauce sriracha",
+                "1 c. à soupe de graines de sésame"
+            ],
+            "etapes": [
+                "Couper les bok choi en deux dans la longueur. Rincer entre les feuilles, bien égoutter et sécher.",
+                "Chauffer l'huile de sésame à feu vif dans un wok jusqu'à légère fumée.",
+                "Faire revenir l'ail, le piment et le gingembre 30 à 40 secondes en remuant sans cesse.",
+                "Déposer les bok choi côté coupé vers le bas. Laisser saisir sans remuer pour caraméliser.",
+                "Retourner les bok choi, ajouter la sauce soja et la sriracha. Mélanger et cuire encore 1 min.",
+                "Parsemer de graines de sésame et servir immédiatement."
+            ],
+            "tags": [
+                "bok choi",
+                "sésame",
+                "gingembre",
+                "piment",
+                "sriracha",
+                "wok",
+                "épicé"
+            ]
         }
     ]
 }
