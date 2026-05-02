@@ -780,6 +780,31 @@
                 "wok",
                 "épicé"
             ]
+        },
+        {
+            "id": 22,
+            "titre": "Goulash de bœuf au paprika",
+            "categorie": "Bœuf",
+            "ingredients": [
+                "1 kg de bœuf (macreuse, gîte ou paleron) en cubes",
+                "100 g de poitrine fumée en cubes",
+                "2 oignons hachés",
+                "1 boîte de tomates entières (400 g)",
+                "2 c. à soupe de paprika",
+                "10 cl de bouillon de bœuf",
+                "3 c. à soupe de crème fraîche épaisse",
+                "3 c. à soupe d'huile",
+                "Sel, poivre"
+            ],
+            "etapes": [
+                "Faire bien revenir le bœuf et la poitrine en cubes de tous côtés dans la cocotte avec l'huile.",
+                "Ajouter les oignons, cuire quelques minutes.",
+                "Assaisonner avec sel, poivre et paprika. Mouiller avec le bouillon.",
+                "Fermer la cocotte et cuire 35 min à partir du chuchotement de la soupape.",
+                "Ouvrir, ajouter les tomates. Remettre à cuire 10-20 min à découvert.",
+                "Avant de servir, incorporer la crème fraîche et mélanger. À préparer la veille idéalement."
+            ],
+            "tags": ["bœuf", "goulash", "paprika", "poitrine fumée", "tomate", "crème", "cocotte", "mijoté"]
         }
     ]
 }
