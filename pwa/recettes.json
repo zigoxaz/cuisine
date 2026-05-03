@@ -805,6 +805,34 @@
                 "Avant de servir, incorporer la crème fraîche et mélanger. À préparer la veille idéalement."
             ],
             "tags": ["bœuf", "goulash", "paprika", "poitrine fumée", "tomate", "crème", "cocotte", "mijoté"]
+        },
+        {
+            "id": 23,
+            "titre": "Poulet aux citrons confits",
+            "categorie": "Poulet",
+            "ingredients": [
+                "1 poulet (1,6 kg) découpé en morceaux",
+                "2 gros oignons émincés finement",
+                "3 gousses d'ail émincées finement",
+                "Coriandre fraîche",
+                "1 pincée de safran",
+                "1 c. à café de curcuma",
+                "1 c. à café de cumin",
+                "1 c. à café de gingembre",
+                "½ c. à café de cannelle",
+                "Piment de Cayenne",
+                "2 citrons confits coupés en morceaux",
+                "Sel, poivre"
+            ],
+            "etapes": [
+                "Faire revenir le poulet de tous côtés dans une cocotte à feu moyen.",
+                "Ajouter les oignons et l'ail, cuire quelques minutes.",
+                "Ajouter les citrons confits.",
+                "Ajouter les épices, mélanger.",
+                "Verser 25 cl d'eau, couvrir et cuire à feu moyen 1h30 minimum.",
+                "Ajouter la coriandre fraîche en fin de cuisson."
+            ],
+            "tags": ["poulet", "citron confit", "safran", "curcuma", "cumin", "gingembre", "cannelle", "cocotte"]
         }
     ]
 }
