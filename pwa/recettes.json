@@ -229,7 +229,7 @@
             "id": 7,
             "titre": "Rougail tomates",
             "categorie": "Accompagnement",
-            "image": "images/rougail-tomates.jpg",
+            "image": "images/rougail-tomates.webp",
             "ingredients": [
                 "4 tomates épépinées en petits dés",
                 "2 oignons émincés finement",
@@ -477,7 +477,7 @@
             "id": 14,
             "titre": "Gumbo aux fruits de mer",
             "categorie": "Poisson",
-            "image": "images/gumbo-fruits-de-mer.jpg",
+            "image": "images/gumbo-fruits-de-mer.webp",
             "ingredients": [
                 "400 g de crevettes décortiquées",
                 "300 g de palourdes",
@@ -746,7 +746,8 @@
                 "cannelle",
                 "girofle",
                 "condiment"
-            ]
+            ],
+            "image": "images/pickles-chou-rouge.jpg"
         },
         {
             "id": 21,
@@ -804,7 +805,17 @@
                 "Ouvrir, ajouter les tomates. Remettre à cuire 10-20 min à découvert.",
                 "Avant de servir, incorporer la crème fraîche et mélanger. À préparer la veille idéalement."
             ],
-            "tags": ["bœuf", "goulash", "paprika", "poitrine fumée", "tomate", "crème", "cocotte", "mijoté"]
+            "tags": [
+                "bœuf",
+                "goulash",
+                "paprika",
+                "poitrine fumée",
+                "tomate",
+                "crème",
+                "cocotte",
+                "mijoté"
+            ],
+            "image": "images/goulash-boeuf-paprika.webp"
         },
         {
             "id": 23,
@@ -832,7 +843,17 @@
                 "Verser 25 cl d'eau, couvrir et cuire à feu moyen 1h30 minimum.",
                 "Ajouter la coriandre fraîche en fin de cuisson."
             ],
-            "tags": ["poulet", "citron confit", "safran", "curcuma", "cumin", "gingembre", "cannelle", "cocotte"]
+            "tags": [
+                "poulet",
+                "citron confit",
+                "safran",
+                "curcuma",
+                "cumin",
+                "gingembre",
+                "cannelle",
+                "cocotte"
+            ],
+            "image": "images/poulet-citrons-confits.jpg"
         }
     ]
 }
