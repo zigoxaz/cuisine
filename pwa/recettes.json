@@ -4,6 +4,7 @@
         "Porc",
         "Poulet",
         "Bœuf",
+        "Veau",
         "Végétarien",
         "Pâtes",
         "Dessert",
@@ -858,7 +859,7 @@
         {
             "id": 24,
             "titre": "Épaule de veau mijotée, poitrine fumée, olives et fenouil",
-            "categorie": "Bœuf",
+            "categorie": "Veau",
             "image": "images/epaule-veau-mijotee.jpg",
             "ingredients": [
                 "1200 g d'épaule de veau en morceaux",
