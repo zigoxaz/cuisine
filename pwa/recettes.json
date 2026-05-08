@@ -854,6 +854,49 @@
                 "cocotte"
             ],
             "image": "images/poulet-citrons-confits.jpg"
+        },
+        {
+            "id": 24,
+            "titre": "Épaule de veau mijotée, poitrine fumée, olives et fenouil",
+            "categorie": "Bœuf",
+            "image": "images/epaule-veau-mijotee.jpg",
+            "ingredients": [
+                "1200 g d'épaule de veau en morceaux",
+                "200 g de lardons de poitrine fumée",
+                "2 bulbes de fenouil en quartiers",
+                "2 oignons émincés",
+                "2 carottes en rondelles",
+                "3 gousses d'ail écrasées",
+                "120 g d'olives vertes dénoyautées",
+                "80 g d'olives noires dénoyautées",
+                "400 g de tomates pelées en conserve",
+                "200 ml de vin blanc sec",
+                "300 ml de bouillon de veau ou de volaille",
+                "3 brins de thym",
+                "2 feuilles de laurier",
+                "1 zeste de citron (optionnel)",
+                "3 c. à soupe d'huile d'olive",
+                "Sel et poivre"
+            ],
+            "etapes": [
+                "Faire revenir les lardons à sec dans une cocotte en fonte jusqu'à dorure. Réserver.",
+                "Dans la même cocotte, chauffer l'huile d'olive et faire dorer le veau sur toutes les faces à feu vif, en plusieurs fois. Saler, poivrer et réserver avec les lardons.",
+                "Faire suer les oignons, les carottes et le fenouil 7 à 8 min à feu moyen. Ajouter l'ail et poursuivre 1 min.",
+                "Déglacer avec le vin blanc en grattant les sucs. Ajouter les tomates écrasées grossièrement et le bouillon.",
+                "Remettre le veau et les lardons. Ajouter le thym, le laurier et le zeste de citron. Le liquide doit affleurer la viande.",
+                "Porter à frémissement, couvrir et mijoter à feu très doux (ou au four à 160°C) pendant 1h30.",
+                "Ajouter les olives, rectifier l'assaisonnement et poursuivre la cuisson à découvert 20 min pour réduire la sauce.",
+                "Retirer le laurier et le thym. Servir avec polenta, tagliatelles ou pommes de terre vapeur."
+            ],
+            "tags": [
+                "veau",
+                "fenouil",
+                "olives",
+                "lardons",
+                "mijoté",
+                "provençal",
+                "vin blanc"
+            ]
         }
     ]
 }
