@@ -923,7 +923,17 @@
                 "Cuire 40 minutes à 180°C.",
                 "À la sortie du four, déposer la burrata et les pignons torréfiés."
             ],
-            "tags": ["courgette", "burrata", "pignon de pin", "pâte feuilletée", "tarte", "crème", "balsamique", "végétarien"]
+            "tags": [
+                "courgette",
+                "burrata",
+                "pignon de pin",
+                "pâte feuilletée",
+                "tarte",
+                "crème",
+                "balsamique",
+                "végétarien"
+            ],
+            "image": "images/tarte-courgettes-burrata.jpg"
         }
     ]
 }
