@@ -898,6 +898,32 @@
                 "provençal",
                 "vin blanc"
             ]
+        },
+        {
+            "id": 25,
+            "titre": "Tarte courgettes, burrata et pignons",
+            "categorie": "Végétarien",
+            "ingredients": [
+                "1 pâte feuilletée",
+                "2 courgettes tranchées à la mandoline",
+                "3 œufs",
+                "20 cl de crème liquide",
+                "1 burrata",
+                "1 poignée de pignons de pin torréfiés",
+                "2 c. à soupe de vinaigre balsamique",
+                "2 c. à soupe d'huile de sésame",
+                "Sel, poivre"
+            ],
+            "etapes": [
+                "Préchauffer le four à 180°C. Foncer un moule avec la pâte feuilletée et enfourner à blanc 5 minutes.",
+                "Faire revenir les courgettes dans l'huile de sésame à feu vif.",
+                "Assaisonner, ajouter le vinaigre balsamique et laisser évaporer.",
+                "Battre les œufs avec la crème liquide, assaisonner.",
+                "Déposer les courgettes dans le fond de tarte, verser l'appareil œufs-crème.",
+                "Cuire 40 minutes à 180°C.",
+                "À la sortie du four, déposer la burrata et les pignons torréfiés."
+            ],
+            "tags": ["courgette", "burrata", "pignon de pin", "pâte feuilletée", "tarte", "crème", "balsamique", "végétarien"]
         }
     ]
 }
