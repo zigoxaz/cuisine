@@ -934,6 +934,38 @@
                 "végétarien"
             ],
             "image": "images/tarte-courgettes-burrata.jpg"
+        },
+        {
+            "id": 26,
+            "titre": "Pavlova aux fruits rouges",
+            "categorie": "Dessert",
+            "image": "images/pavlova.jpg",
+            "ingredients": [
+                "— MERINGUE —",
+                "4 blancs d'œufs",
+                "250 g de sucre en poudre",
+                "2 c. à café de Maïzena",
+                "1 trait d'extrait de vanille Bourbon",
+                "1 c. à café de vinaigre de riz",
+                "1 pincée de bicarbonate de soude",
+                "— GARNITURE —",
+                "300 g de fraises équeutées et coupées en deux",
+                "125 g de framboises",
+                "1 fruit de la passion",
+                "33 cl de crème fleurette (35% MG), bien froide",
+                "1 c. à café de sucre en poudre"
+            ],
+            "etapes": [
+                "La veille, préchauffer le four à 150°C.",
+                "Monter les blancs en neige avec le bicarbonate (moyennement ferme). Ajouter progressivement le sucre, la vanille, la Maïzena et le vinaigre.",
+                "Fouetter à vitesse élevée 1 min pour serrer les blancs. La meringue doit être ferme, brillante et former un bec d'oiseau.",
+                "Sur une plaque recouverte de papier sulfurisé, former un cercle épais d'environ 20 cm de diamètre.",
+                "Enfourner et baisser immédiatement à 110°C. Cuire 1h15, éteindre le four et laisser refroidir porte entrebâillée.",
+                "Au moment de servir, décoller délicatement la meringue et la disposer sur le plat de service.",
+                "Fouetter la crème fleurette bien froide avec le sucre dans un contenant froid pour obtenir une chantilly ferme.",
+                "Couvrir la meringue de chantilly. Garnir de fraises, framboises, jus et grains du fruit de la passion. Servir immédiatement."
+            ],
+            "tags": ["pavlova", "meringue", "fraise", "framboise", "fruit de la passion", "chantilly", "crème", "dessert"]
         }
     ]
 }
