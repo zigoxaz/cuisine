@@ -966,6 +966,25 @@
                 "Couvrir la meringue de chantilly. Garnir de fraises, framboises, jus et grains du fruit de la passion. Servir immédiatement."
             ],
             "tags": ["pavlova", "meringue", "fraise", "framboise", "fruit de la passion", "chantilly", "crème", "dessert"]
+        },
+        {
+            "id": 27,
+            "titre": "Lemon curd",
+            "categorie": "Dessert",
+            "ingredients": [
+                "2 citrons (zeste + jus, environ 60 ml)",
+                "2 jaunes d'œufs",
+                "100 g de sucre roux",
+                "80 g de beurre froid en morceaux"
+            ],
+            "etapes": [
+                "Zester et presser les citrons.",
+                "Dans une petite casserole, mélanger les jaunes, le sucre, le jus et le zeste de citron.",
+                "Cuire à feu doux en remuant sans cesse jusqu'à épaississement, environ 8-10 min. La crème doit napper la cuillère.",
+                "Hors du feu, incorporer le beurre en morceaux en remuant jusqu'à fonte complète.",
+                "Filtrer si désiré, verser en pot et laisser refroidir. Se conserve 1 semaine au frigo."
+            ],
+            "tags": ["lemon curd", "citron", "beurre", "œuf", "tartinade", "dessert"]
         }
     ]
 }
