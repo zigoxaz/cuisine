@@ -964,7 +964,16 @@
                 "Fouetter la crème fleurette bien froide avec le sucre dans un contenant froid pour obtenir une chantilly ferme.",
                 "Couvrir la meringue de chantilly. Garnir de fraises, framboises, jus et grains du fruit de la passion. Servir immédiatement."
             ],
-            "tags": ["pavlova", "meringue", "fraise", "framboise", "fruit de la passion", "chantilly", "crème", "dessert"]
+            "tags": [
+                "pavlova",
+                "meringue",
+                "fraise",
+                "framboise",
+                "fruit de la passion",
+                "chantilly",
+                "crème",
+                "dessert"
+            ]
         },
         {
             "id": 27,
@@ -983,7 +992,15 @@
                 "Hors du feu, incorporer le beurre en morceaux en remuant jusqu'à fonte complète.",
                 "Filtrer si désiré, verser en pot et laisser refroidir. Se conserve 1 semaine au frigo."
             ],
-            "tags": ["lemon curd", "citron", "beurre", "œuf", "tartinade", "dessert"]
+            "tags": [
+                "lemon curd",
+                "citron",
+                "beurre",
+                "œuf",
+                "tartinade",
+                "dessert"
+            ],
+            "image": "images/lemon-curd.jpg"
         },
         {
             "id": 28,
@@ -1005,7 +1022,16 @@
                 "Faire revenir la purée dans une casserole avec un filet d'huile, 5 à 10 min à feu doux.",
                 "Verser en pot stérilisé, laisser refroidir et conserver au frigo. Se garde 2-3 semaines. Ajouter un filet d'huile sur le dessus pour prolonger la conservation."
             ],
-            "tags": ["piment", "ail", "condiment", "purée", "épicé", "conserve", "sauce piment"]
+            "tags": [
+                "piment",
+                "ail",
+                "condiment",
+                "purée",
+                "épicé",
+                "conserve",
+                "sauce piment"
+            ],
+            "image": "images/puree-piment.webp"
         }
     ]
 }
