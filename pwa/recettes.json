@@ -984,6 +984,28 @@
                 "Filtrer si désiré, verser en pot et laisser refroidir. Se conserve 1 semaine au frigo."
             ],
             "tags": ["lemon curd", "citron", "beurre", "œuf", "tartinade", "dessert"]
+        },
+        {
+            "id": 28,
+            "titre": "Purée de piment maison",
+            "categorie": "Accompagnement",
+            "ingredients": [
+                "200 g de piments frais (oiseau, antillais ou rouge long)",
+                "4 gousses d'ail",
+                "1 petit oignon",
+                "1 petite tomate (ou 1 c. à café de concentré de tomate)",
+                "2 c. à soupe de vinaigre blanc",
+                "½ c. à café de sucre",
+                "3 c. à soupe d'huile végétale",
+                "1 c. à café de sel"
+            ],
+            "etapes": [
+                "Laver et équeuter les piments. Porter des gants si les piments sont très forts.",
+                "Mixer ensemble les piments, l'ail, l'oignon, la tomate, le vinaigre, l'huile, le sucre et le sel. Texture lisse ou rustique selon goût.",
+                "Faire revenir la purée dans une casserole avec un filet d'huile, 5 à 10 min à feu doux.",
+                "Verser en pot stérilisé, laisser refroidir et conserver au frigo. Se garde 2-3 semaines. Ajouter un filet d'huile sur le dessus pour prolonger la conservation."
+            ],
+            "tags": ["piment", "ail", "condiment", "purée", "épicé", "conserve", "sauce piment"]
         }
     ]
 }
