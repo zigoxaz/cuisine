@@ -871,13 +871,18 @@ function genererCourses() {
   const sel = toutesRecettes.filter(r => cochees.includes(r.id));
 
   let totalStock = 0, totalAcheter = 0;
+  const aAcheterSet = new Map(); // nom normalisé → texte original (premier trouvé)
 
   const html = sel.map((r, ri) => {
     let stockR = 0, acheterR = 0;
     const lignes = r.ingredients.filter(i => !i.startsWith('—')).map(ing => {
       const statut = statutIngredient(ing);
       if (statut === 'stock') { stockR++; totalStock++; }
-      else { acheterR++; totalAcheter++; }
+      else {
+        acheterR++; totalAcheter++;
+        const key = normaliser(ing.split('/')[0]);
+        if (!aAcheterSet.has(key)) aAcheterSet.set(key, ing);
+      }
       const cls = statut === 'stock' ? 'en-stock' : 'a-acheter';
       const badge = statut === 'stock' ? '✓' : '↗';
       return `<div class="courses-ingredient ${cls}">
@@ -885,7 +890,6 @@ function genererCourses() {
     }).join('');
 
     const id = 'cr-' + ri;
-    const titre = sel.length > 1 ? r.titre : '';
     return `<div class="courses-section">
       ${sel.length > 1 ? `
       <div class="courses-recette-titre" onclick="toggleRecetteCourses('${id}', this)">
@@ -900,7 +904,17 @@ function genererCourses() {
     </div>`;
   }).join('');
 
-  const resume = `<div class="courses-resume"><strong>${totalAcheter}</strong> à acheter · <span>${totalStock} en stock</span></div>`;
+  // Récapitulatif : liste des ingrédients à acheter (dédoublonnés)
+  const listeAcheter = [...aAcheterSet.values()]
+    .map(ing => `<div class="courses-ingredient a-acheter"><span class="courses-badge">↗</span><span>${ing}</span></div>`)
+    .join('');
+
+  const resume = `<div class="courses-resume" style="margin-top:20px">
+    <div style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--text3);margin-bottom:10px;border-bottom:1px solid var(--border2);padding-bottom:6px">
+      À acheter — <strong style="color:var(--accent)">${totalAcheter}</strong> · en stock ${totalStock}
+    </div>
+    ${listeAcheter || '<div class="racheter-vide">Tout est en stock ✓</div>'}
+  </div>`;
   document.getElementById('liste-courses').innerHTML = html + resume;
 }
 
