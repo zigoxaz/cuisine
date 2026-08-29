@@ -1056,7 +1056,16 @@
                 "Verser la pâte sur les fraises et enfourner 35 min.",
                 "Laisser refroidir avant de démouler. Décorer de copeaux de noix de coco et des fraises réservées."
             ],
-            "tags": ["fraise", "noix de coco", "gâteau renversé", "beurre", "farine", "levure", "dessert"]
+            "tags": [
+                "fraise",
+                "noix de coco",
+                "gâteau renversé",
+                "beurre",
+                "farine",
+                "levure",
+                "dessert"
+            ],
+            "image": "images/gateau-renverse-fraises-coco.png"
         }
     ]
 }
