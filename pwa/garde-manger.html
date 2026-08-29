@@ -850,7 +850,10 @@ function normaliser(str) {
 
 function statutIngredient(ingredient) {
   const norm = normaliser(ingredient);
-  const item = inventaire.items.find(i => norm.includes(normaliser(i.nom)));
+  // Prendre le match le plus long pour éviter "citron" qui écrase "citron confit"
+  const item = inventaire.items
+    .filter(i => norm.includes(normaliser(i.nom)))
+    .sort((a, b) => b.nom.length - a.nom.length)[0];
   if (!item) return 'acheter';
   if (item.qte === 0) return 'ignore';
   if (item.qte === 3) return 'stock';
