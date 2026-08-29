@@ -6,3 +6,6 @@
 
 # Script NAS (ne pas écraser)
 git-pull.sh
+
+# Fichiers générés par le site (écrits par PHP, non versionnés)
+pwa/garde-manger.json

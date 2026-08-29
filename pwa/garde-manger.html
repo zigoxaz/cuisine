@@ -332,7 +332,7 @@ let toutesRecettes = [];
 
 Promise.all([
   fetch('config.json?v=' + Date.now()).then(r => r.json()),
-  fetch('garde-manger.json?v=' + Date.now()).then(r => r.json()),
+  fetch('garde-manger.json?v=' + Date.now()).then(r => r.ok ? r.json() : { items: [] }).catch(() => ({ items: [] })),
   fetch('recettes.json?v=' + Date.now()).then(r => r.json())
 ]).then(([config, gm, data]) => {
   document.body.className = 'theme-' + (config.theme || 'creme');
