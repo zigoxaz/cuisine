@@ -37,64 +37,96 @@
       background: var(--bg);
       color: var(--text);
       min-height: 100vh;
-      padding: 20px;
+      padding: 16px;
       max-width: 700px;
       margin: 0 auto;
     }
 
-    h1 {
-      font-size: 18px;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 6px;
-      padding-bottom: 12px;
-      border-bottom: 1px solid var(--border);
-    }
-
-    .retour {
+    a.retour {
       display: inline-block;
       font-size: 11px;
       letter-spacing: 1px;
       color: var(--text3);
       text-decoration: none;
       text-transform: uppercase;
-      margin-bottom: 20px;
-      margin-top: 10px;
+      margin-bottom: 10px;
+      margin-top: 4px;
     }
-    .retour:hover { color: var(--accent); }
+    a.retour:hover { color: var(--accent); }
+
+    h1 {
+      font-size: 18px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 20px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--border);
+    }
 
     #message {
       padding: 10px 14px;
       margin-bottom: 16px;
       display: none;
       font-size: 13px;
+      border-radius: 2px;
     }
     #message.ok { background: #e8f5e0; border: 1px solid #4a7a38; color: #4a7a38; }
     #message.err { background: #fde8e8; border: 1px solid #c0392b; color: #c0392b; }
 
-    .section {
-      margin-bottom: 32px;
-    }
+    .section { margin-bottom: 28px; }
 
     .section-titre {
       font-size: 11px;
       letter-spacing: 2px;
       text-transform: uppercase;
       color: var(--text3);
-      margin-bottom: 14px;
+      margin-bottom: 12px;
       padding-bottom: 6px;
       border-bottom: 1px solid var(--border2);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
     }
 
-    /* ===== INVENTAIRE ===== */
+    .section-count {
+      font-size: 10px;
+      background: var(--bg3);
+      padding: 2px 7px;
+      border-radius: 10px;
+    }
 
+    /* ===== BOUTONS ===== */
+    button {
+      background: transparent;
+      border: 1px solid var(--accent);
+      color: var(--accent);
+      padding: 8px 14px;
+      cursor: pointer;
+      font-size: 12px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      font-family: inherit;
+      transition: all 0.15s;
+      white-space: nowrap;
+    }
+    button:hover { background: var(--accent); color: var(--accent2); }
+    button.primary { background: var(--accent); color: var(--accent2); }
+    button.sm {
+      padding: 6px 10px;
+      font-size: 11px;
+      border-color: var(--border);
+      color: var(--text3);
+      letter-spacing: 0;
+    }
+    button.sm:hover { border-color: var(--accent); color: var(--accent); background: transparent; }
+
+    /* ===== AJOUTER ===== */
     .ajouter-row {
       display: flex;
       gap: 8px;
-      margin-bottom: 16px;
+      margin-bottom: 10px;
     }
-
     .ajouter-row input {
       flex: 1;
       background: var(--bg2);
@@ -107,133 +139,147 @@
     .ajouter-row input:focus { outline: none; border-color: var(--accent); }
     .ajouter-row input::placeholder { color: var(--text3); font-size: 13px; }
 
-    button {
-      background: transparent;
-      border: 1px solid var(--accent);
-      color: var(--accent);
-      padding: 8px 14px;
-      cursor: pointer;
-      font-size: 12px;
-      letter-spacing: 1px;
-      text-transform: uppercase;
+    /* ===== RECHERCHE ===== */
+    #recherche {
+      width: 100%;
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      color: var(--text);
+      padding: 9px 12px;
+      font-size: 14px;
       font-family: inherit;
-      transition: all 0.2s;
-      white-space: nowrap;
+      margin-bottom: 10px;
     }
-    button:hover { background: var(--accent); color: var(--accent2); }
-    button.primary { background: var(--accent); color: var(--accent2); }
-    button.danger { border-color: #c0392b; color: #c0392b; }
-    button.danger:hover { background: #c0392b; color: white; }
+    #recherche:focus { outline: none; border-color: var(--accent); }
+    #recherche::placeholder { color: var(--text3); }
 
-    .item-liste {
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-    }
+    /* ===== LISTE ITEMS ===== */
+    .item-liste { display: flex; flex-direction: column; }
 
     .item-row {
       display: flex;
       align-items: center;
-      gap: 10px;
-      padding: 10px 12px;
-      background: var(--bg2);
-      border: 1px solid var(--border2);
+      gap: 8px;
+      padding: 8px 10px;
+      border-bottom: 1px solid var(--border2);
+      transition: background 0.1s;
     }
+    .item-row:hover { background: var(--bg2); }
 
     .item-nom {
       flex: 1;
-      font-size: 15px;
+      font-size: 14px;
       color: var(--text);
-      text-transform: capitalize;
     }
+    .item-row.epuise .item-nom { color: var(--text3); }
 
-    .qte-ctrl {
+    /* Niveau de stock */
+    .stock-ctrl {
       display: flex;
       align-items: center;
-      gap: 6px;
+      gap: 4px;
     }
 
-    .qte-btn {
-      width: 28px;
-      height: 28px;
+    .stock-btn {
+      width: 26px;
+      height: 26px;
       padding: 0;
-      font-size: 16px;
+      font-size: 15px;
       letter-spacing: 0;
+      border-color: var(--border);
+      color: var(--text3);
       display: flex;
       align-items: center;
       justify-content: center;
-      border-color: var(--border);
-      color: var(--text3);
     }
-    .qte-btn:hover { border-color: var(--accent); color: var(--accent); background: transparent; }
+    .stock-btn:hover { border-color: var(--accent); color: var(--accent); background: transparent; }
 
-    .qte-val {
-      min-width: 20px;
+    .stock-badge {
+      font-size: 9px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      padding: 2px 6px;
+      border-radius: 2px;
+      min-width: 54px;
       text-align: center;
-      font-size: 14px;
-      color: var(--text);
+      font-family: sans-serif;
+      font-weight: 600;
     }
+    .badge-0 { background: #fde8e8; color: #c0392b; border: 1px solid #c0392b; }
+    .badge-1 { background: #fff3e0; color: #e07020; border: 1px solid #e07020; }
+    .badge-2 { background: var(--bg3); color: var(--text3); border: 1px solid var(--border); }
+    .badge-3 { background: #e8f5e0; color: #4a7a38; border: 1px solid #4a7a38; }
 
     .item-del {
-      width: 28px;
-      height: 28px;
+      width: 26px;
+      height: 26px;
       padding: 0;
-      font-size: 14px;
+      font-size: 13px;
       letter-spacing: 0;
       border-color: transparent;
       color: var(--text3);
     }
-    .item-del:hover { background: transparent; border-color: #c0392b; color: #c0392b; }
+    .item-del:hover { border-color: #c0392b; color: #c0392b; background: transparent; }
 
-    .inventaire-vide {
-      font-size: 13px;
-      color: var(--text3);
-      padding: 16px 0;
-      font-style: italic;
-    }
-
-    /* ===== LISTE DE COURSES ===== */
-
-    .recettes-selector {
+    /* ===== À RACHETER ===== */
+    .racheter-liste {
       display: flex;
       flex-direction: column;
       gap: 4px;
-      margin-bottom: 14px;
-      max-height: 300px;
+    }
+
+    .racheter-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 8px 12px;
+      background: var(--bg2);
+      border-left: 3px solid transparent;
+    }
+    .racheter-item.epuise { border-left-color: #c0392b; }
+    .racheter-item.peu { border-left-color: #e07020; }
+
+    .racheter-item-nom { font-size: 14px; flex: 1; }
+    .racheter-item.epuise .racheter-item-nom { color: var(--text2); }
+
+    .racheter-vide {
+      font-size: 13px;
+      color: var(--text3);
+      font-style: italic;
+      padding: 8px 0;
+    }
+
+    /* ===== SELECTOR RECETTES ===== */
+    .recettes-selector {
+      display: flex;
+      flex-direction: column;
+      max-height: 280px;
       overflow-y: auto;
       border: 1px solid var(--border2);
       background: var(--bg2);
+      margin-bottom: 12px;
     }
 
     .recette-check {
       display: flex;
       align-items: center;
       gap: 10px;
-      padding: 10px 12px;
+      padding: 9px 12px;
       cursor: pointer;
       border-bottom: 1px solid var(--border2);
     }
     .recette-check:last-child { border-bottom: none; }
     .recette-check:hover { background: var(--bg3); }
-    .recette-check input[type="checkbox"] { accent-color: var(--accent); width: 16px; height: 16px; cursor: pointer; }
+    .recette-check input[type="checkbox"] { accent-color: var(--accent); width: 15px; height: 15px; cursor: pointer; flex-shrink: 0; }
     .recette-check-titre { font-size: 14px; color: var(--text); flex: 1; }
     .recette-check-cat { font-size: 10px; color: var(--accent); letter-spacing: 1px; text-transform: uppercase; }
 
-    .selector-actions {
-      display: flex;
-      gap: 8px;
-      margin-bottom: 14px;
-    }
-    .selector-actions button { font-size: 11px; padding: 6px 12px; border-color: var(--border); color: var(--text3); }
-    .selector-actions button:hover { border-color: var(--accent); color: var(--accent); background: transparent; }
+    .selector-actions { display: flex; gap: 8px; margin-bottom: 10px; }
 
-    #liste-courses {
-      margin-top: 20px;
-    }
+    /* ===== RÉSULTAT COURSES ===== */
+    #liste-courses { margin-top: 16px; }
 
-    .courses-section {
-      margin-bottom: 20px;
-    }
+    .courses-section { margin-bottom: 18px; }
 
     .courses-recette-titre {
       font-size: 11px;
@@ -251,165 +297,268 @@
       border-bottom: 1px solid var(--border2);
       font-size: 14px;
     }
-
-    .courses-ingredient.en-stock {
-      color: var(--text3);
-      text-decoration: line-through;
-    }
+    .courses-ingredient.en-stock { color: var(--text3); text-decoration: line-through; }
 
     .courses-badge {
-      font-size: 10px;
-      padding: 2px 6px;
+      font-size: 9px;
+      padding: 2px 5px;
       border: 1px solid currentColor;
       letter-spacing: 1px;
       text-transform: uppercase;
       flex-shrink: 0;
+      font-family: sans-serif;
     }
-
     .en-stock .courses-badge { color: var(--text3); }
     .a-acheter .courses-badge { color: var(--accent); border-color: var(--accent); }
 
     .courses-resume {
-      margin-top: 16px;
-      padding: 12px;
+      margin-top: 12px;
+      padding: 10px 12px;
       background: var(--bg2);
       border: 1px solid var(--border);
       font-size: 13px;
       color: var(--text3);
     }
-
     .courses-resume strong { color: var(--accent); }
 
-    .courses-actions {
-      display: flex;
-      gap: 8px;
-      margin-top: 14px;
-    }
+    .vide { font-size: 13px; color: var(--text3); font-style: italic; }
   </style>
 </head>
 <body class="theme-creme">
 
 <a class="retour" href="index.html">← Retour aux recettes</a>
 <h1>Garde-manger</h1>
-
 <div id="message"></div>
 
-<!-- SECTION 1 : INVENTAIRE -->
-<div class="section">
-  <div class="section-titre">Inventaire</div>
-
-  <div class="ajouter-row">
-    <input type="text" id="nouvel-item" placeholder="Ajouter un ingrédient..." onkeydown="if(event.key==='Enter')ajouterItem()">
-    <button onclick="ajouterItem()">Ajouter</button>
+<!-- À RACHETER -->
+<div class="section" id="section-racheter">
+  <div class="section-titre">
+    À racheter
+    <span class="section-count" id="count-racheter">0</span>
   </div>
-
-  <div class="item-liste" id="liste-items">
-    <div class="inventaire-vide">Chargement…</div>
+  <div class="racheter-liste" id="liste-racheter">
+    <div class="racheter-vide">Tout est en stock.</div>
   </div>
 </div>
 
-<!-- SECTION 2 : LISTE DE COURSES -->
+<!-- INVENTAIRE -->
 <div class="section">
-  <div class="section-titre">Liste de courses</div>
-
-  <div class="selector-actions">
-    <button onclick="toutSelectionner(true)">Tout sélectionner</button>
-    <button onclick="toutSelectionner(false)">Tout déselectionner</button>
+  <div class="section-titre">
+    Inventaire
+    <span class="section-count" id="count-items">0</span>
   </div>
+  <div class="ajouter-row">
+    <input type="text" id="nouvel-item" placeholder="Ajouter un ingrédient…" onkeydown="if(event.key==='Enter')ajouterItem()">
+    <button onclick="ajouterItem()">Ajouter</button>
+  </div>
+  <input type="search" id="recherche" placeholder="Rechercher dans l'inventaire…" oninput="filtrerItems()">
+  <div class="item-liste" id="liste-items"></div>
+</div>
 
+<!-- LISTE DE COURSES PAR RECETTE -->
+<div class="section">
+  <div class="section-titre">Courses par recette</div>
+  <div class="selector-actions">
+    <button class="sm" onclick="toutSelectionner(true)">Tout sélectionner</button>
+    <button class="sm" onclick="toutSelectionner(false)">Tout déselectionner</button>
+  </div>
   <div class="recettes-selector" id="recettes-selector">
     <div style="padding:12px;color:var(--text3);font-size:13px">Chargement…</div>
   </div>
-
   <button class="primary" onclick="genererCourses()">Générer la liste</button>
-
   <div id="liste-courses"></div>
 </div>
 
 <script>
+const DEFAUT = { items: [
+  {nom:"4 épices",qte:2},{nom:"5 épices",qte:2},{nom:"5 parfums",qte:2},
+  {nom:"ail frit",qte:2},{nom:"ail semoule",qte:2},
+  {nom:"amandes effilées",qte:2},{nom:"arôme de rose",qte:2},{nom:"arôme vanille",qte:2},
+  {nom:"badiane",qte:2},{nom:"baies de genièvre",qte:2},{nom:"boulgour",qte:2},
+  {nom:"cannelle en bâton",qte:2},{nom:"cannelle moulue",qte:2},
+  {nom:"cardamome verte",qte:2},{nom:"carvi",qte:2},{nom:"cassonade",qte:2},
+  {nom:"cerneaux de noix",qte:2},{nom:"chapelure",qte:2},{nom:"chapelure panko",qte:2},
+  {nom:"chocolat en tablette",qte:2},{nom:"clous de girofle",qte:2},{nom:"colombo",qte:2},
+  {nom:"concentré de tomate",qte:2},{nom:"conserve asperges",qte:2},
+  {nom:"conserve haricots blancs",qte:0},{nom:"conserve haricots rouges",qte:2},
+  {nom:"conserve lentilles",qte:2},{nom:"coriandre moulue",qte:2},{nom:"court bouillon",qte:2},
+  {nom:"cranberries",qte:2},{nom:"crème de vinaigre balsamique",qte:2},
+  {nom:"crème fraîche liquide entière",qte:2},{nom:"cube bouillon bœuf",qte:2},
+  {nom:"cube bouillon légume",qte:2},{nom:"cube bouillon poulet",qte:2},{nom:"cube or",qte:2},
+  {nom:"cumin",qte:2},{nom:"cumin en poudre",qte:2},{nom:"curcuma",qte:2},
+  {nom:"curry",qte:2},{nom:"curry japonais",qte:2},
+  {nom:"fenugrec",qte:2},{nom:"feuilles de gélatine",qte:2},{nom:"flocons d'avoine",qte:2},
+  {nom:"fumet de poisson",qte:2},{nom:"galettes de riz",qte:2},{nom:"garam masala",qte:2},
+  {nom:"gingembre",qte:2},{nom:"gousse de vanille",qte:2},
+  {nom:"graines de fenouil",qte:2},{nom:"graines de lin brun",qte:2},
+  {nom:"graines de moutarde",qte:2},{nom:"graines de pavot",qte:2},
+  {nom:"graines de sésame",qte:2},{nom:"graines de sésame noir",qte:2},
+  {nom:"herbes de Provence",qte:2},
+  {nom:"huile d'olive",qte:2},{nom:"huile d'olive et citron",qte:2},
+  {nom:"huile de noix",qte:2},{nom:"huile de pépins de raisin",qte:2},
+  {nom:"huile de sésame",qte:2},{nom:"huile de tournesol",qte:2},
+  {nom:"lait de coco",qte:2},{nom:"laurier",qte:2},
+  {nom:"lentilles corail",qte:2},{nom:"lentilles vertes",qte:2},
+  {nom:"levure boulangère",qte:2},{nom:"levure chimique",qte:2},
+  {nom:"maïs en conserve",qte:2},{nom:"maïzena",qte:2},{nom:"massalé",qte:2},
+  {nom:"merkén",qte:2},{nom:"miel",qte:2},{nom:"mirin",qte:2},{nom:"mirin saké doux",qte:2},
+  {nom:"muscade",qte:2},{nom:"nigelle",qte:2},{nom:"noisettes",qte:2},
+  {nom:"noix de coco en poudre",qte:2},{nom:"nouilles de riz",qte:2},
+  {nom:"olives noires",qte:0},{nom:"olives vertes",qte:2},{nom:"origan",qte:2},
+  {nom:"paprika doux",qte:2},{nom:"paprika piquant",qte:2},
+  {nom:"pâtes",qte:2},{nom:"pâtes lasagne",qte:2},{nom:"pépites de chocolat",qte:2},
+  {nom:"peri-peri",qte:2},{nom:"piment d'Espelette",qte:2},{nom:"piment de Cayenne",qte:2},
+  {nom:"piment frais thaï vert",qte:2},{nom:"pois chiches",qte:2},{nom:"polenta",qte:2},
+  {nom:"poivre blanc",qte:2},{nom:"poivre gris",qte:2},{nom:"poivre noir",qte:2},
+  {nom:"poudre d'amande",qte:2},{nom:"purée de piment",qte:2},{nom:"purée tomate",qte:2},
+  {nom:"ras el hanout",qte:2},{nom:"riz",qte:2},{nom:"riz noir",qte:2},{nom:"riz rond",qte:2},
+  {nom:"romarin",qte:2},{nom:"sauce à la grenade",qte:2},{nom:"sauce hoisin",qte:2},
+  {nom:"sauce huître",qte:2},{nom:"sauce sriracha",qte:2},{nom:"sauce worcestershire",qte:2},
+  {nom:"sauge",qte:2},{nom:"sel au céleri",qte:2},{nom:"semoule",qte:2},
+  {nom:"sirop d'érable",qte:2},{nom:"sirop de cassis",qte:2},
+  {nom:"sirop de fleur de sureau",qte:2},{nom:"somen",qte:2},{nom:"spiruline",qte:2},
+  {nom:"sucre en poudre",qte:2},{nom:"sucre glace",qte:2},{nom:"sucre vanillé",qte:2},
+  {nom:"thym",qte:2},{nom:"tomates en bocaux",qte:2},
+  {nom:"vanille en poudre",qte:2},{nom:"vermicelle de haricot mungo",qte:2},
+  {nom:"vermicelle de riz",qte:2},{nom:"vinaigre à la framboise",qte:2},
+  {nom:"vinaigre à la mangue",qte:2},{nom:"vinaigre balsamique",qte:2},
+  {nom:"vinaigre de cidre",qte:2},{nom:"vinaigre de riz",qte:2},
+  {nom:"vinaigre de xérès",qte:2},{nom:"wasabi pâte",qte:2},{nom:"wasabi poudre",qte:2},
+  {nom:"zaatar",qte:2},{nom:"quinoa",qte:2}
+]};
+
 let inventaire = { items: [] };
 let toutesRecettes = [];
+let filtreTexte = '';
+let premierChargement = false;
+
+const LABELS = ['ÉPUISÉ','PEU','OK','PLEIN'];
 
 Promise.all([
   fetch('config.json?v=' + Date.now()).then(r => r.json()),
-  fetch('garde-manger.json?v=' + Date.now()).then(r => r.ok ? r.json() : { items: [] }).catch(() => ({ items: [] })),
+  fetch('garde-manger.json?v=' + Date.now())
+    .then(r => r.ok ? r.json() : null)
+    .catch(() => null),
   fetch('recettes.json?v=' + Date.now()).then(r => r.json())
 ]).then(([config, gm, data]) => {
   document.body.className = 'theme-' + (config.theme || 'creme');
-  inventaire = gm;
   toutesRecettes = data.recettes;
+  if (!gm) {
+    // Première utilisation : charger les valeurs par défaut et sauvegarder
+    inventaire = JSON.parse(JSON.stringify(DEFAUT));
+    premierChargement = true;
+    sauvegarder();
+  } else {
+    inventaire = gm;
+  }
   afficherItems();
+  afficherRacheter();
   afficherSelectorRecettes();
 });
 
 // ===== INVENTAIRE =====
 
+const BADGE = ['badge-0','badge-1','badge-2','badge-3'];
+
 function afficherItems() {
   const div = document.getElementById('liste-items');
-  if (inventaire.items.length === 0) {
-    div.innerHTML = '<div class="inventaire-vide">Aucun ingrédient en stock.</div>';
+  const filtre = normaliser(filtreTexte);
+  const items = inventaire.items.filter(item =>
+    !filtre || normaliser(item.nom).includes(filtre)
+  );
+  document.getElementById('count-items').textContent = inventaire.items.length;
+  if (items.length === 0) {
+    div.innerHTML = '<div class="vide" style="padding:12px 0">' +
+      (filtreTexte ? 'Aucun résultat.' : 'Inventaire vide.') + '</div>';
     return;
   }
-  div.innerHTML = inventaire.items.map((item, i) => `
-    <div class="item-row">
+  div.innerHTML = items.map((item, _) => {
+    const idx = inventaire.items.indexOf(item);
+    return `<div class="item-row ${item.qte === 0 ? 'epuise' : ''}">
       <span class="item-nom">${item.nom}</span>
-      <div class="qte-ctrl">
-        <button class="qte-btn" onclick="changerQte(${i}, -1)">−</button>
-        <span class="qte-val">${item.qte}</span>
-        <button class="qte-btn" onclick="changerQte(${i}, +1)">+</button>
+      <div class="stock-ctrl">
+        <button class="stock-btn" onclick="changerQte(${idx},-1)">−</button>
+        <span class="stock-badge ${BADGE[item.qte]}">${LABELS[item.qte]}</span>
+        <button class="stock-btn" onclick="changerQte(${idx},+1)">+</button>
       </div>
-      <button class="item-del" onclick="supprimerItem(${i})" title="Supprimer">✕</button>
+      <button class="item-del" onclick="supprimerItem(${idx})" title="Supprimer">✕</button>
+    </div>`;
+  }).join('');
+}
+
+function afficherRacheter() {
+  const div = document.getElementById('liste-racheter');
+  const count = document.getElementById('count-racheter');
+  const aRacheter = inventaire.items.filter(i => i.qte <= 1)
+    .sort((a, b) => a.qte - b.qte || a.nom.localeCompare(b.nom, 'fr'));
+  count.textContent = aRacheter.length;
+  if (aRacheter.length === 0) {
+    div.innerHTML = '<div class="racheter-vide">Tout est en stock ✓</div>';
+    return;
+  }
+  div.innerHTML = aRacheter.map(item => `
+    <div class="racheter-item ${item.qte === 0 ? 'epuise' : 'peu'}">
+      <span class="racheter-item-nom">${item.nom}</span>
+      <span class="stock-badge ${BADGE[item.qte]}">${LABELS[item.qte]}</span>
     </div>
   `).join('');
 }
 
+function filtrerItems() {
+  filtreTexte = document.getElementById('recherche').value;
+  afficherItems();
+}
+
 function ajouterItem() {
   const input = document.getElementById('nouvel-item');
-  const nom = input.value.trim().toLowerCase();
+  const nom = input.value.trim();
   if (!nom) return;
-  if (inventaire.items.some(i => i.nom === nom)) {
+  const nomN = normaliser(nom);
+  if (inventaire.items.some(i => normaliser(i.nom) === nomN)) {
     afficherMessage('Déjà dans l\'inventaire.', 'err');
     return;
   }
-  inventaire.items.push({ nom, qte: 1 });
+  inventaire.items.push({ nom: nom.charAt(0).toLowerCase() + nom.slice(1), qte: 2 });
   inventaire.items.sort((a, b) => a.nom.localeCompare(b.nom, 'fr'));
   input.value = '';
   afficherItems();
+  afficherRacheter();
   sauvegarder();
 }
 
 function changerQte(idx, delta) {
   const item = inventaire.items[idx];
-  const nouvelleQte = Math.max(0, Math.min(3, item.qte + delta));
-  if (nouvelleQte === 0) {
-    supprimerItem(idx);
-    return;
-  }
-  item.qte = nouvelleQte;
+  item.qte = Math.max(0, Math.min(3, item.qte + delta));
   afficherItems();
+  afficherRacheter();
   sauvegarder();
 }
 
 function supprimerItem(idx) {
   inventaire.items.splice(idx, 1);
   afficherItems();
+  afficherRacheter();
   sauvegarder();
 }
 
+let saveTimer = null;
 function sauvegarder() {
-  fetch('save_garde_manger.php', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(inventaire)
-  })
-  .then(r => r.json())
-  .then(res => {
-    if (!res.ok) afficherMessage('Erreur de sauvegarde.', 'err');
-  })
-  .catch(() => afficherMessage('Erreur de connexion.', 'err'));
+  clearTimeout(saveTimer);
+  saveTimer = setTimeout(() => {
+    fetch('save_garde_manger.php', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(inventaire)
+    })
+    .then(r => r.json())
+    .then(res => {
+      if (!res.ok) afficherMessage('Erreur de sauvegarde : ' + (res.erreur || ''), 'err');
+    })
+    .catch(() => afficherMessage('Erreur de connexion.', 'err'));
+  }, 400);
 }
 
-// ===== LISTE DE COURSES =====
+// ===== COURSES PAR RECETTE =====
 
 function afficherSelectorRecettes() {
   const div = document.getElementById('recettes-selector');
@@ -429,13 +578,14 @@ function toutSelectionner(etat) {
 function normaliser(str) {
   return str.toLowerCase()
     .normalize('NFD').replace(/[̀-ͯ]/g, '')
-    .replace(/[^a-z0-9\s]/g, '')
+    .replace(/[^a-z0-9\s]/g, ' ')
+    .replace(/\s+/g, ' ')
     .trim();
 }
 
 function estEnStock(ingredient) {
   const norm = normaliser(ingredient);
-  return inventaire.items.some(item => norm.includes(normaliser(item.nom)));
+  return inventaire.items.some(item => item.qte > 0 && norm.includes(normaliser(item.nom)));
 }
 
 function genererCourses() {
@@ -444,54 +594,25 @@ function genererCourses() {
     afficherMessage('Sélectionne au moins une recette.', 'err');
     return;
   }
-
   const recettesSel = toutesRecettes.filter(r => cochees.includes(r.id));
-  const div = document.getElementById('liste-courses');
-
-  let enStock = 0;
-  let aAcheter = 0;
-
-  let html = '';
-
-  if (cochees.length > 1) {
-    // Vue par recette
-    html = recettesSel.map(r => {
-      const lignes = r.ingredients
-        .filter(ing => !ing.startsWith('—'))
-        .map(ing => {
-          const stock = estEnStock(ing);
-          if (stock) enStock++; else aAcheter++;
-          return `<div class="courses-ingredient ${stock ? 'en-stock' : 'a-acheter'}">
-            <span class="courses-badge">${stock ? '✓' : '↗'}</span>
-            <span>${ing}</span>
-          </div>`;
-        }).join('');
-      return `<div class="courses-section">
-        <div class="courses-recette-titre">${r.titre}</div>
-        ${lignes}
-      </div>`;
-    }).join('');
-  } else {
-    // Vue simple pour une recette
-    const r = recettesSel[0];
+  let enStock = 0, aAcheter = 0;
+  let html = recettesSel.map(r => {
     const lignes = r.ingredients
       .filter(ing => !ing.startsWith('—'))
       .map(ing => {
         const stock = estEnStock(ing);
-        if (stock) enStock++; else aAcheter++;
+        stock ? enStock++ : aAcheter++;
         return `<div class="courses-ingredient ${stock ? 'en-stock' : 'a-acheter'}">
           <span class="courses-badge">${stock ? '✓' : '↗'}</span>
           <span>${ing}</span>
         </div>`;
       }).join('');
-    html = `<div class="courses-section">${lignes}</div>`;
-  }
-
-  html += `<div class="courses-resume">
-    <strong>${aAcheter}</strong> à acheter · <span>${enStock} déjà en stock</span>
-  </div>`;
-
-  div.innerHTML = html;
+    return cochees.length > 1
+      ? `<div class="courses-section"><div class="courses-recette-titre">${r.titre}</div>${lignes}</div>`
+      : `<div class="courses-section">${lignes}</div>`;
+  }).join('');
+  html += `<div class="courses-resume"><strong>${aAcheter}</strong> à acheter · <span>${enStock} déjà en stock</span></div>`;
+  document.getElementById('liste-courses').innerHTML = html;
 }
 
 function afficherMessage(txt, type) {
