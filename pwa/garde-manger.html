@@ -909,13 +909,13 @@ function genererCourses() {
     .map(ing => `<div class="courses-ingredient a-acheter"><span class="courses-badge">↗</span><span>${ing}</span></div>`)
     .join('');
 
-  const resume = `<div class="courses-resume" style="margin-top:20px">
+  const resume = `<div class="courses-resume" style="margin-bottom:20px">
     <div style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--text3);margin-bottom:10px;border-bottom:1px solid var(--border2);padding-bottom:6px">
       À acheter — <strong style="color:var(--accent)">${totalAcheter}</strong> · en stock ${totalStock}
     </div>
     ${listeAcheter || '<div class="racheter-vide">Tout est en stock ✓</div>'}
   </div>`;
-  document.getElementById('liste-courses').innerHTML = html + resume;
+  document.getElementById('liste-courses').innerHTML = resume + html;
 }
 
 function toggleRecetteCourses(id, header) {
