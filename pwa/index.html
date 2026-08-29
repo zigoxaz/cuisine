@@ -13,60 +13,9 @@
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
 
-    /* ===== THÈMES ===== */
+    /* ===== THÈME ===== */
 
-    body.theme-sombre {
-      --bg: #1a1a1a;
-      --bg2: #222;
-      --bg3: #2a2a2a;
-      --text: #f0e6d3;
-      --text2: #ddd;
-      --text3: #aaa;
-      --accent: #c8a96e;
-      --accent2: #1a1a1a;
-      --border: #333;
-      --border2: #222;
-      --nav-bg: rgba(20,20,20,0.95);
-      --btn-bg: transparent;
-      --placeholder-bg: #2a2a2a;
-      --placeholder-text: #555;
-    }
-
-    body.theme-creme {
-      --bg: #faf6f0;
-      --bg2: #f0ebe0;
-      --bg3: #e8e0d0;
-      --text: #2c1f0e;
-      --text2: #4a3728;
-      --text3: #8a7060;
-      --accent: #b5541c;
-      --accent2: #fff;
-      --border: #d9cfc0;
-      --border2: #e8e0d0;
-      --nav-bg: rgba(250,246,240,0.97);
-      --btn-bg: transparent;
-      --placeholder-bg: #e8e0d0;
-      --placeholder-text: #b0a090;
-    }
-
-    body.theme-mediterraneen {
-      --bg: #fdf8f2;
-      --bg2: #fff4e6;
-      --bg3: #ffe8cc;
-      --text: #2d1b00;
-      --text2: #5a3a1a;
-      --text3: #9a7050;
-      --accent: #e07020;
-      --accent2: #fff;
-      --border: #f0d0a0;
-      --border2: #ffe0b0;
-      --nav-bg: rgba(253,248,242,0.97);
-      --btn-bg: transparent;
-      --placeholder-bg: #ffe8cc;
-      --placeholder-text: #c0a080;
-    }
-
-    body.theme-naturel {
+    body {
       --bg: #f4f7f2;
       --bg2: #e8f0e4;
       --bg3: #d8e8d0;
@@ -90,7 +39,6 @@
       background: var(--bg);
       color: var(--text);
       min-height: 100vh;
-      transition: background 0.3s, color 0.3s;
     }
 
     /* ===== NAV CLASSIQUE ===== */
@@ -770,7 +718,7 @@
     }
   </style>
 </head>
-<body class="theme-creme">
+<body class="theme-naturel">
 
 <!-- NAV CLASSIQUE -->
 <nav id="nav-classique" class="nav-classique" style="display:none">
@@ -779,6 +727,10 @@
   <a href="#" id="btn-sommaire-cl" onclick="return afficherVue('sommaire')">Sommaire</a>
   <span class="nav-sep">|</span>
   <a href="#" id="btn-index-cl" onclick="return afficherVue('index')">Index</a>
+  <span class="nav-sep">|</span>
+  <a href="garde-manger.html">Garde-manger</a>
+  <span class="nav-sep">|</span>
+  <a href="#" onclick="ouvrirAdmin();return false;">Admin</a>
   <span class="nav-sep">|</span>
   <div id="filtres-cl"></div>
 </nav>
@@ -798,6 +750,8 @@
       <button id="btn-recettes-mi" class="active" onclick="afficherVue('recettes');toggleMenu(true)">Recettes</button>
       <button id="btn-sommaire-mi" onclick="afficherVue('sommaire');toggleMenu(true)">Sommaire</button>
       <button id="btn-index-mi" onclick="afficherVue('index');toggleMenu(true)">Index</button>
+      <button onclick="window.location.href='garde-manger.html'">Garde-manger</button>
+      <button onclick="ouvrirAdmin();toggleMenu(true)">Admin</button>
     </div>
     <div id="filtres-mi"></div>
   </div>
@@ -816,6 +770,12 @@
     <button class="nav-ep-icone" id="btn-recettes-ep" onclick="return afficherVue('recettes')" title="Recettes" style="display:none">
       ← <span class="nav-ep-icone-label">Retour</span>
     </button>
+    <a href="garde-manger.html" style="text-decoration:none"><button class="nav-ep-icone" title="Garde-manger">
+      🧺 <span class="nav-ep-icone-label">Courses</span>
+    </button></a>
+    <button class="nav-ep-icone" onclick="ouvrirAdmin()" title="Admin">
+      ⚙ <span class="nav-ep-icone-label">Admin</span>
+    </button>
   </div>
   <div class="nav-ep-filtres-wrap">
     <div id="filtres-ep"></div>
@@ -828,6 +788,8 @@
     <button class="nav-hier-lien active" id="btn-recettes-hi" onclick="return afficherVue('recettes')">Recettes</button>
     <button class="nav-hier-lien" id="btn-sommaire-hi" onclick="return afficherVue('sommaire')">Sommaire</button>
     <button class="nav-hier-lien" id="btn-index-hi" onclick="return afficherVue('index')">Index</button>
+    <button class="nav-hier-lien" onclick="window.location.href='garde-manger.html'">Garde-manger</button>
+    <button class="nav-hier-lien" onclick="ouvrirAdmin()">Admin</button>
   </div>
   <div class="nav-hier-filtres">
     <div id="filtres-hi"></div>
@@ -838,8 +800,6 @@
 <div id="vue-sommaire"></div>
 <div id="vue-index"></div>
 
-<a href="garde-manger.html"><button class="btn-admin" style="right:90px">🧺 Courses</button></a>
-<button class="btn-admin" onclick="ouvrirAdmin()">Admin</button>
 
 <div class="modale-overlay" id="modale-admin">
   <div class="modale">
@@ -864,7 +824,6 @@ Promise.all([
   fetch('config.json?v=' + Date.now()).then(r => r.json()),
   fetch('recettes.json?v=' + Date.now()).then(r => r.json())
 ]).then(([config, data]) => {
-  appliquerTheme(config.theme || 'creme');
   navActif = config.nav || 'classique';
   toutesRecettes = data.recettes;
   categories = data.categories;
@@ -874,10 +833,6 @@ Promise.all([
   construireSommaire();
   construireIndex();
 });
-
-function appliquerTheme(theme) {
-  document.body.className = 'theme-' + theme;
-}
 
 function afficherNav(style) {
   ['classique','minimaliste','epure','hierarchie'].forEach(s => {

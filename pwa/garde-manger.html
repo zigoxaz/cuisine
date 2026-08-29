@@ -7,25 +7,7 @@
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
 
-    body.theme-sombre {
-      --bg: #1a1a1a; --bg2: #222; --bg3: #2a2a2a;
-      --text: #f0e6d3; --text2: #ddd; --text3: #aaa;
-      --accent: #c8a96e; --accent2: #1a1a1a;
-      --border: #333; --border2: #222;
-    }
-    body.theme-creme {
-      --bg: #faf6f0; --bg2: #f0ebe0; --bg3: #e8e0d0;
-      --text: #2c1f0e; --text2: #4a3728; --text3: #8a7060;
-      --accent: #b5541c; --accent2: #fff;
-      --border: #d9cfc0; --border2: #e8e0d0;
-    }
-    body.theme-mediterraneen {
-      --bg: #fdf8f2; --bg2: #fff4e6; --bg3: #ffe8cc;
-      --text: #2d1b00; --text2: #5a3a1a; --text3: #9a7050;
-      --accent: #e07020; --accent2: #fff;
-      --border: #f0d0a0; --border2: #ffe0b0;
-    }
-    body.theme-naturel {
+    body {
       --bg: #f4f7f2; --bg2: #e8f0e4; --bg3: #d8e8d0;
       --text: #1a2e14; --text2: #3a5030; --text3: #7a9870;
       --accent: #4a7a38; --accent2: #fff;
@@ -42,6 +24,54 @@
       margin: 0 auto;
     }
 
+    /* ===== MOT DE PASSE ===== */
+    .auth-overlay {
+      position: fixed;
+      inset: 0;
+      background: var(--bg);
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+    .auth-box {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      padding: 32px 28px;
+      width: 100%;
+      max-width: 320px;
+    }
+    .auth-titre {
+      font-size: 13px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 20px;
+    }
+    .auth-box form { display: flex; flex-direction: column; gap: 12px; }
+    .auth-box input[type="password"] {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      color: var(--text);
+      padding: 10px 12px;
+      font-size: 15px;
+      font-family: inherit;
+      width: 100%;
+    }
+    .auth-box input:focus { outline: none; border-color: var(--accent); }
+    .auth-remember {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+      color: var(--text3);
+      cursor: pointer;
+    }
+    .auth-remember input { width: 15px; height: 15px; accent-color: var(--accent); cursor: pointer; }
+    .auth-erreur { font-size: 12px; color: #c0392b; display: none; }
+
+    /* ===== ENTÊTE ===== */
     a.retour {
       display: inline-block;
       font-size: 11px;
@@ -50,7 +80,6 @@
       text-decoration: none;
       text-transform: uppercase;
       margin-bottom: 10px;
-      margin-top: 4px;
     }
     a.retour:hover { color: var(--accent); }
 
@@ -59,42 +88,46 @@
       letter-spacing: 2px;
       text-transform: uppercase;
       color: var(--accent);
-      margin-bottom: 20px;
+      margin-bottom: 16px;
       padding-bottom: 12px;
       border-bottom: 1px solid var(--border);
     }
 
     #message {
       padding: 10px 14px;
-      margin-bottom: 16px;
+      margin-bottom: 14px;
       display: none;
       font-size: 13px;
-      border-radius: 2px;
     }
     #message.ok { background: #e8f5e0; border: 1px solid #4a7a38; color: #4a7a38; }
     #message.err { background: #fde8e8; border: 1px solid #c0392b; color: #c0392b; }
 
-    .section { margin-bottom: 28px; }
-
-    .section-titre {
-      font-size: 11px;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      color: var(--text3);
-      margin-bottom: 12px;
-      padding-bottom: 6px;
-      border-bottom: 1px solid var(--border2);
+    /* ===== ONGLETS ===== */
+    .tabs {
       display: flex;
-      align-items: center;
-      justify-content: space-between;
+      gap: 0;
+      margin-bottom: 20px;
+      border-bottom: 2px solid var(--border);
     }
+    .tab {
+      padding: 10px 20px;
+      font-size: 12px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      cursor: pointer;
+      color: var(--text3);
+      border: none;
+      background: transparent;
+      font-family: inherit;
+      border-bottom: 2px solid transparent;
+      margin-bottom: -2px;
+      transition: all 0.15s;
+    }
+    .tab:hover { color: var(--accent); background: transparent; }
+    .tab.actif { color: var(--accent); border-bottom-color: var(--accent); }
 
-    .section-count {
-      font-size: 10px;
-      background: var(--bg3);
-      padding: 2px 7px;
-      border-radius: 10px;
-    }
+    .vue { display: none; }
+    .vue.active { display: block; }
 
     /* ===== BOUTONS ===== */
     button {
@@ -113,7 +146,7 @@
     button:hover { background: var(--accent); color: var(--accent2); }
     button.primary { background: var(--accent); color: var(--accent2); }
     button.sm {
-      padding: 6px 10px;
+      padding: 5px 10px;
       font-size: 11px;
       border-color: var(--border);
       color: var(--text3);
@@ -121,12 +154,23 @@
     }
     button.sm:hover { border-color: var(--accent); color: var(--accent); background: transparent; }
 
-    /* ===== AJOUTER ===== */
-    .ajouter-row {
+    /* ===== À RACHETER ===== */
+    .racheter-liste { display: flex; flex-direction: column; gap: 4px; margin-bottom: 16px; }
+    .racheter-item {
       display: flex;
-      gap: 8px;
-      margin-bottom: 10px;
+      align-items: center;
+      justify-content: space-between;
+      padding: 8px 12px;
+      background: var(--bg2);
+      border-left: 3px solid transparent;
     }
+    .racheter-item.epuise { border-left-color: #c0392b; }
+    .racheter-item.peu { border-left-color: #e07020; }
+    .racheter-item-nom { font-size: 14px; flex: 1; }
+    .racheter-vide { font-size: 13px; color: var(--text3); font-style: italic; padding: 8px 0; }
+
+    /* ===== INVENTAIRE ===== */
+    .ajouter-row { display: flex; gap: 8px; margin-bottom: 10px; }
     .ajouter-row input {
       flex: 1;
       background: var(--bg2);
@@ -139,7 +183,6 @@
     .ajouter-row input:focus { outline: none; border-color: var(--accent); }
     .ajouter-row input::placeholder { color: var(--text3); font-size: 13px; }
 
-    /* ===== RECHERCHE ===== */
     #recherche {
       width: 100%;
       background: var(--bg2);
@@ -148,38 +191,56 @@
       padding: 9px 12px;
       font-size: 14px;
       font-family: inherit;
-      margin-bottom: 10px;
+      margin-bottom: 14px;
     }
     #recherche:focus { outline: none; border-color: var(--accent); }
     #recherche::placeholder { color: var(--text3); }
 
-    /* ===== LISTE ITEMS ===== */
-    .item-liste { display: flex; flex-direction: column; }
+    /* Catégories */
+    .categorie-bloc { margin-bottom: 6px; }
 
+    .categorie-titre {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 8px 10px;
+      background: var(--bg3);
+      cursor: pointer;
+      user-select: none;
+      border-left: 3px solid var(--accent);
+    }
+    .categorie-titre:hover { background: var(--bg2); }
+    .categorie-nom {
+      font-size: 11px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+    .categorie-info {
+      font-size: 11px;
+      color: var(--text3);
+      display: flex;
+      gap: 8px;
+      align-items: center;
+    }
+    .cat-alerte { color: #c0392b; font-weight: 600; }
+    .categorie-toggle { font-size: 12px; color: var(--text3); }
+    .categorie-items { display: flex; flex-direction: column; }
+    .categorie-items.replie { display: none; }
+
+    /* Items */
     .item-row {
       display: flex;
       align-items: center;
       gap: 8px;
-      padding: 8px 10px;
+      padding: 7px 10px;
       border-bottom: 1px solid var(--border2);
-      transition: background 0.1s;
     }
     .item-row:hover { background: var(--bg2); }
-
-    .item-nom {
-      flex: 1;
-      font-size: 14px;
-      color: var(--text);
-    }
+    .item-nom { flex: 1; font-size: 14px; color: var(--text); }
     .item-row.epuise .item-nom { color: var(--text3); }
 
-    /* Niveau de stock */
-    .stock-ctrl {
-      display: flex;
-      align-items: center;
-      gap: 4px;
-    }
-
+    .stock-ctrl { display: flex; align-items: center; gap: 4px; }
     .stock-btn {
       width: 26px;
       height: 26px;
@@ -198,12 +259,12 @@
       font-size: 9px;
       letter-spacing: 1px;
       text-transform: uppercase;
-      padding: 2px 6px;
-      border-radius: 2px;
-      min-width: 54px;
+      padding: 2px 5px;
+      min-width: 50px;
       text-align: center;
       font-family: sans-serif;
       font-weight: 600;
+      border-radius: 2px;
     }
     .badge-0 { background: #fde8e8; color: #c0392b; border: 1px solid #c0392b; }
     .badge-1 { background: #fff3e0; color: #e07020; border: 1px solid #e07020; }
@@ -221,45 +282,16 @@
     }
     .item-del:hover { border-color: #c0392b; color: #c0392b; background: transparent; }
 
-    /* ===== À RACHETER ===== */
-    .racheter-liste {
-      display: flex;
-      flex-direction: column;
-      gap: 4px;
-    }
-
-    .racheter-item {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 8px 12px;
-      background: var(--bg2);
-      border-left: 3px solid transparent;
-    }
-    .racheter-item.epuise { border-left-color: #c0392b; }
-    .racheter-item.peu { border-left-color: #e07020; }
-
-    .racheter-item-nom { font-size: 14px; flex: 1; }
-    .racheter-item.epuise .racheter-item-nom { color: var(--text2); }
-
-    .racheter-vide {
-      font-size: 13px;
-      color: var(--text3);
-      font-style: italic;
-      padding: 8px 0;
-    }
-
-    /* ===== SELECTOR RECETTES ===== */
+    /* ===== COURSES ===== */
     .recettes-selector {
       display: flex;
       flex-direction: column;
-      max-height: 280px;
+      max-height: 260px;
       overflow-y: auto;
       border: 1px solid var(--border2);
       background: var(--bg2);
       margin-bottom: 12px;
     }
-
     .recette-check {
       display: flex;
       align-items: center;
@@ -270,17 +302,14 @@
     }
     .recette-check:last-child { border-bottom: none; }
     .recette-check:hover { background: var(--bg3); }
-    .recette-check input[type="checkbox"] { accent-color: var(--accent); width: 15px; height: 15px; cursor: pointer; flex-shrink: 0; }
-    .recette-check-titre { font-size: 14px; color: var(--text); flex: 1; }
+    .recette-check input { accent-color: var(--accent); width: 15px; height: 15px; cursor: pointer; flex-shrink: 0; }
+    .recette-check-titre { font-size: 14px; flex: 1; }
     .recette-check-cat { font-size: 10px; color: var(--accent); letter-spacing: 1px; text-transform: uppercase; }
 
     .selector-actions { display: flex; gap: 8px; margin-bottom: 10px; }
 
-    /* ===== RÉSULTAT COURSES ===== */
     #liste-courses { margin-top: 16px; }
-
     .courses-section { margin-bottom: 18px; }
-
     .courses-recette-titre {
       font-size: 11px;
       letter-spacing: 2px;
@@ -288,7 +317,6 @@
       color: var(--accent);
       margin-bottom: 8px;
     }
-
     .courses-ingredient {
       display: flex;
       align-items: center;
@@ -298,7 +326,6 @@
       font-size: 14px;
     }
     .courses-ingredient.en-stock { color: var(--text3); text-decoration: line-through; }
-
     .courses-badge {
       font-size: 9px;
       padding: 2px 5px;
@@ -310,7 +337,6 @@
     }
     .en-stock .courses-badge { color: var(--text3); }
     .a-acheter .courses-badge { color: var(--accent); border-color: var(--accent); }
-
     .courses-resume {
       margin-top: 12px;
       padding: 10px 12px;
@@ -321,55 +347,132 @@
     }
     .courses-resume strong { color: var(--accent); }
 
-    .vide { font-size: 13px; color: var(--text3); font-style: italic; }
+    .section-titre {
+      font-size: 11px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--text3);
+      margin-bottom: 12px;
+      padding-bottom: 6px;
+      border-bottom: 1px solid var(--border2);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .section-count {
+      font-size: 10px;
+      background: var(--bg3);
+      padding: 2px 7px;
+      border-radius: 10px;
+    }
+    .vide { font-size: 13px; color: var(--text3); font-style: italic; padding: 8px 0; }
   </style>
 </head>
-<body class="theme-creme">
+<body class="theme-naturel">
+
+<!-- OVERLAY MOT DE PASSE -->
+<div class="auth-overlay" id="auth-overlay">
+  <div class="auth-box">
+    <div class="auth-titre">Garde-manger</div>
+    <div class="auth-erreur" id="auth-erreur">Mot de passe incorrect.</div>
+    <form id="auth-form" onsubmit="validerAuth(event)" autocomplete="on">
+      <input type="password" id="auth-mdp" name="password"
+             autocomplete="current-password" placeholder="Mot de passe" required>
+      <label class="auth-remember">
+        <input type="checkbox" id="auth-souvenir" checked>
+        Se souvenir de moi
+      </label>
+      <button type="submit" class="primary">Entrer</button>
+    </form>
+  </div>
+</div>
+
+<!-- CONTENU PRINCIPAL (masqué jusqu'à auth) -->
+<div id="contenu" style="display:none">
 
 <a class="retour" href="index.html">← Retour aux recettes</a>
 <h1>Garde-manger</h1>
 <div id="message"></div>
 
-<!-- À RACHETER -->
-<div class="section" id="section-racheter">
-  <div class="section-titre">
-    À racheter
-    <span class="section-count" id="count-racheter">0</span>
-  </div>
-  <div class="racheter-liste" id="liste-racheter">
-    <div class="racheter-vide">Tout est en stock.</div>
-  </div>
+<!-- ONGLETS -->
+<div class="tabs">
+  <button class="tab actif" onclick="changerOnglet('inventaire')">Inventaire</button>
+  <button class="tab" onclick="changerOnglet('courses')">Courses</button>
 </div>
 
-<!-- INVENTAIRE -->
-<div class="section">
-  <div class="section-titre">
-    Inventaire
-    <span class="section-count" id="count-items">0</span>
+<!-- VUE INVENTAIRE -->
+<div class="vue active" id="vue-inventaire">
+
+  <!-- À RACHETER -->
+  <div style="margin-bottom:20px">
+    <div class="section-titre">
+      À racheter
+      <span class="section-count" id="count-racheter">0</span>
+    </div>
+    <div class="racheter-liste" id="liste-racheter">
+      <div class="racheter-vide">Tout est en stock ✓</div>
+    </div>
   </div>
+
+  <!-- AJOUTER + RECHERCHE -->
   <div class="ajouter-row">
     <input type="text" id="nouvel-item" placeholder="Ajouter un ingrédient…" onkeydown="if(event.key==='Enter')ajouterItem()">
     <button onclick="ajouterItem()">Ajouter</button>
   </div>
-  <input type="search" id="recherche" placeholder="Rechercher dans l'inventaire…" oninput="filtrerItems()">
-  <div class="item-liste" id="liste-items"></div>
+  <input type="search" id="recherche" placeholder="Rechercher…" oninput="afficherInventaire()">
+
+  <!-- LISTE PAR CATÉGORIES -->
+  <div id="liste-inventaire"></div>
 </div>
 
-<!-- LISTE DE COURSES PAR RECETTE -->
-<div class="section">
-  <div class="section-titre">Courses par recette</div>
+<!-- VUE COURSES -->
+<div class="vue" id="vue-courses">
+  <div style="margin-bottom:16px">
+    <div class="section-titre">À racheter (sans recette)</div>
+    <div class="racheter-liste" id="liste-racheter-2">
+      <div class="racheter-vide">Tout est en stock ✓</div>
+    </div>
+  </div>
+
+  <div class="section-titre">Générer par recette</div>
   <div class="selector-actions">
     <button class="sm" onclick="toutSelectionner(true)">Tout sélectionner</button>
     <button class="sm" onclick="toutSelectionner(false)">Tout déselectionner</button>
   </div>
-  <div class="recettes-selector" id="recettes-selector">
-    <div style="padding:12px;color:var(--text3);font-size:13px">Chargement…</div>
-  </div>
+  <div class="recettes-selector" id="recettes-selector"></div>
   <button class="primary" onclick="genererCourses()">Générer la liste</button>
   <div id="liste-courses"></div>
 </div>
 
+</div><!-- fin #contenu -->
+
 <script>
+// ===== AUTH =====
+const MDP = 'clgo';
+
+function validerAuth(e) {
+  e.preventDefault();
+  const val = document.getElementById('auth-mdp').value;
+  if (val !== MDP) {
+    document.getElementById('auth-erreur').style.display = 'block';
+    return;
+  }
+  if (document.getElementById('auth-souvenir').checked) {
+    localStorage.setItem('gm_auth', '1');
+  }
+  document.getElementById('auth-overlay').style.display = 'none';
+  document.getElementById('contenu').style.display = 'block';
+  chargerDonnees();
+}
+
+// Vérifier si déjà authentifié
+if (localStorage.getItem('gm_auth') === '1') {
+  document.getElementById('auth-overlay').style.display = 'none';
+  document.getElementById('contenu').style.display = 'block';
+  chargerDonnees();
+}
+
+// ===== DONNÉES =====
 const DEFAUT = { items: [
   {nom:"4 épices",qte:2},{nom:"5 épices",qte:2},{nom:"5 parfums",qte:2},
   {nom:"ail frit",qte:2},{nom:"ail semoule",qte:2},
@@ -411,7 +514,8 @@ const DEFAUT = { items: [
   {nom:"piment frais thaï vert",qte:2},{nom:"pois chiches",qte:2},{nom:"polenta",qte:2},
   {nom:"poivre blanc",qte:2},{nom:"poivre gris",qte:2},{nom:"poivre noir",qte:2},
   {nom:"poudre d'amande",qte:2},{nom:"purée de piment",qte:2},{nom:"purée tomate",qte:2},
-  {nom:"ras el hanout",qte:2},{nom:"riz",qte:2},{nom:"riz noir",qte:2},{nom:"riz rond",qte:2},
+  {nom:"quinoa",qte:2},{nom:"ras el hanout",qte:2},
+  {nom:"riz",qte:2},{nom:"riz noir",qte:2},{nom:"riz rond",qte:2},
   {nom:"romarin",qte:2},{nom:"sauce à la grenade",qte:2},{nom:"sauce hoisin",qte:2},
   {nom:"sauce huître",qte:2},{nom:"sauce sriracha",qte:2},{nom:"sauce worcestershire",qte:2},
   {nom:"sauge",qte:2},{nom:"sel au céleri",qte:2},{nom:"semoule",qte:2},
@@ -424,7 +528,7 @@ const DEFAUT = { items: [
   {nom:"vinaigre à la mangue",qte:2},{nom:"vinaigre balsamique",qte:2},
   {nom:"vinaigre de cidre",qte:2},{nom:"vinaigre de riz",qte:2},
   {nom:"vinaigre de xérès",qte:2},{nom:"wasabi pâte",qte:2},{nom:"wasabi poudre",qte:2},
-  {nom:"zaatar",qte:2},{nom:"quinoa",qte:2},
+  {nom:"zaatar",qte:2},
   {nom:"Angostura",qte:2},{nom:"cognac",qte:2},{nom:"crème de café",qte:2},
   {nom:"crème de pêche",qte:2},{nom:"gin",qte:2},{nom:"limoncello",qte:2},
   {nom:"menthe pastille",qte:2},{nom:"orgeat",qte:2},{nom:"préparation spritz",qte:2},
@@ -432,116 +536,194 @@ const DEFAUT = { items: [
   {nom:"tequila",qte:2},{nom:"triple sec",qte:2},{nom:"vodka",qte:2},{nom:"whisky",qte:2}
 ]};
 
-let inventaire = { items: [] };
-let toutesRecettes = [];
-let filtreTexte = '';
-let premierChargement = false;
+// Catégories (mapping nom → catégorie)
+const CAT = {
+  "Épices & herbes": ["4 épices","5 épices","5 parfums","badiane","baies de genièvre",
+    "cannelle en bâton","cannelle moulue","cardamome verte","carvi","clous de girofle",
+    "colombo","coriandre moulue","cumin","cumin en poudre","curcuma","curry","curry japonais",
+    "fenugrec","garam masala","gingembre","herbes de Provence","laurier","massalé","merkén",
+    "muscade","nigelle","origan","paprika doux","paprika piquant","peri-peri",
+    "piment d'Espelette","piment de Cayenne","piment frais thaï vert","poivre blanc",
+    "poivre gris","poivre noir","ras el hanout","romarin","sauge","sel au céleri","thym",
+    "vanille en poudre","zaatar"],
+  "Huiles & vinaigres": ["crème de vinaigre balsamique","huile d'olive","huile d'olive et citron",
+    "huile de noix","huile de pépins de raisin","huile de sésame","huile de tournesol",
+    "vinaigre à la framboise","vinaigre à la mangue","vinaigre balsamique","vinaigre de cidre",
+    "vinaigre de riz","vinaigre de xérès"],
+  "Féculents & céréales": ["boulgour","chapelure","chapelure panko","flocons d'avoine",
+    "galettes de riz","lentilles corail","lentilles vertes","maïzena","nouilles de riz",
+    "pâtes","pâtes lasagne","pois chiches","polenta","quinoa","riz","riz noir","riz rond",
+    "semoule","somen","vermicelle de haricot mungo","vermicelle de riz"],
+  "Conserves & bocaux": ["concentré de tomate","conserve asperges","conserve haricots blancs",
+    "conserve haricots rouges","conserve lentilles","crème fraîche liquide entière",
+    "lait de coco","maïs en conserve","olives noires","olives vertes","purée de piment",
+    "purée tomate","tomates en bocaux"],
+  "Pâtisserie": ["amandes effilées","arôme de rose","arôme vanille","cassonade",
+    "chocolat en tablette","cranberries","feuilles de gélatine","gousse de vanille",
+    "levure boulangère","levure chimique","miel","noix de coco en poudre","pépites de chocolat",
+    "poudre d'amande","sirop d'érable","spiruline","sucre en poudre","sucre glace","sucre vanillé"],
+  "Sauces & condiments": ["ail frit","ail semoule","mirin","mirin saké doux","orgeat",
+    "sauce à la grenade","sauce hoisin","sauce huître","sauce sriracha","sauce worcestershire",
+    "sirop de cassis","sirop de fleur de sureau","wasabi pâte","wasabi poudre"],
+  "Graines & oléagineux": ["cerneaux de noix","graines de fenouil","graines de lin brun",
+    "graines de moutarde","graines de pavot","graines de sésame","graines de sésame noir",
+    "noisettes"],
+  "Bouillons": ["court bouillon","cube bouillon bœuf","cube bouillon légume",
+    "cube bouillon poulet","cube or","fumet de poisson"],
+  "Alcools & spiritueux": ["Angostura","cognac","crème de café","crème de pêche","gin",
+    "limoncello","menthe pastille","préparation spritz","Ricard","rhum","Suze",
+    "tequila","triple sec","vodka","whisky"]
+};
 
 const LABELS = ['ÉPUISÉ','PEU','OK','PLEIN'];
+const BADGE  = ['badge-0','badge-1','badge-2','badge-3'];
 
-Promise.all([
-  fetch('config.json?v=' + Date.now()).then(r => r.json()),
-  fetch('garde-manger.json?v=' + Date.now())
-    .then(r => r.ok ? r.json() : null)
-    .catch(() => null),
-  fetch('recettes.json?v=' + Date.now()).then(r => r.json())
-]).then(([config, gm, data]) => {
-  document.body.className = 'theme-' + (config.theme || 'creme');
-  toutesRecettes = data.recettes;
-  if (!gm) {
-    // Première utilisation : charger les valeurs par défaut et sauvegarder
-    inventaire = JSON.parse(JSON.stringify(DEFAUT));
-    premierChargement = true;
-    sauvegarder();
-  } else {
-    inventaire = gm;
-  }
-  afficherItems();
-  afficherRacheter();
-  afficherSelectorRecettes();
-});
+let inventaire = { items: [] };
+let toutesRecettes = [];
+
+function chargerDonnees() {
+  Promise.all([
+    fetch('config.json?v=' + Date.now()).then(r => r.json()),
+    fetch('garde-manger.json?v=' + Date.now())
+      .then(r => r.ok ? r.json() : null).catch(() => null),
+    fetch('recettes.json?v=' + Date.now()).then(r => r.json())
+  ]).then(([config, gm, data]) => {
+    toutesRecettes = data.recettes;
+    if (!gm) {
+      inventaire = JSON.parse(JSON.stringify(DEFAUT));
+      sauvegarder();
+    } else {
+      inventaire = gm;
+    }
+    afficherInventaire();
+    afficherRacheter();
+    afficherSelectorRecettes();
+  });
+}
+
+// ===== ONGLETS =====
+function changerOnglet(id) {
+  document.querySelectorAll('.vue').forEach(v => v.classList.remove('active'));
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('actif'));
+  document.getElementById('vue-' + id).classList.add('active');
+  event.target.classList.add('actif');
+}
 
 // ===== INVENTAIRE =====
 
-const BADGE = ['badge-0','badge-1','badge-2','badge-3'];
+function getCat(nom) {
+  for (const [cat, noms] of Object.entries(CAT)) {
+    if (noms.some(n => normaliser(n) === normaliser(nom))) return cat;
+  }
+  return 'Autre';
+}
 
-function afficherItems() {
-  const div = document.getElementById('liste-items');
-  const filtre = normaliser(filtreTexte);
-  const items = inventaire.items.filter(item =>
-    !filtre || normaliser(item.nom).includes(filtre)
-  );
-  document.getElementById('count-items').textContent = inventaire.items.length;
+function afficherInventaire() {
+  const div = document.getElementById('liste-inventaire');
+  const filtre = normaliser(document.getElementById('recherche')?.value || '');
+  const items = inventaire.items.filter(item => !filtre || normaliser(item.nom).includes(filtre));
+
   if (items.length === 0) {
-    div.innerHTML = '<div class="vide" style="padding:12px 0">' +
-      (filtreTexte ? 'Aucun résultat.' : 'Inventaire vide.') + '</div>';
+    div.innerHTML = '<div class="vide" style="padding:12px 0">Aucun résultat.</div>';
     return;
   }
-  div.innerHTML = items.map((item, _) => {
-    const idx = inventaire.items.indexOf(item);
-    return `<div class="item-row ${item.qte === 0 ? 'epuise' : ''}">
-      <span class="item-nom">${item.nom}</span>
-      <div class="stock-ctrl">
-        <button class="stock-btn" onclick="changerQte(${idx},-1)">−</button>
-        <span class="stock-badge ${BADGE[item.qte]}">${LABELS[item.qte]}</span>
-        <button class="stock-btn" onclick="changerQte(${idx},+1)">+</button>
+
+  // Grouper par catégorie
+  const groupes = {};
+  items.forEach(item => {
+    const cat = getCat(item.nom);
+    if (!groupes[cat]) groupes[cat] = [];
+    groupes[cat].push(item);
+  });
+
+  // Ordre des catégories
+  const ordre = Object.keys(CAT).concat(['Autre']);
+  const cats = ordre.filter(c => groupes[c]);
+
+  div.innerHTML = cats.map(cat => {
+    const items = groupes[cat];
+    const alertes = items.filter(i => i.qte <= 1).length;
+    const replie = !filtre && localStorage.getItem('cat_' + cat) === '1';
+    return `<div class="categorie-bloc">
+      <div class="categorie-titre" onclick="toggleCat('${cat.replace(/'/g,"\\'")}')">
+        <span class="categorie-nom">${cat}</span>
+        <span class="categorie-info">
+          ${alertes ? `<span class="cat-alerte">⚠ ${alertes}</span>` : ''}
+          <span>${items.length} articles</span>
+          <span class="categorie-toggle">${replie ? '▸' : '▾'}</span>
+        </span>
       </div>
-      <button class="item-del" onclick="supprimerItem(${idx})" title="Supprimer">✕</button>
+      <div class="categorie-items ${replie ? 'replie' : ''}">
+        ${items.map(item => {
+          const idx = inventaire.items.indexOf(item);
+          return `<div class="item-row ${item.qte===0?'epuise':''}">
+            <span class="item-nom">${item.nom}</span>
+            <div class="stock-ctrl">
+              <button class="stock-btn" onclick="changerQte(${idx},-1)">−</button>
+              <span class="stock-badge ${BADGE[item.qte]}">${LABELS[item.qte]}</span>
+              <button class="stock-btn" onclick="changerQte(${idx},+1)">+</button>
+            </div>
+            <button class="item-del" onclick="supprimerItem(${idx})" title="Supprimer">✕</button>
+          </div>`;
+        }).join('')}
+      </div>
     </div>`;
   }).join('');
 }
 
-function afficherRacheter() {
-  const div = document.getElementById('liste-racheter');
-  const count = document.getElementById('count-racheter');
-  const aRacheter = inventaire.items.filter(i => i.qte <= 1)
-    .sort((a, b) => a.qte - b.qte || a.nom.localeCompare(b.nom, 'fr'));
-  count.textContent = aRacheter.length;
-  if (aRacheter.length === 0) {
-    div.innerHTML = '<div class="racheter-vide">Tout est en stock ✓</div>';
-    return;
-  }
-  div.innerHTML = aRacheter.map(item => `
-    <div class="racheter-item ${item.qte === 0 ? 'epuise' : 'peu'}">
-      <span class="racheter-item-nom">${item.nom}</span>
-      <span class="stock-badge ${BADGE[item.qte]}">${LABELS[item.qte]}</span>
-    </div>
-  `).join('');
+function toggleCat(cat) {
+  const key = 'cat_' + cat;
+  const etat = localStorage.getItem(key) === '1' ? '0' : '1';
+  localStorage.setItem(key, etat);
+  afficherInventaire();
 }
 
-function filtrerItems() {
-  filtreTexte = document.getElementById('recherche').value;
-  afficherItems();
+function afficherRacheter() {
+  const aRacheter = inventaire.items
+    .filter(i => i.qte <= 1)
+    .sort((a, b) => a.qte - b.qte || a.nom.localeCompare(b.nom, 'fr'));
+  const count = aRacheter.length;
+
+  document.getElementById('count-racheter').textContent = count;
+
+  const html = count === 0
+    ? '<div class="racheter-vide">Tout est en stock ✓</div>'
+    : aRacheter.map(item => `
+      <div class="racheter-item ${item.qte===0?'epuise':'peu'}">
+        <span class="racheter-item-nom">${item.nom}</span>
+        <span class="stock-badge ${BADGE[item.qte]}">${LABELS[item.qte]}</span>
+      </div>`).join('');
+
+  document.getElementById('liste-racheter').innerHTML = html;
+  document.getElementById('liste-racheter-2').innerHTML = html;
 }
 
 function ajouterItem() {
   const input = document.getElementById('nouvel-item');
   const nom = input.value.trim();
   if (!nom) return;
-  const nomN = normaliser(nom);
-  if (inventaire.items.some(i => normaliser(i.nom) === nomN)) {
+  if (inventaire.items.some(i => normaliser(i.nom) === normaliser(nom))) {
     afficherMessage('Déjà dans l\'inventaire.', 'err');
     return;
   }
   inventaire.items.push({ nom: nom.charAt(0).toLowerCase() + nom.slice(1), qte: 2 });
   inventaire.items.sort((a, b) => a.nom.localeCompare(b.nom, 'fr'));
   input.value = '';
-  afficherItems();
+  afficherInventaire();
   afficherRacheter();
   sauvegarder();
 }
 
 function changerQte(idx, delta) {
-  const item = inventaire.items[idx];
-  item.qte = Math.max(0, Math.min(3, item.qte + delta));
-  afficherItems();
+  inventaire.items[idx].qte = Math.max(0, Math.min(3, inventaire.items[idx].qte + delta));
+  afficherInventaire();
   afficherRacheter();
   sauvegarder();
 }
 
 function supprimerItem(idx) {
   inventaire.items.splice(idx, 1);
-  afficherItems();
+  afficherInventaire();
   afficherRacheter();
   sauvegarder();
 }
@@ -554,38 +736,31 @@ function sauvegarder() {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(inventaire)
-    })
-    .then(r => r.json())
-    .then(res => {
-      if (!res.ok) afficherMessage('Erreur de sauvegarde : ' + (res.erreur || ''), 'err');
-    })
-    .catch(() => afficherMessage('Erreur de connexion.', 'err'));
+    }).then(r => r.json()).then(res => {
+      if (!res.ok) afficherMessage('Erreur : ' + (res.erreur || ''), 'err');
+    }).catch(() => afficherMessage('Erreur de connexion.', 'err'));
   }, 400);
 }
 
-// ===== COURSES PAR RECETTE =====
+// ===== COURSES =====
 
 function afficherSelectorRecettes() {
-  const div = document.getElementById('recettes-selector');
-  div.innerHTML = toutesRecettes.map(r => `
+  document.getElementById('recettes-selector').innerHTML = toutesRecettes.map(r => `
     <label class="recette-check">
       <input type="checkbox" value="${r.id}">
       <span class="recette-check-titre">${r.titre}</span>
       <span class="recette-check-cat">${r.categorie}</span>
-    </label>
-  `).join('');
+    </label>`).join('');
 }
 
 function toutSelectionner(etat) {
-  document.querySelectorAll('#recettes-selector input[type="checkbox"]').forEach(cb => cb.checked = etat);
+  document.querySelectorAll('#recettes-selector input').forEach(cb => cb.checked = etat);
 }
 
 function normaliser(str) {
-  return str.toLowerCase()
+  return (str || '').toLowerCase()
     .normalize('NFD').replace(/[̀-ͯ]/g, '')
-    .replace(/[^a-z0-9\s]/g, ' ')
-    .replace(/\s+/g, ' ')
-    .trim();
+    .replace(/[^a-z0-9\s]/g, ' ').replace(/\s+/g,' ').trim();
 }
 
 function estEnStock(ingredient) {
@@ -595,28 +770,21 @@ function estEnStock(ingredient) {
 
 function genererCourses() {
   const cochees = [...document.querySelectorAll('#recettes-selector input:checked')].map(cb => parseInt(cb.value));
-  if (cochees.length === 0) {
-    afficherMessage('Sélectionne au moins une recette.', 'err');
-    return;
-  }
-  const recettesSel = toutesRecettes.filter(r => cochees.includes(r.id));
+  if (!cochees.length) { afficherMessage('Sélectionne au moins une recette.', 'err'); return; }
+  const sel = toutesRecettes.filter(r => cochees.includes(r.id));
   let enStock = 0, aAcheter = 0;
-  let html = recettesSel.map(r => {
-    const lignes = r.ingredients
-      .filter(ing => !ing.startsWith('—'))
-      .map(ing => {
-        const stock = estEnStock(ing);
-        stock ? enStock++ : aAcheter++;
-        return `<div class="courses-ingredient ${stock ? 'en-stock' : 'a-acheter'}">
-          <span class="courses-badge">${stock ? '✓' : '↗'}</span>
-          <span>${ing}</span>
-        </div>`;
-      }).join('');
+  let html = sel.map(r => {
+    const lignes = r.ingredients.filter(i => !i.startsWith('—')).map(ing => {
+      const ok = estEnStock(ing);
+      ok ? enStock++ : aAcheter++;
+      return `<div class="courses-ingredient ${ok?'en-stock':'a-acheter'}">
+        <span class="courses-badge">${ok?'✓':'↗'}</span><span>${ing}</span></div>`;
+    }).join('');
     return cochees.length > 1
       ? `<div class="courses-section"><div class="courses-recette-titre">${r.titre}</div>${lignes}</div>`
       : `<div class="courses-section">${lignes}</div>`;
   }).join('');
-  html += `<div class="courses-resume"><strong>${aAcheter}</strong> à acheter · <span>${enStock} déjà en stock</span></div>`;
+  html += `<div class="courses-resume"><strong>${aAcheter}</strong> à acheter · <span>${enStock} en stock</span></div>`;
   document.getElementById('liste-courses').innerHTML = html;
 }
 

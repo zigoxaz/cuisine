@@ -7,25 +7,7 @@
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
 
-    body.theme-sombre {
-      --bg: #1a1a1a; --bg2: #222; --bg3: #2a2a2a;
-      --text: #f0e6d3; --text2: #ddd; --text3: #aaa;
-      --accent: #c8a96e; --accent2: #1a1a1a;
-      --border: #333; --border2: #222;
-    }
-    body.theme-creme {
-      --bg: #faf6f0; --bg2: #f0ebe0; --bg3: #e8e0d0;
-      --text: #2c1f0e; --text2: #4a3728; --text3: #8a7060;
-      --accent: #b5541c; --accent2: #fff;
-      --border: #d9cfc0; --border2: #e8e0d0;
-    }
-    body.theme-mediterraneen {
-      --bg: #fdf8f2; --bg2: #fff4e6; --bg3: #ffe8cc;
-      --text: #2d1b00; --text2: #5a3a1a; --text3: #9a7050;
-      --accent: #e07020; --accent2: #fff;
-      --border: #f0d0a0; --border2: #ffe0b0;
-    }
-    body.theme-naturel {
+    body {
       --bg: #f4f7f2; --bg2: #e8f0e4; --bg3: #d8e8d0;
       --text: #1a2e14; --text2: #3a5030; --text3: #7a9870;
       --accent: #4a7a38; --accent2: #fff;
@@ -38,7 +20,6 @@
       color: var(--text);
       min-height: 100vh;
       padding: 20px;
-      transition: background 0.3s, color 0.3s;
     }
 
     h1 {
@@ -168,7 +149,7 @@
     #message.err { background: #fde8e8; border: 1px solid #c0392b; color: #c0392b; }
   </style>
 </head>
-<body class="theme-creme">
+<body class="theme-naturel">
 
 <h1>Administration — Recettes de cuisine</h1>
 
@@ -177,16 +158,6 @@
 <div class="actions">
   <button class="primary" onclick="nouvelleRecette()">+ Nouvelle recette</button>
   <a href="index.html"><button>← Voir l'appli</button></a>
-</div>
-
-<div class="bloc">
-  <div class="bloc-label">Thème de l'application</div>
-  <div class="bloc-btns">
-    <button id="theme-sombre" onclick="changerTheme('sombre')">Sombre</button>
-    <button id="theme-creme" onclick="changerTheme('creme')">Crème</button>
-    <button id="theme-mediterraneen" onclick="changerTheme('mediterraneen')">Méditerranéen</button>
-    <button id="theme-naturel" onclick="changerTheme('naturel')">Naturel</button>
-  </div>
 </div>
 
 <div class="bloc">
@@ -246,50 +217,18 @@
 <script>
 let data = { categories: [], recettes: [] };
 let modeEdition = false;
-let themeActif = 'creme';
 let navActif = 'classique';
 
 Promise.all([
   fetch('config.json?v=' + Date.now()).then(r => r.json()),
   fetch('recettes.json?v=' + Date.now()).then(r => r.json())
 ]).then(([config, d]) => {
-  themeActif = config.theme || 'creme';
   navActif = config.nav || 'classique';
-  document.body.className = 'theme-' + themeActif;
-  majBoutonsTheme();
   majBoutonsNav();
   data = d;
   construireListe();
   construireSelectCategorie();
 });
-
-function changerTheme(theme) {
-  fetch('save_config.php', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ theme, nav: navActif })
-  })
-  .then(r => r.json())
-  .then(res => {
-    if (res.ok) {
-      themeActif = theme;
-      document.body.className = 'theme-' + theme;
-      majBoutonsTheme();
-      afficherMessage('Thème "' + theme + '" appliqué.', 'ok');
-    } else {
-      afficherMessage('Erreur : ' + res.erreur, 'err');
-    }
-  })
-  .catch(() => afficherMessage('Erreur de connexion.', 'err'));
-}
-
-function majBoutonsTheme() {
-  ['sombre','creme','mediterraneen','naturel'].forEach(t => {
-    const btn = document.getElementById('theme-' + t);
-    if (!btn) return;
-    btn.classList.toggle('actif', t === themeActif);
-  });
-}
 
 function majBoutonsNav() {
   ['classique','minimaliste','epure','hierarchie'].forEach(n => {
@@ -303,7 +242,7 @@ function changerNav(nav) {
   fetch('save_config.php', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ theme: themeActif, nav })
+    body: JSON.stringify({ theme: 'naturel', nav })
   })
   .then(r => r.json())
   .then(res => {
