@@ -766,11 +766,17 @@ function afficherRacheter() {
 
   const html = count === 0
     ? '<div class="racheter-vide">Tout est en stock ✓</div>'
-    : aRacheter.map(item => `
-      <div class="racheter-item ${item.qte===1?'epuise':'peu'}">
+    : aRacheter.map(item => {
+      const idx = inventaire.items.indexOf(item);
+      return `<div class="racheter-item ${item.qte===1?'epuise':'peu'}">
         <span class="racheter-item-nom">${item.nom}</span>
-        <span class="stock-badge ${BADGE[item.qte]}">${LABELS[item.qte]}</span>
-      </div>`).join('');
+        <div class="stock-ctrl">
+          <button class="stock-btn" onclick="changerQte(${idx},-1)">−</button>
+          <span class="stock-badge ${BADGE[item.qte]}">${LABELS[item.qte]}</span>
+          <button class="stock-btn" onclick="changerQte(${idx},+1)">+</button>
+        </div>
+      </div>`;
+    }).join('');
 
   document.getElementById('liste-racheter').innerHTML = html;
 
