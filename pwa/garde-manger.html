@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Garde-manger</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body.theme-sombre {
+      --bg: #1a1a1a; --bg2: #222; --bg3: #2a2a2a;
+      --text: #f0e6d3; --text2: #ddd; --text3: #aaa;
+      --accent: #c8a96e; --accent2: #1a1a1a;
+      --border: #333; --border2: #222;
+    }
+    body.theme-creme {
+      --bg: #faf6f0; --bg2: #f0ebe0; --bg3: #e8e0d0;
+      --text: #2c1f0e; --text2: #4a3728; --text3: #8a7060;
+      --accent: #b5541c; --accent2: #fff;
+      --border: #d9cfc0; --border2: #e8e0d0;
+    }
+    body.theme-mediterraneen {
+      --bg: #fdf8f2; --bg2: #fff4e6; --bg3: #ffe8cc;
+      --text: #2d1b00; --text2: #5a3a1a; --text3: #9a7050;
+      --accent: #e07020; --accent2: #fff;
+      --border: #f0d0a0; --border2: #ffe0b0;
+    }
+    body.theme-naturel {
+      --bg: #f4f7f2; --bg2: #e8f0e4; --bg3: #d8e8d0;
+      --text: #1a2e14; --text2: #3a5030; --text3: #7a9870;
+      --accent: #4a7a38; --accent2: #fff;
+      --border: #c8dcc0; --border2: #d8e8d0;
+    }
+
+    body {
+      font-family: 'Georgia', serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      padding: 20px;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    h1 {
+      font-size: 18px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 6px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .retour {
+      display: inline-block;
+      font-size: 11px;
+      letter-spacing: 1px;
+      color: var(--text3);
+      text-decoration: none;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+      margin-top: 10px;
+    }
+    .retour:hover { color: var(--accent); }
+
+    #message {
+      padding: 10px 14px;
+      margin-bottom: 16px;
+      display: none;
+      font-size: 13px;
+    }
+    #message.ok { background: #e8f5e0; border: 1px solid #4a7a38; color: #4a7a38; }
+    #message.err { background: #fde8e8; border: 1px solid #c0392b; color: #c0392b; }
+
+    .section {
+      margin-bottom: 32px;
+    }
+
+    .section-titre {
+      font-size: 11px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--text3);
+      margin-bottom: 14px;
+      padding-bottom: 6px;
+      border-bottom: 1px solid var(--border2);
+    }
+
+    /* ===== INVENTAIRE ===== */
+
+    .ajouter-row {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 16px;
+    }
+
+    .ajouter-row input {
+      flex: 1;
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      color: var(--text);
+      padding: 10px 12px;
+      font-size: 15px;
+      font-family: inherit;
+    }
+    .ajouter-row input:focus { outline: none; border-color: var(--accent); }
+    .ajouter-row input::placeholder { color: var(--text3); font-size: 13px; }
+
+    button {
+      background: transparent;
+      border: 1px solid var(--accent);
+      color: var(--accent);
+      padding: 8px 14px;
+      cursor: pointer;
+      font-size: 12px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      font-family: inherit;
+      transition: all 0.2s;
+      white-space: nowrap;
+    }
+    button:hover { background: var(--accent); color: var(--accent2); }
+    button.primary { background: var(--accent); color: var(--accent2); }
+    button.danger { border-color: #c0392b; color: #c0392b; }
+    button.danger:hover { background: #c0392b; color: white; }
+
+    .item-liste {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .item-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 12px;
+      background: var(--bg2);
+      border: 1px solid var(--border2);
+    }
+
+    .item-nom {
+      flex: 1;
+      font-size: 15px;
+      color: var(--text);
+      text-transform: capitalize;
+    }
+
+    .qte-ctrl {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .qte-btn {
+      width: 28px;
+      height: 28px;
+      padding: 0;
+      font-size: 16px;
+      letter-spacing: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-color: var(--border);
+      color: var(--text3);
+    }
+    .qte-btn:hover { border-color: var(--accent); color: var(--accent); background: transparent; }
+
+    .qte-val {
+      min-width: 20px;
+      text-align: center;
+      font-size: 14px;
+      color: var(--text);
+    }
+
+    .item-del {
+      width: 28px;
+      height: 28px;
+      padding: 0;
+      font-size: 14px;
+      letter-spacing: 0;
+      border-color: transparent;
+      color: var(--text3);
+    }
+    .item-del:hover { background: transparent; border-color: #c0392b; color: #c0392b; }
+
+    .inventaire-vide {
+      font-size: 13px;
+      color: var(--text3);
+      padding: 16px 0;
+      font-style: italic;
+    }
+
+    /* ===== LISTE DE COURSES ===== */
+
+    .recettes-selector {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      margin-bottom: 14px;
+      max-height: 300px;
+      overflow-y: auto;
+      border: 1px solid var(--border2);
+      background: var(--bg2);
+    }
+
+    .recette-check {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 12px;
+      cursor: pointer;
+      border-bottom: 1px solid var(--border2);
+    }
+    .recette-check:last-child { border-bottom: none; }
+    .recette-check:hover { background: var(--bg3); }
+    .recette-check input[type="checkbox"] { accent-color: var(--accent); width: 16px; height: 16px; cursor: pointer; }
+    .recette-check-titre { font-size: 14px; color: var(--text); flex: 1; }
+    .recette-check-cat { font-size: 10px; color: var(--accent); letter-spacing: 1px; text-transform: uppercase; }
+
+    .selector-actions {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 14px;
+    }
+    .selector-actions button { font-size: 11px; padding: 6px 12px; border-color: var(--border); color: var(--text3); }
+    .selector-actions button:hover { border-color: var(--accent); color: var(--accent); background: transparent; }
+
+    #liste-courses {
+      margin-top: 20px;
+    }
+
+    .courses-section {
+      margin-bottom: 20px;
+    }
+
+    .courses-recette-titre {
+      font-size: 11px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 8px;
+    }
+
+    .courses-ingredient {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 7px 0;
+      border-bottom: 1px solid var(--border2);
+      font-size: 14px;
+    }
+
+    .courses-ingredient.en-stock {
+      color: var(--text3);
+      text-decoration: line-through;
+    }
+
+    .courses-badge {
+      font-size: 10px;
+      padding: 2px 6px;
+      border: 1px solid currentColor;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      flex-shrink: 0;
+    }
+
+    .en-stock .courses-badge { color: var(--text3); }
+    .a-acheter .courses-badge { color: var(--accent); border-color: var(--accent); }
+
+    .courses-resume {
+      margin-top: 16px;
+      padding: 12px;
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      font-size: 13px;
+      color: var(--text3);
+    }
+
+    .courses-resume strong { color: var(--accent); }
+
+    .courses-actions {
+      display: flex;
+      gap: 8px;
+      margin-top: 14px;
+    }
+  </style>
+</head>
+<body class="theme-creme">
+
+<a class="retour" href="index.html">← Retour aux recettes</a>
+<h1>Garde-manger</h1>
+
+<div id="message"></div>
+
+<!-- SECTION 1 : INVENTAIRE -->
+<div class="section">
+  <div class="section-titre">Inventaire</div>
+
+  <div class="ajouter-row">
+    <input type="text" id="nouvel-item" placeholder="Ajouter un ingrédient..." onkeydown="if(event.key==='Enter')ajouterItem()">
+    <button onclick="ajouterItem()">Ajouter</button>
+  </div>
+
+  <div class="item-liste" id="liste-items">
+    <div class="inventaire-vide">Chargement…</div>
+  </div>
+</div>
+
+<!-- SECTION 2 : LISTE DE COURSES -->
+<div class="section">
+  <div class="section-titre">Liste de courses</div>
+
+  <div class="selector-actions">
+    <button onclick="toutSelectionner(true)">Tout sélectionner</button>
+    <button onclick="toutSelectionner(false)">Tout déselectionner</button>
+  </div>
+
+  <div class="recettes-selector" id="recettes-selector">
+    <div style="padding:12px;color:var(--text3);font-size:13px">Chargement…</div>
+  </div>
+
+  <button class="primary" onclick="genererCourses()">Générer la liste</button>
+
+  <div id="liste-courses"></div>
+</div>
+
+<script>
+let inventaire = { items: [] };
+let toutesRecettes = [];
+
+Promise.all([
+  fetch('config.json?v=' + Date.now()).then(r => r.json()),
+  fetch('garde-manger.json?v=' + Date.now()).then(r => r.json()),
+  fetch('recettes.json?v=' + Date.now()).then(r => r.json())
+]).then(([config, gm, data]) => {
+  document.body.className = 'theme-' + (config.theme || 'creme');
+  inventaire = gm;
+  toutesRecettes = data.recettes;
+  afficherItems();
+  afficherSelectorRecettes();
+});
+
+// ===== INVENTAIRE =====
+
+function afficherItems() {
+  const div = document.getElementById('liste-items');
+  if (inventaire.items.length === 0) {
+    div.innerHTML = '<div class="inventaire-vide">Aucun ingrédient en stock.</div>';
+    return;
+  }
+  div.innerHTML = inventaire.items.map((item, i) => `
+    <div class="item-row">
+      <span class="item-nom">${item.nom}</span>
+      <div class="qte-ctrl">
+        <button class="qte-btn" onclick="changerQte(${i}, -1)">−</button>
+        <span class="qte-val">${item.qte}</span>
+        <button class="qte-btn" onclick="changerQte(${i}, +1)">+</button>
+      </div>
+      <button class="item-del" onclick="supprimerItem(${i})" title="Supprimer">✕</button>
+    </div>
+  `).join('');
+}
+
+function ajouterItem() {
+  const input = document.getElementById('nouvel-item');
+  const nom = input.value.trim().toLowerCase();
+  if (!nom) return;
+  if (inventaire.items.some(i => i.nom === nom)) {
+    afficherMessage('Déjà dans l\'inventaire.', 'err');
+    return;
+  }
+  inventaire.items.push({ nom, qte: 1 });
+  inventaire.items.sort((a, b) => a.nom.localeCompare(b.nom, 'fr'));
+  input.value = '';
+  afficherItems();
+  sauvegarder();
+}
+
+function changerQte(idx, delta) {
+  const item = inventaire.items[idx];
+  const nouvelleQte = Math.max(0, Math.min(3, item.qte + delta));
+  if (nouvelleQte === 0) {
+    supprimerItem(idx);
+    return;
+  }
+  item.qte = nouvelleQte;
+  afficherItems();
+  sauvegarder();
+}
+
+function supprimerItem(idx) {
+  inventaire.items.splice(idx, 1);
+  afficherItems();
+  sauvegarder();
+}
+
+function sauvegarder() {
+  fetch('save_garde_manger.php', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(inventaire)
+  })
+  .then(r => r.json())
+  .then(res => {
+    if (!res.ok) afficherMessage('Erreur de sauvegarde.', 'err');
+  })
+  .catch(() => afficherMessage('Erreur de connexion.', 'err'));
+}
+
+// ===== LISTE DE COURSES =====
+
+function afficherSelectorRecettes() {
+  const div = document.getElementById('recettes-selector');
+  div.innerHTML = toutesRecettes.map(r => `
+    <label class="recette-check">
+      <input type="checkbox" value="${r.id}">
+      <span class="recette-check-titre">${r.titre}</span>
+      <span class="recette-check-cat">${r.categorie}</span>
+    </label>
+  `).join('');
+}
+
+function toutSelectionner(etat) {
+  document.querySelectorAll('#recettes-selector input[type="checkbox"]').forEach(cb => cb.checked = etat);
+}
+
+function normaliser(str) {
+  return str.toLowerCase()
+    .normalize('NFD').replace(/[̀-ͯ]/g, '')
+    .replace(/[^a-z0-9\s]/g, '')
+    .trim();
+}
+
+function estEnStock(ingredient) {
+  const norm = normaliser(ingredient);
+  return inventaire.items.some(item => norm.includes(normaliser(item.nom)));
+}
+
+function genererCourses() {
+  const cochees = [...document.querySelectorAll('#recettes-selector input:checked')].map(cb => parseInt(cb.value));
+  if (cochees.length === 0) {
+    afficherMessage('Sélectionne au moins une recette.', 'err');
+    return;
+  }
+
+  const recettesSel = toutesRecettes.filter(r => cochees.includes(r.id));
+  const div = document.getElementById('liste-courses');
+
+  let enStock = 0;
+  let aAcheter = 0;
+
+  let html = '';
+
+  if (cochees.length > 1) {
+    // Vue par recette
+    html = recettesSel.map(r => {
+      const lignes = r.ingredients
+        .filter(ing => !ing.startsWith('—'))
+        .map(ing => {
+          const stock = estEnStock(ing);
+          if (stock) enStock++; else aAcheter++;
+          return `<div class="courses-ingredient ${stock ? 'en-stock' : 'a-acheter'}">
+            <span class="courses-badge">${stock ? '✓' : '↗'}</span>
+            <span>${ing}</span>
+          </div>`;
+        }).join('');
+      return `<div class="courses-section">
+        <div class="courses-recette-titre">${r.titre}</div>
+        ${lignes}
+      </div>`;
+    }).join('');
+  } else {
+    // Vue simple pour une recette
+    const r = recettesSel[0];
+    const lignes = r.ingredients
+      .filter(ing => !ing.startsWith('—'))
+      .map(ing => {
+        const stock = estEnStock(ing);
+        if (stock) enStock++; else aAcheter++;
+        return `<div class="courses-ingredient ${stock ? 'en-stock' : 'a-acheter'}">
+          <span class="courses-badge">${stock ? '✓' : '↗'}</span>
+          <span>${ing}</span>
+        </div>`;
+      }).join('');
+    html = `<div class="courses-section">${lignes}</div>`;
+  }
+
+  html += `<div class="courses-resume">
+    <strong>${aAcheter}</strong> à acheter · <span>${enStock} déjà en stock</span>
+  </div>`;
+
+  div.innerHTML = html;
+}
+
+function afficherMessage(txt, type) {
+  const el = document.getElementById('message');
+  el.textContent = txt;
+  el.className = type;
+  el.style.display = 'block';
+  setTimeout(() => el.style.display = 'none', 4000);
+}
+</script>
+</body>
+</html>
