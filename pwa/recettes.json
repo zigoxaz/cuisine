@@ -1032,6 +1032,31 @@
                 "sauce piment"
             ],
             "image": "images/puree-piment.webp"
+        },
+        {
+            "id": 29,
+            "titre": "Gâteau renversé fraises et noix de coco",
+            "categorie": "Dessert",
+            "ingredients": [
+                "400 g de fraises (gariguettes de préférence)",
+                "2 œufs",
+                "100 g de beurre",
+                "30 g de cassonade",
+                "100 g de sucre en poudre",
+                "50 g de noix de coco râpée",
+                "60 g de farine",
+                "1 c. à café de levure chimique",
+                "Copeaux de noix de coco pour la déco"
+            ],
+            "etapes": [
+                "Préchauffer le four à 180°C. Beurrer un moule à manqué de 22-24 cm et saupoudrer de cassonade.",
+                "Laver et équeuter les fraises. Réserver 6-7 fraises entières pour la déco. Couper les autres en deux dans la hauteur et répartir dans le fond du moule.",
+                "Fouetter le beurre et le sucre jusqu'à ce que le mélange soit mousseux. Ajouter les œufs un à un en mélangeant après chaque ajout.",
+                "Incorporer la noix de coco râpée, puis la farine et la levure.",
+                "Verser la pâte sur les fraises et enfourner 35 min.",
+                "Laisser refroidir avant de démouler. Décorer de copeaux de noix de coco et des fraises réservées."
+            ],
+            "tags": ["fraise", "noix de coco", "gâteau renversé", "beurre", "farine", "levure", "dessert"]
         }
     ]
 }
