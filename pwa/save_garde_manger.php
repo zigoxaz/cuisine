@@ -24,4 +24,13 @@ if (file_put_contents($fichier, json_encode($data, JSON_PRETTY_PRINT | JSON_UNES
     exit;
 }
 
+// Push automatique vers GitHub
+$repo = '/volume1/cuisine';
+$config = @file_get_contents('/volume1/cuisine/.github-token');
+$token = $config ? trim($config) : '';
+if ($token) {
+    $remote = "https://zigoxaz:{$token}@github.com/zigoxaz/cuisine.git";
+    shell_exec("cd {$repo} && git add pwa/garde-manger.json && git commit -m 'Garde-manger : mise à jour automatique' && git push {$remote} master 2>&1");
+}
+
 echo json_encode(['ok' => true]);
