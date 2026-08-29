@@ -239,7 +239,7 @@
     .item-row:hover { background: var(--bg2); }
     .item-nom { flex: 1; font-size: 14px; color: var(--text); }
     .item-row.epuise .item-nom { color: var(--text3); }
-    .item-row.ignore .item-nom { color: var(--text3); font-style: italic; }
+    .item-row.ignore .item-nom { color: #aaa; font-style: italic; }
 
     .stock-ctrl { display: flex; align-items: center; gap: 4px; }
     .stock-btn {
@@ -267,11 +267,10 @@
       font-weight: 600;
       border-radius: 2px;
     }
-    .badge-0 { background: #fde8e8; color: #c0392b; border: 1px solid #c0392b; }
-    .badge-1 { background: #fff3e0; color: #e07020; border: 1px solid #e07020; }
-    .badge-2 { background: var(--bg3); color: var(--text3); border: 1px solid var(--border); }
+    .badge-0 { background: #f0f0f0; color: #999; border: 1px solid #ccc; }
+    .badge-1 { background: #fde8e8; color: #c0392b; border: 1px solid #c0392b; }
+    .badge-2 { background: #fff3e0; color: #e07020; border: 1px solid #e07020; }
     .badge-3 { background: #e8f5e0; color: #4a7a38; border: 1px solid #4a7a38; }
-    .badge-4 { background: #f0f0f0; color: #999; border: 1px solid #ccc; }
 
     .item-del {
       width: 26px;
@@ -506,91 +505,91 @@ if (localStorage.getItem('gm_auth') === '1') {
 
 // ===== DONNÉES =====
 const DEFAUT = { items: [
-  {nom:"4 épices",qte:2},{nom:"5 épices",qte:2},{nom:"5 parfums",qte:2},
-  {nom:"ail frit",qte:2},{nom:"ail semoule",qte:2},
-  {nom:"amandes effilées",qte:2},{nom:"arôme de rose",qte:2},{nom:"arôme vanille",qte:2},
-  {nom:"badiane",qte:2},{nom:"baies de genièvre",qte:2},{nom:"boulgour",qte:2},
-  {nom:"cannelle en bâton",qte:2},{nom:"cannelle moulue",qte:2},
-  {nom:"cardamome verte",qte:2},{nom:"carvi",qte:2},{nom:"cassonade",qte:2},
-  {nom:"cerneaux de noix",qte:2},{nom:"chapelure",qte:2},{nom:"chapelure panko",qte:2},
-  {nom:"chocolat en tablette",qte:2},{nom:"clous de girofle",qte:2},{nom:"colombo",qte:2},
-  {nom:"concentré de tomate",qte:2},{nom:"conserve asperges",qte:2},
-  {nom:"conserve haricots blancs",qte:0},{nom:"conserve haricots rouges",qte:2},
-  {nom:"conserve lentilles",qte:2},{nom:"coriandre moulue",qte:2},{nom:"court bouillon",qte:2},
-  {nom:"cranberries",qte:2},{nom:"crème de vinaigre balsamique",qte:2},
-  {nom:"cube bouillon bœuf",qte:2},
-  {nom:"cube bouillon légume",qte:2},{nom:"cube bouillon poulet",qte:2},{nom:"cube or",qte:2},
-  {nom:"cumin",qte:2},{nom:"cumin en poudre",qte:2},{nom:"curcuma",qte:2},
-  {nom:"curry",qte:2},{nom:"curry japonais",qte:2},
-  {nom:"fenugrec",qte:2},{nom:"feuilles de gélatine",qte:2},{nom:"flocons d'avoine",qte:2},
-  {nom:"fumet de poisson",qte:2},{nom:"galettes de riz",qte:2},{nom:"garam masala",qte:2},
-  {nom:"gingembre",qte:2},{nom:"gousse de vanille",qte:2},
-  {nom:"graines de fenouil",qte:2},{nom:"graines de lin brun",qte:2},
-  {nom:"graines de moutarde",qte:2},{nom:"graines de pavot",qte:2},
-  {nom:"graines de sésame",qte:2},{nom:"graines de sésame noir",qte:2},
-  {nom:"herbes de Provence",qte:2},
-  {nom:"huile d'olive",qte:2},{nom:"huile d'olive et citron",qte:2},
-  {nom:"huile de noix",qte:2},{nom:"huile de pépins de raisin",qte:2},
-  {nom:"huile de sésame",qte:2},{nom:"huile de tournesol",qte:2},
-  {nom:"lait de coco",qte:2},{nom:"laurier",qte:2},
-  {nom:"lentilles corail",qte:2},{nom:"lentilles vertes",qte:2},
-  {nom:"levure boulangère",qte:2},{nom:"levure chimique",qte:2},
-  {nom:"maïs en conserve",qte:2},{nom:"maïzena",qte:2},{nom:"massalé",qte:2},
-  {nom:"merkén",qte:2},{nom:"miel",qte:2},{nom:"mirin",qte:2},{nom:"mirin saké doux",qte:2},
-  {nom:"muscade",qte:2},{nom:"nigelle",qte:2},{nom:"noisettes",qte:2},
-  {nom:"noix de coco en poudre",qte:2},{nom:"nouilles de riz",qte:2},
-  {nom:"olives noires",qte:0},{nom:"olives vertes",qte:2},{nom:"origan",qte:2},
-  {nom:"paprika doux",qte:2},{nom:"paprika piquant",qte:2},
-  {nom:"pâtes",qte:2},{nom:"pâtes lasagne",qte:2},{nom:"pépites de chocolat",qte:2},
-  {nom:"peri-peri",qte:2},{nom:"piment",qte:2},{nom:"piment d'Espelette",qte:2},{nom:"piment de Cayenne",qte:2},
-  {nom:"piment frais thaï vert",qte:2},{nom:"pois chiches",qte:2},{nom:"polenta",qte:2},
-  {nom:"poivre blanc",qte:2},{nom:"poivre gris",qte:2},{nom:"poivre noir",qte:2},
-  {nom:"poudre d'amande",qte:2},{nom:"purée de piment",qte:2},{nom:"purée tomate",qte:2},
-  {nom:"quinoa",qte:2},{nom:"ras el hanout",qte:2},
-  {nom:"riz",qte:2},{nom:"riz noir",qte:2},{nom:"riz rond",qte:2},
-  {nom:"romarin",qte:2},{nom:"sauce à la grenade",qte:2},{nom:"sauce hoisin",qte:2},
-  {nom:"sauce huître",qte:2},{nom:"sauce sriracha",qte:2},{nom:"sauce worcestershire",qte:2},
-  {nom:"sauge",qte:2},{nom:"sel au céleri",qte:2},{nom:"semoule",qte:2},
-  {nom:"sirop d'érable",qte:2},{nom:"sirop de cassis",qte:2},
-  {nom:"sirop de fleur de sureau",qte:2},{nom:"somen",qte:2},{nom:"spiruline",qte:2},
-  {nom:"sucre en poudre",qte:2},{nom:"sucre glace",qte:2},{nom:"sucre vanillé",qte:2},
-  {nom:"thym",qte:2},{nom:"tomates en bocaux",qte:2},
-  {nom:"vanille en poudre",qte:2},{nom:"vermicelle de haricot mungo",qte:2},
-  {nom:"vermicelle de riz",qte:2},{nom:"vinaigre à la framboise",qte:2},
-  {nom:"vinaigre à la mangue",qte:2},{nom:"vinaigre balsamique",qte:2},
-  {nom:"vinaigre blanc",qte:0},{nom:"vinaigre de cidre",qte:2},{nom:"vinaigre de riz",qte:2},
-  {nom:"vinaigre de xérès",qte:2},{nom:"wasabi pâte",qte:2},{nom:"wasabi poudre",qte:2},
-  {nom:"zaatar",qte:2},
-  {nom:"aneth",qte:0},{nom:"basilic",qte:0},{nom:"coriandre",qte:0},{nom:"combava",qte:0},
-  {nom:"estragon",qte:0},{nom:"menthe séchée",qte:0},{nom:"persil",qte:0},{nom:"safran",qte:0},
-  {nom:"farine",qte:0},{nom:"riz à sushi",qte:0},
-  {nom:"bicarbonate",qte:0},{nom:"châtaigne",qte:0},{nom:"extrait de vanille",qte:0},
-  {nom:"noix de cajou",qte:0},{nom:"noix de coco râpée",qte:0},{nom:"raisins secs",qte:0},
-  {nom:"algues nori",qte:0},{nom:"câpres",qte:0},{nom:"harissa",qte:0},
-  {nom:"mayonnaise",qte:0},{nom:"pâte feuilletée",qte:0},{nom:"sauce soja",qte:0},
-  {nom:"aubergine",qte:2},{nom:"avocat",qte:0},{nom:"bok choi",qte:0},{nom:"butternut",qte:2},
-  {nom:"carotte",qte:0},{nom:"céleri",qte:0},{nom:"champignon",qte:0},{nom:"chou",qte:0},{nom:"chou rouge",qte:0},
-  {nom:"concombre",qte:2},{nom:"courgette",qte:2},{nom:"échalote",qte:0},{nom:"épinards",qte:0},
-  {nom:"fenouil",qte:0},{nom:"navet",qte:0},{nom:"oignon",qte:0},{nom:"ail",qte:0},
-  {nom:"piment",qte:2},{nom:"poivron",qte:2},{nom:"pomme de terre",qte:2},{nom:"potimarron",qte:2},
-  {nom:"radis",qte:0},{nom:"tomate",qte:2},
-  {nom:"bœuf",qte:0},{nom:"chorizo",qte:0},{nom:"jambon de Bayonne",qte:0},{nom:"lardons",qte:0},
-  {nom:"poitrine fumée",qte:0},{nom:"porc",qte:2},{nom:"poulet",qte:2},
-  {nom:"saucisse fumée",qte:0},{nom:"saucisse de Morteau",qte:0},{nom:"saucisson à l'ail",qte:0},{nom:"veau",qte:0},
-  {nom:"crevettes",qte:0},{nom:"lotte",qte:0},{nom:"merlu",qte:0},{nom:"moules",qte:0},
-  {nom:"palourdes",qte:0},{nom:"saumon",qte:0},{nom:"thon",qte:0},
-  {nom:"beurre",qte:0},{nom:"burrata",qte:0},{nom:"crème fleurette",qte:0},
-  {nom:"crème fraîche épaisse",qte:0},{nom:"crème fraîche liquide entière",qte:2},
-  {nom:"feta",qte:2},{nom:"fromage râpé",qte:2},{nom:"labneh",qte:0},{nom:"mozzarella",qte:2},
-  {nom:"œuf",qte:0},{nom:"yaourt à la grecque",qte:0},{nom:"yaourt fjord",qte:2},
-  {nom:"citron",qte:0},{nom:"citron confit",qte:0},{nom:"citron vert",qte:0},
-  {nom:"fraise",qte:0},{nom:"framboise",qte:0},{nom:"fruit de la passion",qte:0},{nom:"mangue",qte:0},
-  {nom:"brioche",qte:2},{nom:"pâte à tartiner",qte:2},{nom:"bières",qte:2},
-  {nom:"Angostura",qte:2},{nom:"cognac",qte:2},{nom:"crème de café",qte:2},
-  {nom:"crème de pêche",qte:2},{nom:"gin",qte:2},{nom:"limoncello",qte:2},
-  {nom:"menthe pastille",qte:2},{nom:"orgeat",qte:2},{nom:"préparation spritz",qte:2},
-  {nom:"Ricard",qte:2},{nom:"rhum",qte:2},{nom:"Suze",qte:2},
-  {nom:"tequila",qte:2},{nom:"triple sec",qte:2},{nom:"vodka",qte:2},{nom:"whisky",qte:2}
+  {nom:"4 épices",qte:3},{nom:"5 épices",qte:3},{nom:"5 parfums",qte:3},
+  {nom:"ail frit",qte:3},{nom:"ail semoule",qte:3},
+  {nom:"amandes effilées",qte:3},{nom:"arôme de rose",qte:3},{nom:"arôme vanille",qte:3},
+  {nom:"badiane",qte:3},{nom:"baies de genièvre",qte:3},{nom:"boulgour",qte:3},
+  {nom:"cannelle en bâton",qte:3},{nom:"cannelle moulue",qte:3},
+  {nom:"cardamome verte",qte:3},{nom:"carvi",qte:3},{nom:"cassonade",qte:3},
+  {nom:"cerneaux de noix",qte:3},{nom:"chapelure",qte:3},{nom:"chapelure panko",qte:3},
+  {nom:"chocolat en tablette",qte:3},{nom:"clous de girofle",qte:3},{nom:"colombo",qte:3},
+  {nom:"concentré de tomate",qte:3},{nom:"conserve asperges",qte:3},
+  {nom:"conserve haricots blancs",qte:1},{nom:"conserve haricots rouges",qte:3},
+  {nom:"conserve lentilles",qte:3},{nom:"coriandre moulue",qte:3},{nom:"court bouillon",qte:3},
+  {nom:"cranberries",qte:3},{nom:"crème de vinaigre balsamique",qte:3},
+  {nom:"cube bouillon bœuf",qte:3},
+  {nom:"cube bouillon légume",qte:3},{nom:"cube bouillon poulet",qte:3},{nom:"cube or",qte:3},
+  {nom:"cumin",qte:3},{nom:"cumin en poudre",qte:3},{nom:"curcuma",qte:3},
+  {nom:"curry",qte:3},{nom:"curry japonais",qte:3},
+  {nom:"fenugrec",qte:3},{nom:"feuilles de gélatine",qte:3},{nom:"flocons d'avoine",qte:3},
+  {nom:"fumet de poisson",qte:3},{nom:"galettes de riz",qte:3},{nom:"garam masala",qte:3},
+  {nom:"gingembre",qte:3},{nom:"gousse de vanille",qte:3},
+  {nom:"graines de fenouil",qte:3},{nom:"graines de lin brun",qte:3},
+  {nom:"graines de moutarde",qte:3},{nom:"graines de pavot",qte:3},
+  {nom:"graines de sésame",qte:3},{nom:"graines de sésame noir",qte:3},
+  {nom:"herbes de Provence",qte:3},
+  {nom:"huile d'olive",qte:3},{nom:"huile d'olive et citron",qte:3},
+  {nom:"huile de noix",qte:3},{nom:"huile de pépins de raisin",qte:3},
+  {nom:"huile de sésame",qte:3},{nom:"huile de tournesol",qte:3},
+  {nom:"lait de coco",qte:3},{nom:"laurier",qte:3},
+  {nom:"lentilles corail",qte:3},{nom:"lentilles vertes",qte:3},
+  {nom:"levure boulangère",qte:3},{nom:"levure chimique",qte:3},
+  {nom:"maïs en conserve",qte:3},{nom:"maïzena",qte:3},{nom:"massalé",qte:3},
+  {nom:"merkén",qte:3},{nom:"miel",qte:3},{nom:"mirin",qte:3},{nom:"mirin saké doux",qte:3},
+  {nom:"muscade",qte:3},{nom:"nigelle",qte:3},{nom:"noisettes",qte:3},
+  {nom:"noix de coco en poudre",qte:3},{nom:"nouilles de riz",qte:3},
+  {nom:"olives noires",qte:1},{nom:"olives vertes",qte:3},{nom:"origan",qte:3},
+  {nom:"paprika doux",qte:3},{nom:"paprika piquant",qte:3},
+  {nom:"pâtes",qte:3},{nom:"pâtes lasagne",qte:3},{nom:"pépites de chocolat",qte:3},
+  {nom:"peri-peri",qte:3},{nom:"piment",qte:3},{nom:"piment d'Espelette",qte:3},{nom:"piment de Cayenne",qte:3},
+  {nom:"piment frais thaï vert",qte:3},{nom:"pois chiches",qte:3},{nom:"polenta",qte:3},
+  {nom:"poivre blanc",qte:3},{nom:"poivre gris",qte:3},{nom:"poivre noir",qte:3},
+  {nom:"poudre d'amande",qte:3},{nom:"purée de piment",qte:3},{nom:"purée tomate",qte:3},
+  {nom:"quinoa",qte:3},{nom:"ras el hanout",qte:3},
+  {nom:"riz",qte:3},{nom:"riz noir",qte:3},{nom:"riz rond",qte:3},
+  {nom:"romarin",qte:3},{nom:"sauce à la grenade",qte:3},{nom:"sauce hoisin",qte:3},
+  {nom:"sauce huître",qte:3},{nom:"sauce sriracha",qte:3},{nom:"sauce worcestershire",qte:3},
+  {nom:"sauge",qte:3},{nom:"sel au céleri",qte:3},{nom:"semoule",qte:3},
+  {nom:"sirop d'érable",qte:3},{nom:"sirop de cassis",qte:3},
+  {nom:"sirop de fleur de sureau",qte:3},{nom:"somen",qte:3},{nom:"spiruline",qte:3},
+  {nom:"sucre en poudre",qte:3},{nom:"sucre glace",qte:3},{nom:"sucre vanillé",qte:3},
+  {nom:"thym",qte:3},{nom:"tomates en bocaux",qte:3},
+  {nom:"vanille en poudre",qte:3},{nom:"vermicelle de haricot mungo",qte:3},
+  {nom:"vermicelle de riz",qte:3},{nom:"vinaigre à la framboise",qte:3},
+  {nom:"vinaigre à la mangue",qte:3},{nom:"vinaigre balsamique",qte:3},
+  {nom:"vinaigre blanc",qte:1},{nom:"vinaigre de cidre",qte:3},{nom:"vinaigre de riz",qte:3},
+  {nom:"vinaigre de xérès",qte:3},{nom:"wasabi pâte",qte:3},{nom:"wasabi poudre",qte:3},
+  {nom:"zaatar",qte:3},
+  {nom:"aneth",qte:1},{nom:"basilic",qte:1},{nom:"coriandre",qte:1},{nom:"combava",qte:1},
+  {nom:"estragon",qte:1},{nom:"menthe séchée",qte:1},{nom:"persil",qte:1},{nom:"safran",qte:1},
+  {nom:"farine",qte:1},{nom:"riz à sushi",qte:1},
+  {nom:"bicarbonate",qte:1},{nom:"châtaigne",qte:1},{nom:"extrait de vanille",qte:1},
+  {nom:"noix de cajou",qte:1},{nom:"noix de coco râpée",qte:1},{nom:"raisins secs",qte:1},
+  {nom:"algues nori",qte:1},{nom:"câpres",qte:1},{nom:"harissa",qte:1},
+  {nom:"mayonnaise",qte:1},{nom:"pâte feuilletée",qte:1},{nom:"sauce soja",qte:1},
+  {nom:"aubergine",qte:3},{nom:"avocat",qte:1},{nom:"bok choi",qte:1},{nom:"butternut",qte:3},
+  {nom:"carotte",qte:1},{nom:"céleri",qte:1},{nom:"champignon",qte:1},{nom:"chou",qte:1},{nom:"chou rouge",qte:1},
+  {nom:"concombre",qte:3},{nom:"courgette",qte:3},{nom:"échalote",qte:1},{nom:"épinards",qte:1},
+  {nom:"fenouil",qte:1},{nom:"navet",qte:1},{nom:"oignon",qte:1},{nom:"ail",qte:1},
+  {nom:"piment",qte:3},{nom:"poivron",qte:3},{nom:"pomme de terre",qte:3},{nom:"potimarron",qte:3},
+  {nom:"radis",qte:1},{nom:"tomate",qte:3},
+  {nom:"bœuf",qte:1},{nom:"chorizo",qte:1},{nom:"jambon de Bayonne",qte:1},{nom:"lardons",qte:1},
+  {nom:"poitrine fumée",qte:1},{nom:"porc",qte:3},{nom:"poulet",qte:3},
+  {nom:"saucisse fumée",qte:1},{nom:"saucisse de Morteau",qte:1},{nom:"saucisson à l'ail",qte:1},{nom:"veau",qte:1},
+  {nom:"crevettes",qte:1},{nom:"lotte",qte:1},{nom:"merlu",qte:1},{nom:"moules",qte:1},
+  {nom:"palourdes",qte:1},{nom:"saumon",qte:1},{nom:"thon",qte:1},
+  {nom:"beurre",qte:1},{nom:"burrata",qte:1},{nom:"crème fleurette",qte:1},
+  {nom:"crème fraîche épaisse",qte:1},{nom:"crème fraîche liquide entière",qte:3},
+  {nom:"feta",qte:3},{nom:"fromage râpé",qte:3},{nom:"labneh",qte:1},{nom:"mozzarella",qte:3},
+  {nom:"œuf",qte:1},{nom:"yaourt à la grecque",qte:1},{nom:"yaourt fjord",qte:3},
+  {nom:"citron",qte:1},{nom:"citron confit",qte:1},{nom:"citron vert",qte:1},
+  {nom:"fraise",qte:1},{nom:"framboise",qte:1},{nom:"fruit de la passion",qte:1},{nom:"mangue",qte:1},
+  {nom:"brioche",qte:3},{nom:"pâte à tartiner",qte:3},{nom:"bières",qte:3},
+  {nom:"Angostura",qte:3},{nom:"cognac",qte:3},{nom:"crème de café",qte:3},
+  {nom:"crème de pêche",qte:3},{nom:"gin",qte:3},{nom:"limoncello",qte:3},
+  {nom:"menthe pastille",qte:3},{nom:"orgeat",qte:3},{nom:"préparation spritz",qte:3},
+  {nom:"Ricard",qte:3},{nom:"rhum",qte:3},{nom:"Suze",qte:3},
+  {nom:"tequila",qte:3},{nom:"triple sec",qte:3},{nom:"vodka",qte:3},{nom:"whisky",qte:3}
 ]};
 
 const CAT = {
@@ -644,9 +643,9 @@ const CAT = {
   "Bières & vins": ["bières"]
 };
 
-// qte: 0=ÉPUISÉ, 1=PEU, 2=OK, 3=PLEIN, 4=IGNORÉ (pas dans courses/racheter)
-const LABELS = ['ÉPUISÉ','PEU','OK','PLEIN','IGNORÉ'];
-const BADGE  = ['badge-0','badge-1','badge-2','badge-3','badge-4'];
+// qte: 0=IGNORÉ (exclu courses/racheter), 1=ÉPUISÉ, 2=PEU, 3=OK
+const LABELS = ['IGNORÉ','ÉPUISÉ','PEU','OK'];
+const BADGE  = ['badge-0','badge-1','badge-2','badge-3'];
 
 let inventaire = { items: [] };
 let toutesRecettes = [];
@@ -719,7 +718,7 @@ function afficherInventaire() {
   div.innerHTML = cats.map(cat => {
     const its = groupes[cat];
     // Alertes: épuisé ou peu (pas ignoré)
-    const alertes = its.filter(i => i.qte <= 1).length;
+    const alertes = its.filter(i => i.qte >= 1 && i.qte <= 2).length;
     const replie = !filtre && localStorage.getItem('cat_' + cat) === '1';
     return `<div class="categorie-bloc">
       <div class="categorie-titre" onclick="toggleCat('${cat.replace(/'/g,"\\'")}')">
@@ -733,7 +732,7 @@ function afficherInventaire() {
       <div class="categorie-items ${replie ? 'replie' : ''}">
         ${its.map(item => {
           const idx = inventaire.items.indexOf(item);
-          const cls = item.qte === 0 ? 'epuise' : item.qte === 4 ? 'ignore' : '';
+          const cls = item.qte === 0 ? 'ignore' : item.qte === 1 ? 'epuise' : '';
           return `<div class="item-row ${cls}">
             <span class="item-nom">${item.nom}</span>
             <div class="stock-ctrl">
@@ -757,9 +756,9 @@ function toggleCat(cat) {
 }
 
 function afficherRacheter() {
-  // Ignorés (qte=4) exclus de la liste à racheter
+  // qte=0 (IGNORÉ) exclu ; qte=1 (ÉPUISÉ) et qte=2 (PEU) à racheter
   const aRacheter = inventaire.items
-    .filter(i => i.qte <= 1)
+    .filter(i => i.qte >= 1 && i.qte <= 2)
     .sort((a, b) => a.qte - b.qte || a.nom.localeCompare(b.nom, 'fr'));
   const count = aRacheter.length;
 
@@ -768,7 +767,7 @@ function afficherRacheter() {
   const html = count === 0
     ? '<div class="racheter-vide">Tout est en stock ✓</div>'
     : aRacheter.map(item => `
-      <div class="racheter-item ${item.qte===0?'epuise':'peu'}">
+      <div class="racheter-item ${item.qte===1?'epuise':'peu'}">
         <span class="racheter-item-nom">${item.nom}</span>
         <span class="stock-badge ${BADGE[item.qte]}">${LABELS[item.qte]}</span>
       </div>`).join('');
@@ -802,7 +801,7 @@ function ajouterItem() {
 }
 
 function changerQte(idx, delta) {
-  inventaire.items[idx].qte = Math.max(0, Math.min(4, inventaire.items[idx].qte + delta));
+  inventaire.items[idx].qte = Math.max(0, Math.min(3, inventaire.items[idx].qte + delta));
   afficherInventaire();
   afficherRacheter();
   sauvegarder();
@@ -853,8 +852,8 @@ function statutIngredient(ingredient) {
   const norm = normaliser(ingredient);
   const item = inventaire.items.find(i => norm.includes(normaliser(i.nom)));
   if (!item) return 'acheter';
-  if (item.qte === 4) return 'ignore';
-  if (item.qte > 0) return 'stock';
+  if (item.qte === 0) return 'ignore';
+  if (item.qte === 3) return 'stock';
   return 'acheter';
 }
 
