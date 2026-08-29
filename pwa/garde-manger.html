@@ -855,9 +855,8 @@ function statutIngredient(ingredient) {
     .filter(i => norm.includes(normaliser(i.nom)))
     .sort((a, b) => b.nom.length - a.nom.length)[0];
   if (!item) return 'acheter';
-  if (item.qte === 0) return 'ignore';
   if (item.qte === 3) return 'stock';
-  return 'acheter';
+  return 'acheter'; // IGNORÉ (0), ÉPUISÉ (1), PEU (2) → à acheter dans les courses
 }
 
 function genererCourses() {
@@ -865,17 +864,16 @@ function genererCourses() {
   if (!cochees.length) { afficherMessage('Sélectionne au moins une recette.', 'err'); return; }
   const sel = toutesRecettes.filter(r => cochees.includes(r.id));
 
-  let totalStock = 0, totalAcheter = 0, totalIgnore = 0;
+  let totalStock = 0, totalAcheter = 0;
 
   const html = sel.map((r, ri) => {
-    let stockR = 0, acheterR = 0, ignoreR = 0;
+    let stockR = 0, acheterR = 0;
     const lignes = r.ingredients.filter(i => !i.startsWith('—')).map(ing => {
       const statut = statutIngredient(ing);
       if (statut === 'stock') { stockR++; totalStock++; }
-      else if (statut === 'ignore') { ignoreR++; totalIgnore++; }
       else { acheterR++; totalAcheter++; }
-      const cls = statut === 'stock' ? 'en-stock' : statut === 'ignore' ? 'ignore-item' : 'a-acheter';
-      const badge = statut === 'stock' ? '✓' : statut === 'ignore' ? '—' : '↗';
+      const cls = statut === 'stock' ? 'en-stock' : 'a-acheter';
+      const badge = statut === 'stock' ? '✓' : '↗';
       return `<div class="courses-ingredient ${cls}">
         <span class="courses-badge">${badge}</span><span>${ing}</span></div>`;
     }).join('');
@@ -896,7 +894,7 @@ function genererCourses() {
     </div>`;
   }).join('');
 
-  const resume = `<div class="courses-resume"><strong>${totalAcheter}</strong> à acheter · <span>${totalStock} en stock</span>${totalIgnore ? ` · <span style="color:#999">${totalIgnore} ignoré${totalIgnore>1?'s':''}</span>` : ''}</div>`;
+  const resume = `<div class="courses-resume"><strong>${totalAcheter}</strong> à acheter · <span>${totalStock} en stock</span></div>`;
   document.getElementById('liste-courses').innerHTML = html + resume;
 }
 
