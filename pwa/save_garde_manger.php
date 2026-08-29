@@ -18,9 +18,10 @@ if (!$data || !isset($data['items'])) {
 }
 
 $fichier = __DIR__ . '/garde-manger.json';
+$debug = ['dir' => __DIR__, 'fichier' => $fichier, 'writable' => is_writable(__DIR__)];
 
 if (file_put_contents($fichier, json_encode($data, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE)) === false) {
-    echo json_encode(['ok' => false, 'erreur' => 'Impossible d\'écrire le fichier']);
+    echo json_encode(['ok' => false, 'erreur' => 'Impossible d\'écrire le fichier', 'debug' => $debug]);
     exit;
 }
 
