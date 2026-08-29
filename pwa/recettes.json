@@ -24,12 +24,13 @@
                 "tomates cerise / 400 g",
                 "boulgour / 250 g",
                 "menthe fraîche / 10 g / ciselée",
-                "quatre-épices / 1 c. à café",
+                "4 épices / 1 c. à café",
                 "citron confit / 25 g / haché finement",
                 "concentré de tomate / 1 c. à soupe",
                 "yaourt à la grecque / 200 g",
                 "huile d'olive / 105 ml",
-                "sel, poivre"
+                "sel",
+                "poivre"
             ],
             "etapes": [
                 "Four à 200°C. Enrober les aubergines avec 4 c. à soupe d'huile, ½ c. à café de sel, poivre. Enfourner 35-40 min en retournant à mi-cuisson. Réserver.",
@@ -46,7 +47,7 @@
                 "yaourt",
                 "citron confit",
                 "menthe",
-                "quatre-épices",
+                "4 épices",
                 "ottolenghi"
             ]
         },
@@ -66,7 +67,8 @@
                 "citron / 1 / écorce en morceaux + zeste",
                 "yaourt à la grecque / 350 g / épais, froid",
                 "huile d'olive / 3 c. à soupe",
-                "fleur de sel, poivre noir"
+                "fleur de sel",
+                "poivre noir"
             ],
             "etapes": [
                 "Four à 200°C. Mélanger les tomates avec l'huile, le cumin, le sucre, l'ail, le thym, l'origan, les écorces de citron, ½ c. à café de fleur de sel et du poivre. Étaler groupées sur une plaque. Enfourner 20 min.",
@@ -139,7 +141,8 @@
                 "zaatar / 1 c. à soupe",
                 "citron / 2 c. à café de jus",
                 "huile d'olive / 60 ml + 2 c. à café pour le dressage",
-                "sel, poivre"
+                "sel",
+                "poivre"
             ],
             "etapes": [
                 "Four à 220°C. Mélanger les champignons, échalotes, châtaignes, sauge, huile et ail avec ¾ c. à café de sel et du poivre. Étaler sur une plaque et enfourner 25 min jusqu'à ce que tout soit tendre et coloré. Laisser tiédir 5 min.",
@@ -265,7 +268,9 @@
                 "olives noires / 100 g / égouttées",
                 "basilic / 1 bouquet / ciselé",
                 "sauce soja / 3 c. à soupe",
-                "huile, sel, poivre"
+                "huile d'olive",
+                "sel",
+                "poivre"
             ],
             "etapes": [
                 "Faire colorer l'ail et les échalotes dans un filet d'huile.",
@@ -333,7 +338,9 @@
                 "laurier / 1 feuille",
                 "paprika / 1 c. à café",
                 "vin blanc sec / 1 verre",
-                "huile d'olive, sel, poivre"
+                "huile d'olive",
+                "sel",
+                "poivre"
             ],
             "etapes": [
                 "Retirer la chair du chorizo, hacher, plonger 1 min dans l'eau bouillante pour dégraisser. Égoutter.",
@@ -374,7 +381,9 @@
                 "cannelle en bâton / 1",
                 "safran / 1 capsule",
                 "bouillon de volaille / 300 ml",
-                "huile d'olive, sel, poivre"
+                "huile d'olive",
+                "sel",
+                "poivre"
             ],
             "etapes": [
                 "Faire chauffer l'huile dans une cocotte, dorer les oignons et l'ail.",
@@ -656,7 +665,8 @@
                 "carotte / quelques-unes / en rondelles",
                 "navet / quelques-uns / en petits dés",
                 "bouillon de légumes et volaille",
-                "gros sel, poivre"
+                "gros sel",
+                "poivre"
             ],
             "etapes": [
                 "Faire revenir l'oignon, puis les carottes.",
@@ -795,7 +805,8 @@
                 "bouillon de bœuf / 10 cl",
                 "crème fraîche épaisse / 3 c. à soupe",
                 "huile / 3 c. à soupe",
-                "sel, poivre"
+                "sel",
+                "poivre"
             ],
             "etapes": [
                 "Faire bien revenir le bœuf et la poitrine en cubes de tous côtés dans la cocotte avec l'huile.",
@@ -833,7 +844,8 @@
                 "cannelle / ½ c. à café",
                 "piment de Cayenne / 1 pincée",
                 "citron confit / 2 / en morceaux",
-                "sel, poivre"
+                "sel",
+                "poivre"
             ],
             "etapes": [
                 "Faire revenir le poulet de tous côtés dans une cocotte à feu moyen.",
@@ -875,7 +887,8 @@
                 "laurier / 2 feuilles",
                 "citron / 1 zeste (optionnel)",
                 "huile d'olive / 3 c. à soupe",
-                "sel, poivre"
+                "sel",
+                "poivre"
             ],
             "etapes": [
                 "Faire revenir les lardons à sec dans une cocotte en fonte jusqu'à dorure. Réserver.",
@@ -911,7 +924,8 @@
                 "pignons de pin / 1 poignée / torréfiés",
                 "vinaigre balsamique / 2 c. à soupe",
                 "huile de sésame / 2 c. à soupe",
-                "sel, poivre"
+                "sel",
+                "poivre"
             ],
             "etapes": [
                 "Préchauffer le four à 180°C. Foncer un moule avec la pâte feuilletée et enfourner à blanc 5 minutes.",

@@ -239,6 +239,7 @@
     .item-row:hover { background: var(--bg2); }
     .item-nom { flex: 1; font-size: 14px; color: var(--text); }
     .item-row.epuise .item-nom { color: var(--text3); }
+    .item-row.ignore .item-nom { color: var(--text3); font-style: italic; }
 
     .stock-ctrl { display: flex; align-items: center; gap: 4px; }
     .stock-btn {
@@ -270,6 +271,7 @@
     .badge-1 { background: #fff3e0; color: #e07020; border: 1px solid #e07020; }
     .badge-2 { background: var(--bg3); color: var(--text3); border: 1px solid var(--border); }
     .badge-3 { background: #e8f5e0; color: #4a7a38; border: 1px solid #4a7a38; }
+    .badge-4 { background: #f0f0f0; color: #999; border: 1px solid #ccc; }
 
     .item-del {
       width: 26px;
@@ -309,14 +311,37 @@
     .selector-actions { display: flex; gap: 8px; margin-bottom: 10px; }
 
     #liste-courses { margin-top: 16px; }
-    .courses-section { margin-bottom: 18px; }
+
+    .courses-section { margin-bottom: 12px; border: 1px solid var(--border2); }
+
     .courses-recette-titre {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 8px 10px;
+      background: var(--bg3);
+      cursor: pointer;
+      user-select: none;
+      border-left: 3px solid var(--accent);
+    }
+    .courses-recette-nom {
       font-size: 11px;
       letter-spacing: 2px;
       text-transform: uppercase;
       color: var(--accent);
-      margin-bottom: 8px;
+      flex: 1;
     }
+    .courses-recette-meta {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 11px;
+      color: var(--text3);
+    }
+    .courses-recette-toggle { font-size: 12px; }
+    .courses-recette-body { display: flex; flex-direction: column; padding: 0 10px; }
+    .courses-recette-body.replie { display: none; }
+
     .courses-ingredient {
       display: flex;
       align-items: center;
@@ -325,7 +350,9 @@
       border-bottom: 1px solid var(--border2);
       font-size: 14px;
     }
+    .courses-ingredient:last-child { border-bottom: none; }
     .courses-ingredient.en-stock { color: var(--text3); text-decoration: line-through; }
+    .courses-ingredient.ignore-item { color: #999; font-style: italic; }
     .courses-badge {
       font-size: 9px;
       padding: 2px 5px;
@@ -337,6 +364,7 @@
     }
     .en-stock .courses-badge { color: var(--text3); }
     .a-acheter .courses-badge { color: var(--accent); border-color: var(--accent); }
+    .ignore-item .courses-badge { color: #999; border-color: #ccc; }
     .courses-resume {
       margin-top: 12px;
       padding: 10px 12px;
@@ -358,14 +386,21 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
+      cursor: pointer;
+      user-select: none;
     }
+    .section-titre.non-cliquable { cursor: default; }
     .section-count {
       font-size: 10px;
       background: var(--bg3);
       padding: 2px 7px;
       border-radius: 10px;
     }
+    .section-toggle { font-size: 12px; color: var(--text3); }
     .vide { font-size: 13px; color: var(--text3); font-style: italic; padding: 8px 0; }
+
+    .racheter-collapsible { overflow: hidden; }
+    .racheter-collapsible.replie { display: none; }
   </style>
 </head>
 <body class="theme-naturel">
@@ -403,14 +438,19 @@
 <!-- VUE INVENTAIRE -->
 <div class="vue active" id="vue-inventaire">
 
-  <!-- À RACHETER -->
+  <!-- À RACHETER (rétractable) -->
   <div style="margin-bottom:20px">
-    <div class="section-titre">
+    <div class="section-titre" onclick="toggleRacheter()">
       À racheter
-      <span class="section-count" id="count-racheter">0</span>
+      <span style="display:flex;align-items:center;gap:8px">
+        <span class="section-count" id="count-racheter">0</span>
+        <span class="section-toggle" id="racheter-toggle">▾</span>
+      </span>
     </div>
-    <div class="racheter-liste" id="liste-racheter">
-      <div class="racheter-vide">Tout est en stock ✓</div>
+    <div class="racheter-collapsible" id="racheter-body">
+      <div class="racheter-liste" id="liste-racheter">
+        <div class="racheter-vide">Tout est en stock ✓</div>
+      </div>
     </div>
   </div>
 
@@ -427,14 +467,7 @@
 
 <!-- VUE COURSES -->
 <div class="vue" id="vue-courses">
-  <div style="margin-bottom:16px">
-    <div class="section-titre">À racheter (sans recette)</div>
-    <div class="racheter-liste" id="liste-racheter-2">
-      <div class="racheter-vide">Tout est en stock ✓</div>
-    </div>
-  </div>
-
-  <div class="section-titre">Générer par recette</div>
+  <div class="section-titre non-cliquable">Générer par recette</div>
   <div class="selector-actions">
     <button class="sm" onclick="toutSelectionner(true)">Tout sélectionner</button>
     <button class="sm" onclick="toutSelectionner(false)">Tout déselectionner</button>
@@ -465,7 +498,6 @@ function validerAuth(e) {
   chargerDonnees();
 }
 
-// Vérifier si déjà authentifié
 if (localStorage.getItem('gm_auth') === '1') {
   document.getElementById('auth-overlay').style.display = 'none';
   document.getElementById('contenu').style.display = 'block';
@@ -561,7 +593,6 @@ const DEFAUT = { items: [
   {nom:"tequila",qte:2},{nom:"triple sec",qte:2},{nom:"vodka",qte:2},{nom:"whisky",qte:2}
 ]};
 
-// Catégories (mapping nom → catégorie)
 const CAT = {
   "Épices & herbes": ["4 épices","5 épices","5 parfums","aneth","badiane","baies de genièvre",
     "basilic","cannelle en bâton","cannelle moulue","cardamome verte","carvi","clous de girofle",
@@ -613,8 +644,9 @@ const CAT = {
   "Bières & vins": ["bières"]
 };
 
-const LABELS = ['ÉPUISÉ','PEU','OK','PLEIN'];
-const BADGE  = ['badge-0','badge-1','badge-2','badge-3'];
+// qte: 0=ÉPUISÉ, 1=PEU, 2=OK, 3=PLEIN, 4=IGNORÉ (pas dans courses/racheter)
+const LABELS = ['ÉPUISÉ','PEU','OK','PLEIN','IGNORÉ'];
+const BADGE  = ['badge-0','badge-1','badge-2','badge-3','badge-4'];
 
 let inventaire = { items: [] };
 let toutesRecettes = [];
@@ -647,8 +679,16 @@ function changerOnglet(id) {
   event.target.classList.add('actif');
 }
 
-// ===== INVENTAIRE =====
+// ===== À RACHETER (rétractable) =====
+function toggleRacheter() {
+  const body = document.getElementById('racheter-body');
+  const toggle = document.getElementById('racheter-toggle');
+  const replie = body.classList.toggle('replie');
+  toggle.textContent = replie ? '▸' : '▾';
+  try { localStorage.setItem('racheter_replie', replie ? '1' : '0'); } catch(e) {}
+}
 
+// ===== INVENTAIRE =====
 function getCat(nom) {
   for (const [cat, noms] of Object.entries(CAT)) {
     if (noms.some(n => normaliser(n) === normaliser(nom))) return cat;
@@ -666,7 +706,6 @@ function afficherInventaire() {
     return;
   }
 
-  // Grouper par catégorie
   const groupes = {};
   items.forEach(item => {
     const cat = getCat(item.nom);
@@ -674,27 +713,28 @@ function afficherInventaire() {
     groupes[cat].push(item);
   });
 
-  // Ordre des catégories
   const ordre = Object.keys(CAT).concat(['Autre']);
   const cats = ordre.filter(c => groupes[c]);
 
   div.innerHTML = cats.map(cat => {
-    const items = groupes[cat];
-    const alertes = items.filter(i => i.qte <= 1).length;
+    const its = groupes[cat];
+    // Alertes: épuisé ou peu (pas ignoré)
+    const alertes = its.filter(i => i.qte <= 1).length;
     const replie = !filtre && localStorage.getItem('cat_' + cat) === '1';
     return `<div class="categorie-bloc">
       <div class="categorie-titre" onclick="toggleCat('${cat.replace(/'/g,"\\'")}')">
         <span class="categorie-nom">${cat}</span>
         <span class="categorie-info">
           ${alertes ? `<span class="cat-alerte">⚠ ${alertes}</span>` : ''}
-          <span>${items.length} articles</span>
+          <span>${its.length} articles</span>
           <span class="categorie-toggle">${replie ? '▸' : '▾'}</span>
         </span>
       </div>
       <div class="categorie-items ${replie ? 'replie' : ''}">
-        ${items.map(item => {
+        ${its.map(item => {
           const idx = inventaire.items.indexOf(item);
-          return `<div class="item-row ${item.qte===0?'epuise':''}">
+          const cls = item.qte === 0 ? 'epuise' : item.qte === 4 ? 'ignore' : '';
+          return `<div class="item-row ${cls}">
             <span class="item-nom">${item.nom}</span>
             <div class="stock-ctrl">
               <button class="stock-btn" onclick="changerQte(${idx},-1)">−</button>
@@ -717,6 +757,7 @@ function toggleCat(cat) {
 }
 
 function afficherRacheter() {
+  // Ignorés (qte=4) exclus de la liste à racheter
   const aRacheter = inventaire.items
     .filter(i => i.qte <= 1)
     .sort((a, b) => a.qte - b.qte || a.nom.localeCompare(b.nom, 'fr'));
@@ -733,7 +774,15 @@ function afficherRacheter() {
       </div>`).join('');
 
   document.getElementById('liste-racheter').innerHTML = html;
-  document.getElementById('liste-racheter-2').innerHTML = html;
+
+  // Restaurer état replié
+  try {
+    const replie = localStorage.getItem('racheter_replie') === '1';
+    const body = document.getElementById('racheter-body');
+    const toggle = document.getElementById('racheter-toggle');
+    if (replie) { body.classList.add('replie'); toggle.textContent = '▸'; }
+    else { body.classList.remove('replie'); toggle.textContent = '▾'; }
+  } catch(e) {}
 }
 
 function ajouterItem() {
@@ -753,7 +802,7 @@ function ajouterItem() {
 }
 
 function changerQte(idx, delta) {
-  inventaire.items[idx].qte = Math.max(0, Math.min(3, inventaire.items[idx].qte + delta));
+  inventaire.items[idx].qte = Math.max(0, Math.min(4, inventaire.items[idx].qte + delta));
   afficherInventaire();
   afficherRacheter();
   sauvegarder();
@@ -781,7 +830,6 @@ function sauvegarder() {
 }
 
 // ===== COURSES =====
-
 function afficherSelectorRecettes() {
   document.getElementById('recettes-selector').innerHTML = toutesRecettes.map(r => `
     <label class="recette-check">
@@ -801,29 +849,71 @@ function normaliser(str) {
     .replace(/[^a-z0-9\s]/g, ' ').replace(/\s+/g,' ').trim();
 }
 
-function estEnStock(ingredient) {
+function statutIngredient(ingredient) {
   const norm = normaliser(ingredient);
-  return inventaire.items.some(item => item.qte > 0 && norm.includes(normaliser(item.nom)));
+  const item = inventaire.items.find(i => norm.includes(normaliser(i.nom)));
+  if (!item) return 'acheter';
+  if (item.qte === 4) return 'ignore';
+  if (item.qte > 0) return 'stock';
+  return 'acheter';
 }
 
 function genererCourses() {
   const cochees = [...document.querySelectorAll('#recettes-selector input:checked')].map(cb => parseInt(cb.value));
   if (!cochees.length) { afficherMessage('Sélectionne au moins une recette.', 'err'); return; }
   const sel = toutesRecettes.filter(r => cochees.includes(r.id));
-  let enStock = 0, aAcheter = 0;
-  let html = sel.map(r => {
+
+  let totalStock = 0, totalAcheter = 0, totalIgnore = 0;
+
+  const html = sel.map((r, ri) => {
+    let stockR = 0, acheterR = 0, ignoreR = 0;
     const lignes = r.ingredients.filter(i => !i.startsWith('—')).map(ing => {
-      const ok = estEnStock(ing);
-      ok ? enStock++ : aAcheter++;
-      return `<div class="courses-ingredient ${ok?'en-stock':'a-acheter'}">
-        <span class="courses-badge">${ok?'✓':'↗'}</span><span>${ing}</span></div>`;
+      const statut = statutIngredient(ing);
+      if (statut === 'stock') { stockR++; totalStock++; }
+      else if (statut === 'ignore') { ignoreR++; totalIgnore++; }
+      else { acheterR++; totalAcheter++; }
+      const cls = statut === 'stock' ? 'en-stock' : statut === 'ignore' ? 'ignore-item' : 'a-acheter';
+      const badge = statut === 'stock' ? '✓' : statut === 'ignore' ? '—' : '↗';
+      return `<div class="courses-ingredient ${cls}">
+        <span class="courses-badge">${badge}</span><span>${ing}</span></div>`;
     }).join('');
-    return cochees.length > 1
-      ? `<div class="courses-section"><div class="courses-recette-titre">${r.titre}</div>${lignes}</div>`
-      : `<div class="courses-section">${lignes}</div>`;
+
+    const id = 'cr-' + ri;
+    const titre = sel.length > 1 ? r.titre : '';
+    return `<div class="courses-section">
+      ${sel.length > 1 ? `
+      <div class="courses-recette-titre" onclick="toggleRecetteCourses('${id}', this)">
+        <span class="courses-recette-nom">${r.titre}</span>
+        <span class="courses-recette-meta">
+          ${acheterR > 0 ? `<span style="color:var(--accent);font-weight:600">↗ ${acheterR}</span>` : ''}
+          <span>✓ ${stockR}</span>
+          <span class="courses-recette-toggle">▾</span>
+        </span>
+      </div>` : ''}
+      <div class="courses-recette-body" id="${id}">${lignes}</div>
+    </div>`;
   }).join('');
-  html += `<div class="courses-resume"><strong>${aAcheter}</strong> à acheter · <span>${enStock} en stock</span></div>`;
-  document.getElementById('liste-courses').innerHTML = html;
+
+  const resume = `<div class="courses-resume"><strong>${totalAcheter}</strong> à acheter · <span>${totalStock} en stock</span>${totalIgnore ? ` · <span style="color:#999">${totalIgnore} ignoré${totalIgnore>1?'s':''}</span>` : ''}</div>`;
+  document.getElementById('liste-courses').innerHTML = html + resume;
+}
+
+function toggleRecetteCourses(id, header) {
+  const body = document.getElementById(id);
+  const toggle = header.querySelector('.courses-recette-toggle');
+  const replie = body.classList.toggle('replie');
+  toggle.textContent = replie ? '▸' : '▾';
+
+  // Si replié, afficher seulement les manquants
+  if (replie) {
+    body.querySelectorAll('.courses-ingredient').forEach(el => {
+      el.style.display = el.classList.contains('a-acheter') ? '' : 'none';
+    });
+  } else {
+    body.querySelectorAll('.courses-ingredient').forEach(el => {
+      el.style.display = '';
+    });
+  }
 }
 
 function afficherMessage(txt, type) {
