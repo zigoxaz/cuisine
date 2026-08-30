@@ -1083,6 +1083,7 @@
             "id": 30,
             "titre": "Croquettes aux petits pois, feta et zaatar",
             "categorie": "Entrée",
+            "image": "images/croquettes-petits-pois-feta.jpg",
             "ingredients": [
                 "petits pois / 500 g / surgelés, décongelés",
                 "feta / 200 g / en dés de 2 cm",
@@ -1107,6 +1108,7 @@
             "id": 31,
             "titre": "Porc sauté au gingembre, cébettes et aubergines",
             "categorie": "Porc",
+            "image": "images/porc-gingembre-cebettes.jpg",
             "ingredients": [
                 "porc / 500 g / haché",
                 "aubergines / 950 g / en cubes de 3 cm",
@@ -1137,6 +1139,7 @@
             "id": 32,
             "titre": "Brouillage de tofu à la harissa",
             "categorie": "Végétarien",
+            "image": "images/brouillage-tofu-harissa.jpg",
             "ingredients": [
                 "tofu soyeux / 700 g / égoutté",
                 "oignon / 2 (300 g) / émincés",
