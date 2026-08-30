@@ -1078,6 +1078,87 @@
                 "levure",
                 "dessert"
             ]
+        },
+        {
+            "id": 30,
+            "titre": "Croquettes aux petits pois, feta et zaatar",
+            "categorie": "Entrée",
+            "ingredients": [
+                "petits pois / 500 g / surgelés, décongelés",
+                "feta / 200 g / en dés de 2 cm",
+                "menthe fraîche / 20 g / ciselée",
+                "citron / 1 / zeste + 6 quartiers pour servir",
+                "zaatar / 3 c. à soupe",
+                "levure chimique / 1,5 c. à café",
+                "farine / 100 g",
+                "ricotta / 120 g",
+                "œuf / 3 / battus",
+                "huile de tournesol / 800 ml / pour la friture",
+                "sel",
+                "poivre noir"
+            ],
+            "etapes": [
+                "Mixer grossièrement les petits pois. Ajouter la ricotta, les œufs, le zeste, ¾ c. à café de sel et du poivre. Incorporer le zaatar, la farine et la levure. Ajouter délicatement la menthe et la feta sans écraser les dés.",
+                "Chauffer l'huile à feu moyen-vif. Former des quenelles de pâte (env. 4 cm) à l'aide de deux cuillères. Frire 6-7 croquettes à la fois 3-4 min en retournant une fois. Égoutter sur papier absorbant. Servir chaud avec un quartier de citron."
+            ],
+            "tags": ["petits pois", "feta", "zaatar", "ricotta", "menthe", "croquettes"]
+        },
+        {
+            "id": 31,
+            "titre": "Porc sauté au gingembre, cébettes et aubergines",
+            "categorie": "Porc",
+            "ingredients": [
+                "porc / 500 g / haché",
+                "aubergines / 950 g / en cubes de 3 cm",
+                "cébettes / 250 g / en tronçons biseautés de 3 cm",
+                "ail / 4 gousses / émincées",
+                "piment vert / 1 / émincé, non épépiné",
+                "gingembre / 60 g / pelé, émincé",
+                "coriandre / 15 g / hachée",
+                "cacahuètes / 60 g / grillées salées",
+                "graines de sésame / 1 c. à soupe / torréfiées",
+                "mirin / 3 c. à soupe",
+                "sauce soja / 2 c. à soupe",
+                "sauce soja sucrée / 2 c. à soupe",
+                "huile de sésame / 1 c. à café",
+                "huile d'arachide / 60 ml",
+                "vinaigre de riz / 1,5 c. à soupe",
+                "sel"
+            ],
+            "etapes": [
+                "Enrober les aubergines de 1,5 c. à café de sel et cuire à la vapeur 12 min. Réserver.",
+                "Faire sauter les cébettes, le gingembre, l'ail et le piment dans la moitié de l'huile d'arachide sur feu vif, 5 min en remuant. Débarrasser.",
+                "Faire revenir le porc haché 3 min dans le reste d'huile. Déglacer avec le mirin, la sauce soja, la sauce soja sucrée, l'huile de sésame et le vinaigre de riz. Saler, cuire 2 min. Remettre les cébettes, cuire 1 min. Incorporer 10 g de coriandre et les cacahuètes.",
+                "Servir avec les aubergines, parsemer du reste de coriandre et des graines de sésame."
+            ],
+            "tags": ["porc", "aubergine", "gingembre", "cébettes", "cacahuètes", "soja"]
+        },
+        {
+            "id": 32,
+            "titre": "Brouillage de tofu à la harissa",
+            "categorie": "Végétarien",
+            "ingredients": [
+                "tofu soyeux / 700 g / égoutté",
+                "oignon / 2 (300 g) / émincés",
+                "harissa à la rose / 22 g",
+                "pain au levain / 6 tranches / grillées",
+                "— Salade avocat-concombre",
+                "concombre / ½ (180 g) / évidé, taillé en sifflet",
+                "avocat / 3 (400 g) / en lamelles",
+                "piment vert / 2 / épépinés, émincés",
+                "coriandre / 20 g",
+                "citron vert / jus de 2",
+                "graines de nigelle / 1 c. à café",
+                "huile d'olive / 3 c. à soupe",
+                "sel"
+            ],
+            "etapes": [
+                "Mélanger tous les ingrédients de la salade avec ⅓ c. à café de sel. Réserver.",
+                "Faire revenir les oignons dans 2 c. à soupe d'huile à feu moyen-vif, 9-10 min, jusqu'à ce qu'ils soient fondants et colorés.",
+                "Ajouter la harissa, cuire 1 min. Émietter le tofu pour lui donner la consistance d'œufs brouillés. Cuire 2 min. Saler.",
+                "Dresser sur les tranches de pain grillé. Servir avec la salade avocat-concombre."
+            ],
+            "tags": ["tofu", "harissa", "avocat", "concombre", "vegan"]
         }
     ]
 }
