@@ -1162,6 +1162,29 @@
                 "Dresser sur les tranches de pain grillé. Servir avec la salade avocat-concombre."
             ],
             "tags": ["tofu", "harissa", "avocat", "concombre", "vegan"]
+        },
+        {
+            "id": 33,
+            "titre": "Cookies chocolat, noisette et cranberries",
+            "categorie": "Dessert",
+            "ingredients": [
+                "farine / 215 g",
+                "cassonade / 170 g",
+                "levure chimique / 2 c. à café",
+                "beurre / 135 g / fondu",
+                "œuf / 1",
+                "pépites de chocolat / 150 g",
+                "noisettes / 100 g / concassées",
+                "cranberries / 50 g",
+                "sel / 1 pincée"
+            ],
+            "etapes": [
+                "Mélanger la farine, la cassonade et la levure chimique. Ajouter le beurre fondu et l'œuf, mélanger jusqu'à obtenir une pâte homogène.",
+                "Incorporer le chocolat, les noisettes, les cranberries et le sel.",
+                "Former des boules de pâte, les disposer sur une plaque recouverte de papier cuisson en les espaçant bien.",
+                "Cuire 10 min à 170°C (four préchauffé)."
+            ],
+            "tags": ["chocolat", "noisette", "cranberries", "cookie"]
         }
     ]
 }
