@@ -293,7 +293,7 @@
             "id": 9,
             "titre": "Merlus au four",
             "categorie": "Poisson",
-            "image": "images/merlu-four.jpg",
+            "image": "images/merlu-four.webp",
             "ingredients": [
                 "merlu / 800 g / dos, sans peau",
                 "ail / 4 gousses / écrasées",
@@ -445,7 +445,7 @@
             "id": 13,
             "titre": "Pâtes aux fruits de mer",
             "categorie": "Pâtes",
-            "image": "images/pates-fruits-de-mer.jpg",
+            "image": "images/pates-fruits-de-mer.png",
             "ingredients": [
                 "moules / 1 kg",
                 "thon ou saumon / 400 g / haché grossièrement",
@@ -525,7 +525,7 @@
             "id": 15,
             "titre": "Bowl de thon snacké au sésame",
             "categorie": "Poisson",
-            "image": "images/bowl-thon-sesame.jpg",
+            "image": "images/bowl-thon-sesame.webp",
             "ingredients": [
                 "thon (longe) / 400 g / en gros morceaux",
                 "avocat / 1 / en tranches",
@@ -831,7 +831,7 @@
             "id": 23,
             "titre": "Poulet aux citrons confits",
             "categorie": "Poulet",
-            "image": "images/poulet-citrons-confits.jpg",
+            "image": "images/poulet-citrons-confits.webp",
             "ingredients": [
                 "poulet / 1,6 kg / découpé en morceaux",
                 "oignon / 2 (gros) / émincé finement",
@@ -1167,6 +1167,7 @@
             "id": 33,
             "titre": "Cookies chocolat, noisette et cranberries",
             "categorie": "Dessert",
+            "image": "images/cookies-chocolat-noisette-cranberries.jpg",
             "ingredients": [
                 "farine / 215 g",
                 "cassonade / 170 g",
