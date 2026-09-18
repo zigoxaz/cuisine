@@ -1,13 +1,45 @@
 # Instructions — Recettes de cuisine
 
+## ⚠️ RÈGLE ABSOLUE — ce qui va dans git
+
+**Seuls les fichiers du site web (`pwa/`) sont versionnés.**
+
+Ne **jamais** committer, ni coller dans la conversation :
+- tokens GitHub, mots de passe DSM, identifiants de conteneurs, clés SSH
+- `git-pull.sh` (contient le chemin du token, propre au serveur)
+- `pwa/garde-manger.json` (données vivantes sur le NAS, exclues du rsync)
+- corbeille Synology (`#recycle/`), `desktop.ini`, `@eaDir/`, `Thumbs.db`
+- fichiers de travail (`pwa/images/import/`)
+
+Le `.gitignore` couvre ces cas — **le vérifier avant tout `git add`**, et préférer
+`git add <fichier>` à `git add .`.
+
+**Pour transmettre un secret** : jamais dans le chat. L'écrire dans un fichier hors
+dépôt, le transférer par SSH, puis le supprimer.
+
+Les informations d'infrastructure (réseau, ports, certificats, sauvegarde) sont
+dans `INFRA-NAS.md` — volontairement sans aucun secret.
+
 ## Contexte
 Application web de recettes hébergée sur un NAS Synology, synchronisée depuis GitHub (repo : zigoxaz/cuisine).
 - Fichier des recettes : `pwa/recettes.json`
 - Images : `pwa/images/`
-- Config (thème, nav) : `pwa/config.json`
 - Admin : `pwa/admin.html` (mot de passe : clgo)
+- Garde-manger : `pwa/garde-manger.html` (mot de passe : clgo)
 - Le NAS se met à jour automatiquement depuis `master` en moins d'une minute.
-- URL de l'appli : zigoxaz.ddns.net:8080/pwa/
+- URL de l'appli : **https://zigoxaz.ddns.net:8080/pwa/** (HTTPS uniquement)
+
+> **Infrastructure NAS, réseau, sécurité, sauvegarde** : voir `INFRA-NAS.md`.
+> À lire avant toute intervention sur le NAS, les ports ou les certificats.
+
+### Points à connaître
+- `pwa/garde-manger.json` n'est **pas** dans git : il vit uniquement sur le NAS
+  (`/volume1/cuisine/pwa/`) et `rsync` l'exclut. Modifier le HTML ne change pas les
+  données.
+- Stock à 4 états : `0 = IGNORÉ`, `1 = ÉPUISÉ`, `2 = PEU`, `3 = OK`.
+  IGNORÉ est exclu de « à racheter » mais reste dans les courses par recette.
+- Format des ingrédients : `ingrédient / quantité / préparation`. Le premier
+  segment sert au rapprochement avec le garde-manger.
 
 ## Git — Process obligatoire
 L'environnement Claude Code web crée automatiquement une branche de session (ex: `claude/pwa-website-review-XXXX`).

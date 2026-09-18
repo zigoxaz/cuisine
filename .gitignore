@@ -1,8 +1,33 @@
-# Claude Code
-.claude/
+# ============================================================
+# Ne JAMAIS versionner : secrets, infrastructure, fichiers NAS.
+# Seuls les fichiers du SITE WEB (pwa/) ont vocation a etre pousses.
+# ============================================================
 
-# Corbeille NAS Synology
-#recycle/
+# --- Secrets : aucun token, mot de passe ou cle dans ce depot ---
+.github-token
+*.token
+*.key
+*.pem
+secrets*
+aeffacer*
 
-# Script NAS (ne pas écraser)
+# --- Scripts NAS (contiennent des identifiants, propres au serveur) ---
 git-pull.sh
+*.sh.bak
+
+# --- Donnees vivant uniquement sur le NAS ---
+# garde-manger.json est ecrit par save_garde_manger.php cote serveur
+# et exclu du rsync : il ne doit jamais etre ecrase par une synchro.
+pwa/garde-manger.json
+
+# --- Corbeille NAS Synology ---
+#recycle/
+pwa/#recycle/
+desktop.ini
+@eaDir/
+
+# --- Fichiers de travail ---
+pwa/images/import/
+
+# --- Claude Code ---
+.claude/
