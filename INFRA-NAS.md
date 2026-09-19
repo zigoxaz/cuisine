@@ -1,7 +1,7 @@
 # Infrastructure NAS — référence
 
 > Document de reprise pour une nouvelle session Claude.
-> Dernière mise à jour : 18 septembre 2026.
+> Dernière mise à jour : 19 septembre 2026.
 >
 > **Aucun secret dans ce fichier** (dépôt git). Les emplacements sont indiqués,
 > les valeurs sont à demander à l'utilisateur.
@@ -215,6 +215,21 @@ thread noyau légitime, à ne pas confondre avec le malware `kdevtmpfsi`.
 sont **bénignes** : ce compte a `/usr/bin/nologin` comme shell, les sessions durent
 2 à 11 secondes et n'exécutent rien. Ce sont des scanners.
 
+### Mot de passe DSM transmis en clair — décision assumée
+
+Le mot de passe DSM a été transmis en clair dans une session Claude (compte
+précédent) et figure dans son historique. **Décision du 19/09/2026 : ne pas le
+changer**, risque estimé quasi nul.
+
+Justification : aucun acteur ne prospecte les historiques de conversation pour
+y trouver des identifiants ; le 2FA est actif sur DSM, donc le mot de passe
+seul ne permet pas d'ouvrir une session ; le SSH est fermé depuis Internet ;
+ce mot de passe ne protège ni Jellyfin, ni Navidrome, ni le site cuisine.
+
+À réévaluer si l'une de ces conditions change — **en particulier une
+désactivation du 2FA**, qui redonnerait au mot de passe son rôle de barrière
+unique. Idem si ce mot de passe venait à être réutilisé sur un autre service.
+
 ### Piège de diagnostic : le NAT loopback
 
 **Tester un port depuis le réseau local donne des résultats faux.** La Freebox
@@ -312,12 +327,6 @@ dans un fichier temporaire hors dépôt, le transférer par SSH, puis le supprim
 
 ## 10. Reste à faire
 
-- [ ] **Changer le mot de passe DSM** — il a été transmis en clair dans une session
-      Claude et figure dans son historique. Le SSH étant fermé, plus aucune
-      opération n'exige `sudo`.
-      *Panneau de configuration → Utilisateur et groupe → `clgo` → Modifier.*
-      Déconnecte DSM et l'app Files (à ressaisir) ; sans effet sur Jellyfin,
-      Navidrome ou Transmission.
 - [ ] Vérifier que la première sauvegarde s'est terminée (elle était à 149/160 Go)
 - [ ] Confirmer que `music` figure bien dans les dossiers sauvegardés
 
